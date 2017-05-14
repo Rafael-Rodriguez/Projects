@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Exercise._01.InvoiceTotal
 {
-    public partial class Form1 : Form
+    public partial class frmInvoiceTotal : Form
     {
-        public Form1()
+        public frmInvoiceTotal()
         {
             InitializeComponent();
         }
