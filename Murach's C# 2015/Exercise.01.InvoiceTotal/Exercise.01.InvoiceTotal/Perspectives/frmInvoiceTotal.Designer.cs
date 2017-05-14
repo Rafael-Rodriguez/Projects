@@ -150,6 +150,8 @@
             this.Controls.Add(this.lblDiscountAmount);
             this.Controls.Add(this.lblDiscountPercent);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmInvoiceTotal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Invoice Total";
