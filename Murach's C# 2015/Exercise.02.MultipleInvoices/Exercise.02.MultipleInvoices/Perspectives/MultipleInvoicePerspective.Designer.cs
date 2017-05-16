@@ -1,6 +1,6 @@
 ﻿namespace Exercise._02.MultipleInvoices.Perspectives
 {
-    partial class frmMultipleInvoices
+    partial class MultipleInvoicePerspective
     {
         /// <summary>
         /// Required designer variable.

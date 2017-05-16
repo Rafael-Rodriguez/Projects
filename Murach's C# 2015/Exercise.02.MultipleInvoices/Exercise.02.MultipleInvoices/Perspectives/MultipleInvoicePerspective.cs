@@ -3,13 +3,13 @@ using System.Windows.Forms;
 
 namespace Exercise._02.MultipleInvoices.Perspectives
 {
-    public partial class frmMultipleInvoices : Form
+    public partial class MultipleInvoicePerspective : Form
     {
         int numberOfInvoices = 0;
         decimal totalOfInvoices = 0m;
         decimal invoiceAverage = 0m;
 
-        public frmMultipleInvoices()
+        public MultipleInvoicePerspective()
         {
             InitializeComponent();
         }

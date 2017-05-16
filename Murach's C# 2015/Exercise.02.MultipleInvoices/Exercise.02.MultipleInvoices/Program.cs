@@ -13,7 +13,7 @@ namespace Exercise._02.MultipleInvoices
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Perspectives.frmMultipleInvoices());
+            Application.Run(new Perspectives.MultipleInvoicePerspective());
         }
     }
 }
