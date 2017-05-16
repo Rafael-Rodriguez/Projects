@@ -5,6 +5,10 @@ namespace Exercise._02.MultipleInvoices.Perspectives
 {
     public partial class frmMultipleInvoices : Form
     {
+        int numberOfInvoices = 0;
+        decimal totalOfInvoices = 0m;
+        decimal invoiceAverage = 0m;
+
         public frmMultipleInvoices()
         {
             InitializeComponent();
@@ -12,7 +16,7 @@ namespace Exercise._02.MultipleInvoices.Perspectives
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            var subTotal = Convert.ToDecimal(txtBoxSubtotal.Text);
+            var subTotal = Convert.ToDecimal(txtBoxEnterSubtotal.Text);
             var discountPercent = 0m;
 
             if (subTotal >= 500)
@@ -31,11 +35,20 @@ namespace Exercise._02.MultipleInvoices.Perspectives
             var discountAmount = subTotal * discountPercent;
             var invoiceTotal = subTotal - discountAmount;
 
+            txtBoxSubtotal.Text = subTotal.ToString("c");
             txtBoxDiscountPercent.Text = discountPercent.ToString("p1");
             txtBoxDiscountAmount.Text = discountAmount.ToString("c");
             txtBoxTotal.Text = invoiceTotal.ToString("c");
 
-            txtBoxSubtotal.Focus();
+            numberOfInvoices++;
+            totalOfInvoices += invoiceTotal;
+            invoiceAverage = totalOfInvoices / numberOfInvoices;
+
+            txtBoxNumInvoices.Text = numberOfInvoices.ToString();
+            txtBoxTotalInvoices.Text = totalOfInvoices.ToString("c");
+            txtBoxInvoiceAverage.Text = invoiceAverage.ToString("c");
+
+            txtBoxEnterSubtotal.Focus();
 
 
 
@@ -44,6 +57,11 @@ namespace Exercise._02.MultipleInvoices.Perspectives
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnClearTotals_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
