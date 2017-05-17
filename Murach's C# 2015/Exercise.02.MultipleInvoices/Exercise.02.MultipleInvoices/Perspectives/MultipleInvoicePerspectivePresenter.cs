@@ -8,9 +8,13 @@ namespace Exercise._02.MultipleInvoices.Perspectives
 {
     public class MultipleInvoicePerspectivePresenter
     {
-        public MultipleInvoicePerspectivePresenter()
+        public IMultipleInvoicePerspective Perspective { get; set; }
+
+        public MultipleInvoicePerspectivePresenter(IMultipleInvoicePerspective perspective)
         {
-            
+            Perspective = perspective; 
         }
+
+
     }
 }

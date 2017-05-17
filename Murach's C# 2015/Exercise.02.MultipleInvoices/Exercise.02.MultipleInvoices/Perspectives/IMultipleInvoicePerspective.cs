@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Exercise._02.MultipleInvoices.Perspectives
 {
-    interface IMultipleInvoicePerspective
+    public interface IMultipleInvoicePerspective
     {
+
     }
 }

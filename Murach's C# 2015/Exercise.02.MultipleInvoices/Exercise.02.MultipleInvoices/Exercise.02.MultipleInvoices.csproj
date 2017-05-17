@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\InvoiceCollection.cs" />
     <Compile Include="Perspectives\IMultipleInvoicePerspective.cs" />
     <Compile Include="Perspectives\MultipleInvoicePerspective.cs">
       <SubType>Form</SubType>
