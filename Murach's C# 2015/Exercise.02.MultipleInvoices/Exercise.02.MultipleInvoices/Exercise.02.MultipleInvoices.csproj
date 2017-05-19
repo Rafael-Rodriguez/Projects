@@ -49,6 +49,8 @@
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\InvoiceCollection.cs" />
     <Compile Include="Perspectives\IMultipleInvoicePerspective.cs" />
+    <Compile Include="Perspectives\InvoiceCollectionUpdateEventArgs.cs" />
+    <Compile Include="Perspectives\InvoiceDataEventArgs.cs" />
     <Compile Include="Perspectives\MultipleInvoicePerspective.cs">
       <SubType>Form</SubType>
     </Compile>

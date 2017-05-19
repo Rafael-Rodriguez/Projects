@@ -8,6 +8,6 @@ namespace Exercise._02.MultipleInvoices.Perspectives
 {
     public interface IMultipleInvoicePerspective
     {
-
+        
     }
 }
