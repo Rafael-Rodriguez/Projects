@@ -5,10 +5,6 @@ namespace Exercise._02.MultipleInvoices.Perspectives
 {
     public partial class MultipleInvoicePerspective : Form, IMultipleInvoicePerspective
     {
-        int numberOfInvoices = 0;
-        decimal totalOfInvoices = 0m;
-        decimal invoiceAverage = 0m;
-
         public MultipleInvoicePerspectivePresenter Presenter { get;}
 
         public MultipleInvoicePerspective()
@@ -17,10 +13,19 @@ namespace Exercise._02.MultipleInvoices.Perspectives
 
             Presenter = new MultipleInvoicePerspectivePresenter(this);
             Presenter.TotalCalculated += OnTotalCalculated;
+            Presenter.InvoiceCollectionUpdated += OnInvoiceCollectionUpdated;
+        }
+
+        private void OnInvoiceCollectionUpdated(object sender, InvoiceCollectionUpdateEventArgs args)
+        {
+            txtBoxNumInvoices.Text = String.Format("{0:d}",args.NumInvoices);
+            txtBoxTotalInvoices.Text = String.Format("{0:c}", args.TotalInvoices);
+            txtBoxInvoiceAverage.Text = String.Format("{0:c}", args.InvoiceAverage);
         }
 
         private void OnTotalCalculated(object sender, InvoiceDataEventArgs args)
         {
+            txtBoxSubtotal.Text = args.Subtotal.ToString("c");
             txtBoxTotal.Text = args.Total.ToString("c");
             txtBoxDiscountPercent.Text = args.DiscountPercent.ToString("p1");
             txtBoxDiscountAmount.Text = args.DiscountAmount.ToString("c");
@@ -30,46 +35,24 @@ namespace Exercise._02.MultipleInvoices.Perspectives
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            var subtotal = Convert.ToDecimal(txtBoxEnterSubtotal.Text);
-
-            Presenter.Calculate(subtotal);
-
-            
-            var discountPercent = 0m;
-
-            if (subtotal >= 500)
+            try
             {
-                discountPercent = .2m;
+                Presenter.Calculate(txtBoxEnterSubtotal.Text);
             }
-            else if (subtotal >= 250)
+            catch (ArgumentNullException)
             {
-                discountPercent = .15m;
+                MessageBox.Show("Please enter a value in the Subtotal text box");
             }
-            else if (subtotal >= 100)
+            catch (FormatException)
             {
-                discountPercent = .1m;
+                MessageBox.Show($"Entered value \"{txtBoxEnterSubtotal.Text}\" is not in a correct format.  Please reenter the value in the Subtotal text box");
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show($"Entered value is outside the valid range.  Please enter a value that is between 79e-27 and 79e27");
             }
 
-            var discountAmount = subtotal * discountPercent;
-            var invoiceTotal = subtotal - discountAmount;
-
-            txtBoxSubtotal.Text = subtotal.ToString("c");
-            txtBoxDiscountPercent.Text = discountPercent.ToString("p1");
-            txtBoxDiscountAmount.Text = discountAmount.ToString("c");
-            txtBoxTotal.Text = invoiceTotal.ToString("c");
-
-            numberOfInvoices++;
-            totalOfInvoices += invoiceTotal;
-            invoiceAverage = totalOfInvoices / numberOfInvoices;
-
-            txtBoxNumInvoices.Text = numberOfInvoices.ToString();
-            txtBoxTotalInvoices.Text = totalOfInvoices.ToString("c");
-            txtBoxInvoiceAverage.Text = invoiceAverage.ToString("c");
-
-            
-
-
-
+            txtBoxEnterSubtotal.Text = "";
         }
 
         private void btnExit_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ namespace Exercise._02.MultipleInvoices.Models
     {
         private List<Invoice> _invoices = new List<Invoice>();
 
-        public decimal Total
+        public decimal TotalInvoices
         {
             get
             {
@@ -19,11 +19,19 @@ namespace Exercise._02.MultipleInvoices.Models
             }
         }
 
-        public decimal Average
+        public decimal InvoiceAverage
         {
             get
             {
                 return _invoices.Average(i => i.Total);
+            }
+        }
+
+        public int NumInvoices
+        {
+            get
+            {
+                return Count;
             }
         }
 
