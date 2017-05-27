@@ -60,9 +60,6 @@ namespace Exercise._02.MultipleInvoices.Perspectives
             }
 
             UpdateInvoiceCollection(invoice);
-
-            
-            
         }
 
         private void UpdateInvoiceCollection(Invoice invoice)

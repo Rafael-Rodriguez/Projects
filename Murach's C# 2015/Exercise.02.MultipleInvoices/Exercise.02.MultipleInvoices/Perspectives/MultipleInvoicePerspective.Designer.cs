@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.lblDiscountPercent = new System.Windows.Forms.Label();
             this.lblDiscountAmount = new System.Windows.Forms.Label();
@@ -47,6 +48,8 @@
             this.txtBoxNumInvoices = new System.Windows.Forms.TextBox();
             this.txtBoxTotalInvoices = new System.Windows.Forms.TextBox();
             this.txtBoxInvoiceAverage = new System.Windows.Forms.TextBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -92,6 +95,7 @@
             this.txtBoxEnterSubtotal.Size = new System.Drawing.Size(100, 22);
             this.txtBoxEnterSubtotal.TabIndex = 1;
             this.txtBoxEnterSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBoxEnterSubtotal.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxEnterSubtotal_Validating);
             // 
             // txtBoxDiscountPercent
             // 
@@ -122,7 +126,6 @@
             this.txtBoxTotal.TabIndex = 100;
             this.txtBoxTotal.TabStop = false;
             this.txtBoxTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            
             // 
             // btnCalculate
             // 
@@ -228,7 +231,11 @@
             this.txtBoxInvoiceAverage.TabIndex = 103;
             this.txtBoxInvoiceAverage.TabStop = false;
             // 
-            // frmMultipleInvoices
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // MultipleInvoicePerspective
             // 
             this.AcceptButton = this.btnCalculate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,9 +263,10 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmMultipleInvoices";
+            this.Name = "MultipleInvoicePerspective";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Invoice Total";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,5 +293,6 @@
         private System.Windows.Forms.TextBox txtBoxNumInvoices;
         private System.Windows.Forms.TextBox txtBoxTotalInvoices;
         private System.Windows.Forms.TextBox txtBoxInvoiceAverage;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
