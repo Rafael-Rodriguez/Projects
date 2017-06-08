@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Exercise._02.MultipleInvoices.Perspectives
 {
     public partial class MultipleInvoicePerspective : Form, IMultipleInvoicePerspective
     {
+        private const string SUBTOTAL_INVALIDCHARACTERS_REGEXPRESSION = @"[^0-9^+^\-^$^.]";
         public MultipleInvoicePerspectivePresenter Presenter { get;}
 
         public MultipleInvoicePerspective()
@@ -85,6 +87,7 @@ namespace Exercise._02.MultipleInvoices.Perspectives
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            this.AutoValidate = AutoValidate.Disable;
             this.Close();
         }
 
@@ -93,6 +96,27 @@ namespace Exercise._02.MultipleInvoices.Perspectives
 
         }
 
-        
+        private void txtBoxEnterSubtotal_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex(SUBTOTAL_INVALIDCHARACTERS_REGEXPRESSION);
+            MatchCollection matches = regex.Matches(txtBoxEnterSubtotal.Text);
+            if(matches.Count > 0)
+            {
+                MessageBox.Show("Invalid characters in subtotal");
+                txtBoxEnterSubtotal.Text = "";
+            }
+        }
+
+        private void txtBoxEnterSubtotal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(Regex.IsMatch(e.KeyChar.ToString(), SUBTOTAL_INVALIDCHARACTERS_REGEXPRESSION))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.Handled = false;
+            }
+        }
     }
 }

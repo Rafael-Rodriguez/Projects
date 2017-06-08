@@ -95,6 +95,8 @@
             this.txtBoxEnterSubtotal.Size = new System.Drawing.Size(100, 22);
             this.txtBoxEnterSubtotal.TabIndex = 1;
             this.txtBoxEnterSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBoxEnterSubtotal.TextChanged += new System.EventHandler(this.txtBoxEnterSubtotal_TextChanged);
+            this.txtBoxEnterSubtotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxEnterSubtotal_KeyPress);
             this.txtBoxEnterSubtotal.Validating += new System.ComponentModel.CancelEventHandler(this.txtBoxEnterSubtotal_Validating);
             // 
             // txtBoxDiscountPercent
@@ -139,6 +141,7 @@
             // 
             // btnExit
             // 
+            this.btnExit.CausesValidation = false;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Location = new System.Drawing.Point(493, 292);
             this.btnExit.Name = "btnExit";
@@ -240,7 +243,9 @@
             this.AcceptButton = this.btnCalculate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.CancelButton = this.btnExit;
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(644, 368);
             this.Controls.Add(this.txtBoxInvoiceAverage);
             this.Controls.Add(this.txtBoxTotalInvoices);
