@@ -14,9 +14,16 @@ namespace Exercise._12.ProductMaintenance.Model
 
         public decimal Price { get; set; }
 
-        public string GetDisplayText(string seperator = "\t")
+        public Product(string code, string price, string description)
         {
+            Code = code;
+            Price = decimal.Parse(price, System.Globalization.NumberStyles.AllowCurrencySymbol | System.Globalization.NumberStyles.AllowDecimalPoint);
+            Description = description;
+        }
 
+        public override string ToString()
+        {
+            return string.Format("{0}\t{1}\t{2}", Code, Price, Description);
         }
     }
 }

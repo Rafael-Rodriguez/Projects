@@ -42,13 +42,14 @@
             this.lstBoxProducts.Name = "lstBoxProducts";
             this.lstBoxProducts.Size = new System.Drawing.Size(529, 324);
             this.lstBoxProducts.TabIndex = 0;
+            this.lstBoxProducts.TabStop = false;
             // 
             // btnAddProduct
             // 
             this.btnAddProduct.Location = new System.Drawing.Point(592, 34);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(136, 23);
-            this.btnAddProduct.TabIndex = 1;
+            this.btnAddProduct.TabIndex = 2;
             this.btnAddProduct.Text = "Add Product";
             this.btnAddProduct.UseVisualStyleBackColor = true;
             // 
@@ -57,7 +58,7 @@
             this.btnDeleteProduct.Location = new System.Drawing.Point(592, 77);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(136, 23);
-            this.btnDeleteProduct.TabIndex = 1;
+            this.btnDeleteProduct.TabIndex = 3;
             this.btnDeleteProduct.Text = "Delete Product";
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
             // 
@@ -66,7 +67,7 @@
             this.btnExit.Location = new System.Drawing.Point(592, 122);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(136, 23);
-            this.btnExit.TabIndex = 1;
+            this.btnExit.TabIndex = 4;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 

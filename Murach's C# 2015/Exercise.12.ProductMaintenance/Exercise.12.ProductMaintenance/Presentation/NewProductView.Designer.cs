@@ -70,6 +70,7 @@
             // 
             // txtBoxCode
             // 
+            this.txtBoxCode.AcceptsTab = true;
             this.txtBoxCode.Location = new System.Drawing.Point(166, 34);
             this.txtBoxCode.Name = "txtBoxCode";
             this.txtBoxCode.Size = new System.Drawing.Size(100, 22);
@@ -77,6 +78,7 @@
             // 
             // txtBoxPrice
             // 
+            this.txtBoxPrice.AcceptsTab = true;
             this.txtBoxPrice.Location = new System.Drawing.Point(166, 96);
             this.txtBoxPrice.Name = "txtBoxPrice";
             this.txtBoxPrice.Size = new System.Drawing.Size(100, 22);
@@ -84,6 +86,7 @@
             // 
             // txtBoxDescription
             // 
+            this.txtBoxDescription.AcceptsTab = true;
             this.txtBoxDescription.Location = new System.Drawing.Point(166, 68);
             this.txtBoxDescription.Name = "txtBoxDescription";
             this.txtBoxDescription.Size = new System.Drawing.Size(298, 22);
