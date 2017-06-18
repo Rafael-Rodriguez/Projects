@@ -56,5 +56,27 @@ namespace Equilibrium.Tests
 
             Assert.AreEqual(6, result);
         }
+
+        [TestMethod]
+        public void Solution_Extreme_Negative_Numbers_ReturnNeg1()
+        {
+            var array = new int[] { 0, -2147483648, -2147483648 };
+            var solution = new Solution();
+
+            var result = solution.solution(array);
+
+            Assert.AreEqual(-1, result);
+        }
+
+        [TestMethod]
+        public void Solution_Extreme_Positive_Numbers_ReturnNeg1()
+        {
+            var array = new int[] { 2147483647, 2147483647,  1};
+            var solution = new Solution();
+
+            var result = solution.solution(array);
+
+            Assert.AreEqual(-1, result);
+        }
     }
 }

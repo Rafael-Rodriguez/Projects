@@ -19,8 +19,8 @@ namespace ProgrammerTest
 
             for(int i = 0; i < A.Length; ++i)
             {
-                int sumBefore = ComputePreSum(i, A);
-                int sumAfter = ComputePostSum(i, A);
+                long sumBefore = ComputePreSum(i, A);
+                long sumAfter = ComputePostSum(i, A);
 
                 if(sumBefore == sumAfter)
                 {
@@ -31,14 +31,14 @@ namespace ProgrammerTest
             return NO_EQUILIBRIUM_INDEX_EXISTS;
         }
 
-        private int ComputePreSum(int i, int[] a)
+        private long ComputePreSum(int i, int[] a)
         {
             if(i == 0)
             {
                 return 0;
             }
 
-            int sum = 0;
+            long sum = 0;
             for(int h = 0; h < i; ++h)
             {
                 sum += a[h];
@@ -47,14 +47,14 @@ namespace ProgrammerTest
             return sum;
         }
 
-        private int ComputePostSum(int i, int[] a)
+        private long ComputePostSum(int i, int[] a)
         {
             if(i == a.Length -1)
             {
                 return 0;
             }
 
-            int sum = 0;
+            long sum = 0;
             for(int j = i+1; j < a.Length; ++j)
             {
                 sum += a[j];
