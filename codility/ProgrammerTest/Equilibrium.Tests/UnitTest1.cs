@@ -78,5 +78,27 @@ namespace Equilibrium.Tests
 
             Assert.AreEqual(-1, result);
         }
+
+        [TestMethod]
+        public void Solution_LargeLongSequenceOfOnes_ReturnWithin310msecs()
+        {
+            const int length = 10000;
+            int[] array = new int[length];
+            for(int i = 0; i < length; ++i)
+            {
+                array[i] = 1;
+            }
+
+            var solution = new Solution();
+
+            var currentTime = DateTime.Now;
+
+            var result = solution.solution(array);
+
+            var timeAfter = DateTime.Now;
+
+            Assert.IsTrue(timeAfter - currentTime < TimeSpan.FromSeconds(0.30));
+
+        }
     }
 }
