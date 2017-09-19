@@ -16,7 +16,7 @@ namespace Chapter10.PaymentApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPayment());
+            Application.Run(new frmCustomer());
         }
     }
 }

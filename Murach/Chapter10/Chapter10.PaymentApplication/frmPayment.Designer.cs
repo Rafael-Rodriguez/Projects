@@ -53,7 +53,7 @@
             this.grpBilling.Name = "grpBilling";
             this.grpBilling.Padding = new System.Windows.Forms.Padding(2);
             this.grpBilling.Size = new System.Drawing.Size(390, 81);
-            this.grpBilling.TabIndex = 0;
+            this.grpBilling.TabIndex = 10;
             this.grpBilling.TabStop = false;
             this.grpBilling.Text = "Billing";
             // 
@@ -63,10 +63,10 @@
             this._rdoBillCustomer.Location = new System.Drawing.Point(242, 32);
             this._rdoBillCustomer.Margin = new System.Windows.Forms.Padding(2);
             this._rdoBillCustomer.Name = "_rdoBillCustomer";
-            this._rdoBillCustomer.Size = new System.Drawing.Size(84, 17);
+            this._rdoBillCustomer.Size = new System.Drawing.Size(85, 17);
             this._rdoBillCustomer.TabIndex = 1;
             this._rdoBillCustomer.TabStop = true;
-            this._rdoBillCustomer.Text = "Bill customer";
+            this._rdoBillCustomer.Text = "&Bill Customer";
             this._rdoBillCustomer.UseVisualStyleBackColor = true;
             this._rdoBillCustomer.CheckedChanged += new System.EventHandler(this.OnBillCustomerCheckedChanged);
             // 
@@ -79,7 +79,7 @@
             this._rdoCreditCard.Size = new System.Drawing.Size(77, 17);
             this._rdoCreditCard.TabIndex = 0;
             this._rdoCreditCard.TabStop = true;
-            this._rdoCreditCard.Text = "Credit Card";
+            this._rdoCreditCard.Text = "Credi&t Card";
             this._rdoCreditCard.UseVisualStyleBackColor = true;
             this._rdoCreditCard.CheckedChanged += new System.EventHandler(this.OnCreditCardCheckedChanged);
             // 
@@ -90,8 +90,8 @@
             this._lblCreditCardType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this._lblCreditCardType.Name = "_lblCreditCardType";
             this._lblCreditCardType.Size = new System.Drawing.Size(85, 13);
-            this._lblCreditCardType.TabIndex = 1;
-            this._lblCreditCardType.Text = "Credit Card type:";
+            this._lblCreditCardType.TabIndex = 0;
+            this._lblCreditCardType.Text = "&Credit Card type:";
             // 
             // _lstCreditCardTypes
             // 
@@ -100,7 +100,7 @@
             this._lstCreditCardTypes.Margin = new System.Windows.Forms.Padding(2);
             this._lstCreditCardTypes.Name = "_lstCreditCardTypes";
             this._lstCreditCardTypes.Size = new System.Drawing.Size(266, 69);
-            this._lstCreditCardTypes.TabIndex = 2;
+            this._lstCreditCardTypes.TabIndex = 1;
             // 
             // _lblCardNumber
             // 
@@ -109,8 +109,8 @@
             this._lblCardNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this._lblCardNumber.Name = "_lblCardNumber";
             this._lblCardNumber.Size = new System.Drawing.Size(70, 13);
-            this._lblCardNumber.TabIndex = 3;
-            this._lblCardNumber.Text = "Card number:";
+            this._lblCardNumber.TabIndex = 2;
+            this._lblCardNumber.Text = "Car&d number:";
             // 
             // _txtCardNumber
             // 
@@ -119,11 +119,10 @@
             this._txtCardNumber.MaxLength = 16;
             this._txtCardNumber.Name = "_txtCardNumber";
             this._txtCardNumber.Size = new System.Drawing.Size(266, 20);
-            this._txtCardNumber.TabIndex = 4;
+            this._txtCardNumber.TabIndex = 3;
             this._txtCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnCreditCardNumberKeyDown);
             this._txtCardNumber.Leave += new System.EventHandler(this.OnLeaveFocus);
             this._txtCardNumber.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnTextBoxCardNumberMouseDown);
-            
             // 
             // _lblExpirationDate
             // 
@@ -132,8 +131,8 @@
             this._lblExpirationDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this._lblExpirationDate.Name = "_lblExpirationDate";
             this._lblExpirationDate.Size = new System.Drawing.Size(82, 13);
-            this._lblExpirationDate.TabIndex = 5;
-            this._lblExpirationDate.Text = "Expiration Date:";
+            this._lblExpirationDate.TabIndex = 4;
+            this._lblExpirationDate.Text = "Exp&iration Date:";
             // 
             // _cboExpirationMonth
             // 
@@ -142,7 +141,7 @@
             this._cboExpirationMonth.Margin = new System.Windows.Forms.Padding(2);
             this._cboExpirationMonth.Name = "_cboExpirationMonth";
             this._cboExpirationMonth.Size = new System.Drawing.Size(112, 21);
-            this._cboExpirationMonth.TabIndex = 6;
+            this._cboExpirationMonth.TabIndex = 5;
             // 
             // _cboExpirationYear
             // 
@@ -151,7 +150,7 @@
             this._cboExpirationYear.Margin = new System.Windows.Forms.Padding(2);
             this._cboExpirationYear.Name = "_cboExpirationYear";
             this._cboExpirationYear.Size = new System.Drawing.Size(112, 21);
-            this._cboExpirationYear.TabIndex = 7;
+            this._cboExpirationYear.TabIndex = 6;
             // 
             // _chkDefaultBilling
             // 
@@ -160,8 +159,8 @@
             this._chkDefaultBilling.Margin = new System.Windows.Forms.Padding(2);
             this._chkDefaultBilling.Name = "_chkDefaultBilling";
             this._chkDefaultBilling.Size = new System.Drawing.Size(158, 17);
-            this._chkDefaultBilling.TabIndex = 8;
-            this._chkDefaultBilling.Text = "Set as default billing method";
+            this._chkDefaultBilling.TabIndex = 7;
+            this._chkDefaultBilling.Text = "&Set as default billing method";
             this._chkDefaultBilling.UseVisualStyleBackColor = true;
             // 
             // _btnOK
@@ -170,7 +169,7 @@
             this._btnOK.Margin = new System.Windows.Forms.Padding(2);
             this._btnOK.Name = "_btnOK";
             this._btnOK.Size = new System.Drawing.Size(73, 19);
-            this._btnOK.TabIndex = 9;
+            this._btnOK.TabIndex = 8;
             this._btnOK.Text = "OK";
             this._btnOK.UseVisualStyleBackColor = true;
             this._btnOK.Click += new System.EventHandler(this._btnOK_Click);
@@ -182,7 +181,7 @@
             this._btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(70, 19);
-            this._btnCancel.TabIndex = 10;
+            this._btnCancel.TabIndex = 9;
             this._btnCancel.Text = "Cancel";
             this._btnCancel.UseVisualStyleBackColor = true;
             this._btnCancel.Click += new System.EventHandler(this.OnCancelClick);
@@ -194,6 +193,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this._btnCancel;
             this.ClientSize = new System.Drawing.Size(409, 405);
+            this.ControlBox = false;
             this.Controls.Add(this._btnCancel);
             this.Controls.Add(this._btnOK);
             this.Controls.Add(this._chkDefaultBilling);
