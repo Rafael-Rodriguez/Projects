@@ -95,12 +95,117 @@ namespace Chapter10.PaymentApplication
             }
         }
 
-        private void OnCreditCardNumberValidating(object sender, CancelEventArgs e)
+        private void frmPayment_Load(object sender, EventArgs e)
         {
-            if(_txtCardNumber.Text.Length != 16)
+            InitializeCreditCardTypes();
+            InitializeExpirationMonthAndYear();
+        }
+
+        private void InitializeExpirationMonthAndYear()
+        {
+            string[] months =
+                        {
+                "Select a month...",
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            };
+
+            _cboExpirationMonth.Items.AddRange(months);
+            _cboExpirationMonth.SelectedIndex = 0;
+
+            int year = DateTime.Today.Year;
+            int endYear = year + 8;
+            _cboExpirationYear.Items.Add("Select a year...");
+            while (year < endYear)
             {
-                e.Cancel = true;
+                _cboExpirationYear.Items.Add(year);
+                year++;
             }
+            _cboExpirationYear.SelectedIndex = 0;
+        }
+
+        private void InitializeCreditCardTypes()
+        {
+            _lstCreditCardTypes.Items.Add("Visa");
+            _lstCreditCardTypes.Items.Add("Mastercard");
+            _lstCreditCardTypes.Items.Add("American Express");
+            _lstCreditCardTypes.SelectedIndex = 0;
+        }
+
+        private void _btnOK_Click(object sender, EventArgs e)
+        {
+            if(IsValidData())
+            {
+                SaveData();
+            }
+        }
+
+        private void SaveData()
+        {
+            string msg = null;
+            if(_rdoCreditCard.Checked == true)
+            {
+                msg += "Charge to credit card." + "\n\n";
+                msg += "Card type: " + _lblCreditCardType.Text + "\n";
+                msg += "Card number: " + _txtCardNumber.Text + "\n";
+                msg += "Expiration date: " + _cboExpirationMonth.Text + "/" + _cboExpirationYear.Text + "\n";
+            }
+            else
+            {
+                msg += "Send bill to customer." + "\n\n";
+            }
+
+            bool isDefaultBilling = _chkDefaultBilling.Checked;
+            msg += "Default billing: " + isDefaultBilling;
+
+            Tag = msg;
+            DialogResult = DialogResult.OK;
+        }
+
+        private bool IsValidData()
+        {
+            if(_rdoCreditCard.Checked)
+            {
+                if(_lstCreditCardTypes.SelectedIndex == -1)
+                {
+                    MessageBox.Show("You must select a credit card type.", "Entry Error");
+                    _lstCreditCardTypes.Focus();
+                    return false;
+                }
+
+                if(_txtCardNumber.Text == "")
+                {
+                    MessageBox.Show("You must enter a credit card number.", "Entry Error");
+                    _txtCardNumber.Focus();
+                    return false;
+                }
+
+                if(_cboExpirationMonth.SelectedIndex == 0)
+                {
+                    MessageBox.Show("You must select a month.", "Entry Error");
+                    _cboExpirationMonth.Focus();
+                    return false;
+                }
+
+                if(_cboExpirationYear.SelectedIndex == 0)
+                {
+                    MessageBox.Show("You must select a year.", "Entry Error");
+                    _cboExpirationYear.Focus();
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

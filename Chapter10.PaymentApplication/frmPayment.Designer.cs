@@ -49,9 +49,9 @@
             this.grpBilling.Controls.Add(this._rdoBillCustomer);
             this.grpBilling.Controls.Add(this._rdoCreditCard);
             this.grpBilling.Location = new System.Drawing.Point(10, 11);
-            this.grpBilling.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpBilling.Margin = new System.Windows.Forms.Padding(2);
             this.grpBilling.Name = "grpBilling";
-            this.grpBilling.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpBilling.Padding = new System.Windows.Forms.Padding(2);
             this.grpBilling.Size = new System.Drawing.Size(390, 81);
             this.grpBilling.TabIndex = 0;
             this.grpBilling.TabStop = false;
@@ -61,7 +61,7 @@
             // 
             this._rdoBillCustomer.AutoSize = true;
             this._rdoBillCustomer.Location = new System.Drawing.Point(242, 32);
-            this._rdoBillCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._rdoBillCustomer.Margin = new System.Windows.Forms.Padding(2);
             this._rdoBillCustomer.Name = "_rdoBillCustomer";
             this._rdoBillCustomer.Size = new System.Drawing.Size(84, 17);
             this._rdoBillCustomer.TabIndex = 1;
@@ -74,7 +74,7 @@
             // 
             this._rdoCreditCard.AutoSize = true;
             this._rdoCreditCard.Location = new System.Drawing.Point(34, 32);
-            this._rdoCreditCard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._rdoCreditCard.Margin = new System.Windows.Forms.Padding(2);
             this._rdoCreditCard.Name = "_rdoCreditCard";
             this._rdoCreditCard.Size = new System.Drawing.Size(77, 17);
             this._rdoCreditCard.TabIndex = 0;
@@ -96,12 +96,8 @@
             // _lstCreditCardTypes
             // 
             this._lstCreditCardTypes.FormattingEnabled = true;
-            this._lstCreditCardTypes.Items.AddRange(new object[] {
-            "Visa",
-            "Mastercard",
-            "American Express"});
             this._lstCreditCardTypes.Location = new System.Drawing.Point(110, 115);
-            this._lstCreditCardTypes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._lstCreditCardTypes.Margin = new System.Windows.Forms.Padding(2);
             this._lstCreditCardTypes.Name = "_lstCreditCardTypes";
             this._lstCreditCardTypes.Size = new System.Drawing.Size(266, 69);
             this._lstCreditCardTypes.TabIndex = 2;
@@ -119,7 +115,7 @@
             // _txtCardNumber
             // 
             this._txtCardNumber.Location = new System.Drawing.Point(110, 219);
-            this._txtCardNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._txtCardNumber.Margin = new System.Windows.Forms.Padding(2);
             this._txtCardNumber.MaxLength = 16;
             this._txtCardNumber.Name = "_txtCardNumber";
             this._txtCardNumber.Size = new System.Drawing.Size(266, 20);
@@ -127,7 +123,7 @@
             this._txtCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnCreditCardNumberKeyDown);
             this._txtCardNumber.Leave += new System.EventHandler(this.OnLeaveFocus);
             this._txtCardNumber.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnTextBoxCardNumberMouseDown);
-            this._txtCardNumber.Validating += new System.ComponentModel.CancelEventHandler(this.OnCreditCardNumberValidating);
+            
             // 
             // _lblExpirationDate
             // 
@@ -142,48 +138,26 @@
             // _cboExpirationMonth
             // 
             this._cboExpirationMonth.FormattingEnabled = true;
-            this._cboExpirationMonth.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
             this._cboExpirationMonth.Location = new System.Drawing.Point(110, 274);
-            this._cboExpirationMonth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._cboExpirationMonth.Margin = new System.Windows.Forms.Padding(2);
             this._cboExpirationMonth.Name = "_cboExpirationMonth";
-            this._cboExpirationMonth.Size = new System.Drawing.Size(92, 21);
+            this._cboExpirationMonth.Size = new System.Drawing.Size(112, 21);
             this._cboExpirationMonth.TabIndex = 6;
             // 
             // _cboExpirationYear
             // 
             this._cboExpirationYear.FormattingEnabled = true;
-            this._cboExpirationYear.Items.AddRange(new object[] {
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-            "2024"});
-            this._cboExpirationYear.Location = new System.Drawing.Point(251, 272);
-            this._cboExpirationYear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._cboExpirationYear.Location = new System.Drawing.Point(251, 274);
+            this._cboExpirationYear.Margin = new System.Windows.Forms.Padding(2);
             this._cboExpirationYear.Name = "_cboExpirationYear";
-            this._cboExpirationYear.Size = new System.Drawing.Size(92, 21);
+            this._cboExpirationYear.Size = new System.Drawing.Size(112, 21);
             this._cboExpirationYear.TabIndex = 7;
             // 
             // _chkDefaultBilling
             // 
             this._chkDefaultBilling.AutoSize = true;
             this._chkDefaultBilling.Location = new System.Drawing.Point(10, 321);
-            this._chkDefaultBilling.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._chkDefaultBilling.Margin = new System.Windows.Forms.Padding(2);
             this._chkDefaultBilling.Name = "_chkDefaultBilling";
             this._chkDefaultBilling.Size = new System.Drawing.Size(158, 17);
             this._chkDefaultBilling.TabIndex = 8;
@@ -193,18 +167,19 @@
             // _btnOK
             // 
             this._btnOK.Location = new System.Drawing.Point(209, 360);
-            this._btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._btnOK.Margin = new System.Windows.Forms.Padding(2);
             this._btnOK.Name = "_btnOK";
             this._btnOK.Size = new System.Drawing.Size(73, 19);
             this._btnOK.TabIndex = 9;
             this._btnOK.Text = "OK";
             this._btnOK.UseVisualStyleBackColor = true;
+            this._btnOK.Click += new System.EventHandler(this._btnOK_Click);
             // 
             // _btnCancel
             // 
             this._btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this._btnCancel.Location = new System.Drawing.Point(310, 360);
-            this._btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this._btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(70, 19);
             this._btnCancel.TabIndex = 10;
@@ -230,12 +205,13 @@
             this.Controls.Add(this._lstCreditCardTypes);
             this.Controls.Add(this._lblCreditCardType);
             this.Controls.Add(this.grpBilling);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmPayment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";
+            this.Load += new System.EventHandler(this.frmPayment_Load);
             this.grpBilling.ResumeLayout(false);
             this.grpBilling.PerformLayout();
             this.ResumeLayout(false);
