@@ -14,6 +14,7 @@ namespace Chapter10.PaymentApplication
     public partial class frmPayment : Form
     {
         private const string DEFAULT_CARD_NUMBER = "XXXX-XXXX-XXXX-XXXX";
+        private ICreditCardValidator _creditCardValidator = new CreditCardValidator();
 
         public frmPayment()
         {
@@ -89,6 +90,7 @@ namespace Chapter10.PaymentApplication
                 e.KeyCode != Keys.D7 &&
                 e.KeyCode != Keys.D8 &&
                 e.KeyCode != Keys.D9 &&
+                e.KeyCode != Keys.OemMinus &&
                 e.KeyCode != Keys.Back)
             {
                 e.SuppressKeyPress = true;
@@ -178,34 +180,45 @@ namespace Chapter10.PaymentApplication
             {
                 if(_lstCreditCardTypes.SelectedIndex == -1)
                 {
-                    MessageBox.Show("You must select a credit card type.", "Entry Error");
+                    MessageBox.Show("You must select a credit card type.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     _lstCreditCardTypes.Focus();
                     return false;
                 }
 
-                if(_txtCardNumber.Text == "")
+                if(!IsValidCardNumber())
                 {
-                    MessageBox.Show("You must enter a credit card number.", "Entry Error");
+                    MessageBox.Show("You must enter a valid credit card number.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     _txtCardNumber.Focus();
                     return false;
                 }
 
                 if(_cboExpirationMonth.SelectedIndex == 0)
                 {
-                    MessageBox.Show("You must select a month.", "Entry Error");
+                    MessageBox.Show("You must select a month.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     _cboExpirationMonth.Focus();
                     return false;
                 }
 
                 if(_cboExpirationYear.SelectedIndex == 0)
                 {
-                    MessageBox.Show("You must select a year.", "Entry Error");
+                    MessageBox.Show("You must select a year.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     _cboExpirationYear.Focus();
                     return false;
                 }
             }
 
+            if(!_rdoCreditCard.Checked && !_rdoBillCustomer.Checked)
+            {
+                MessageBox.Show("You must select a payment type.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
+        }
+
+        private bool IsValidCardNumber()
+        {
+            return _creditCardValidator.ValidateNumber(_txtCardNumber.Text);
         }
     }
 }
