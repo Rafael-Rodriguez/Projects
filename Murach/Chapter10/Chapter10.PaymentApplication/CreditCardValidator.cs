@@ -9,7 +9,7 @@ namespace Chapter10.PaymentApplication
 
         public CreditCardValidator()
         {
-            _pattern = @"[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}";
+            _pattern = @"\b[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}\b";
         }
 
         public CreditCardValidator(string pattern)
