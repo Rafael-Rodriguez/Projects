@@ -116,7 +116,7 @@
             // 
             this._txtCardNumber.Location = new System.Drawing.Point(110, 219);
             this._txtCardNumber.Margin = new System.Windows.Forms.Padding(2);
-            this._txtCardNumber.MaxLength = 16;
+            this._txtCardNumber.MaxLength = 19;
             this._txtCardNumber.Name = "_txtCardNumber";
             this._txtCardNumber.Size = new System.Drawing.Size(266, 20);
             this._txtCardNumber.TabIndex = 3;

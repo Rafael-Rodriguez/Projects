@@ -266,5 +266,35 @@ namespace Chapter10.PaymentApplication.Tests
 
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void ValidatorNumber_LettersInNumber_ReturnFalse()
+        {
+            var validator = new CreditCardValidator();
+
+            bool result = validator.ValidateNumber("1234-12B5-128A-1D0f");
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void ValidatorNumber_NoDashes_ReturnTrue()
+        {
+            var validator = new CreditCardValidator();
+
+            bool result = validator.ValidateNumber("1234123412341234");
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void ValidatorNumber_NoDashesButSomeLettersInNumber_ReturnFalse()
+        {
+            var validator = new CreditCardValidator();
+
+            bool result = validator.ValidateNumber("1234123a1fd52939");
+
+            Assert.IsFalse(result);
+        }
     }
 }
