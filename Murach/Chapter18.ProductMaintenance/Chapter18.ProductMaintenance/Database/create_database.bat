@@ -9,7 +9,7 @@
 :: the MMABooks database.
 
 ECHO Attempting to create the MMABooks database . . . 
-sqlcmd -S localhost\MySqlServer -E /i create_database.sql
+sqlcmd -S localhost\MySuperSqlServer -E /i create_database.sql
 ECHO.
 ECHO If no error message is shown, then the database was created successfully.
 ECHO.
