@@ -42,5 +42,32 @@ namespace Chapter18.CustomerMaintenance
             this.customersTableAdapter.Fill(this.mMABooksDataSet.Customers);
 
         }
+
+        private void fillByCustomerIDToolStripButton_Click(object sender, EventArgs e)
+        {
+            OnCustomerIDSelected();
+        }
+
+        private void customerIDToolStripTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                OnCustomerIDSelected();
+            }
+        }
+
+        private void OnCustomerIDSelected()
+        {
+            try
+            {
+                var customerID = Convert.ToInt32(customerIDToolStripTextBox.Text);
+
+                this.customersTableAdapter.FillByCustomerID(this.mMABooksDataSet.Customers, customerID);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
