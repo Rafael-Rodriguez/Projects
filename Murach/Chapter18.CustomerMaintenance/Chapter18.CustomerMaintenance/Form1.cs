@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Chapter18.CustomerMaintenance
 {
-    public partial class Form1 : Form
+    public partial class frmCustomerMaintenance : Form
     {
-        public Form1()
+        public frmCustomerMaintenance()
         {
             InitializeComponent();
         }
@@ -36,6 +36,8 @@ namespace Chapter18.CustomerMaintenance
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'statesDataSet.States' table. You can move, or remove it, as needed.
+            this.statesTableAdapter.Fill(this.statesDataSet.States);
             // TODO: This line of code loads data into the 'mMABooksDataSet.Customers' table. You can move, or remove it, as needed.
             this.customersTableAdapter.Fill(this.mMABooksDataSet.Customers);
 
