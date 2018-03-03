@@ -913,7 +913,7 @@ SELECT CustomerID, Name, Address, City, State, ZipCode FROM Customers WHERE (Cus
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        CustomerID, Name, Address, City, State, ZipCode\r\nFROM            Cu" +
@@ -925,6 +925,18 @@ SELECT CustomerID, Name, Address, City, State, ZipCode FROM Customers WHERE (Cus
                 "stomers\r\nWHERE (CustomerID = @CustomerID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        CustomerID, Name, Address, City, State, ZipCode\r\nFROM            Cu" +
+                "stomers\r\nWHERE (State = @State)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@State", global::System.Data.SqlDbType.Char, 2, global::System.Data.ParameterDirection.Input, 0, 0, "State", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT        CustomerID, Name, Address, City, State, ZipCode\r\nFROM            Cu" +
+                "stomers\r\nWHERE (ZipCode = @ZipCode)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ZipCode", global::System.Data.SqlDbType.Char, 15, global::System.Data.ParameterDirection.Input, 0, 0, "ZipCode", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -958,6 +970,44 @@ SELECT CustomerID, Name, Address, City, State, ZipCode FROM Customers WHERE (Cus
         public virtual int FillByCustomerID(MMABooksDataSet.CustomersDataTable dataTable, int CustomerID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CustomerID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByState(MMABooksDataSet.CustomersDataTable dataTable, string State) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((State == null)) {
+                throw new global::System.ArgumentNullException("State");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(State));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByZipCode(MMABooksDataSet.CustomersDataTable dataTable, string ZipCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((ZipCode == null)) {
+                throw new global::System.ArgumentNullException("ZipCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(ZipCode));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }

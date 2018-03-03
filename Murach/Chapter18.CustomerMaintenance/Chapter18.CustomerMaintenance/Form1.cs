@@ -41,6 +41,11 @@ namespace Chapter18.CustomerMaintenance
             // TODO: This line of code loads data into the 'mMABooksDataSet.Customers' table. You can move, or remove it, as needed.
             this.customersTableAdapter.Fill(this.mMABooksDataSet.Customers);
 
+            
+            stateToolStripTextBox.ComboBox.DataSource = this.statesDataSet.States;
+            stateToolStripTextBox.ComboBox.DisplayMember = "StateCode";
+            stateToolStripTextBox.ComboBox.ValueMember = "StateCode";
+
         }
 
         private void fillByCustomerIDToolStripButton_Click(object sender, EventArgs e)
@@ -60,7 +65,7 @@ namespace Chapter18.CustomerMaintenance
         {
             try
             {
-                var customerID = Convert.ToInt32(customerIDToolStripTextBox.Text);
+                var customerID = Convert.ToInt32(customerIdToolStripTextBox.Text);
 
                 this.customersTableAdapter.FillByCustomerID(this.mMABooksDataSet.Customers, customerID);
             }
@@ -68,6 +73,32 @@ namespace Chapter18.CustomerMaintenance
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void fillByZipCodeToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.customersTableAdapter.FillByZipCode(this.mMABooksDataSet.Customers, zipCodeToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void fillByStateToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.customersTableAdapter.FillByState(this.mMABooksDataSet.Customers, stateToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
