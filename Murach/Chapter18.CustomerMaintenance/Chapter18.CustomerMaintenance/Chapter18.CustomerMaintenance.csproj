@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Presentation\Perspectives\Form1.cs">
+    <Compile Include="Presentation\Perspectives\frmCustomerMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\Perspectives\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Presentation\Perspectives\frmCustomerMaintenance.Designer.cs">
+      <DependentUpon>frmCustomerMaintenance.cs</DependentUpon>
     </Compile>
     <Compile Include="MMABooksDataSet.cs">
       <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
@@ -67,8 +67,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StatesDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Presentation\Perspectives\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\Perspectives\frmCustomerMaintenance.resx">
+      <DependentUpon>frmCustomerMaintenance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

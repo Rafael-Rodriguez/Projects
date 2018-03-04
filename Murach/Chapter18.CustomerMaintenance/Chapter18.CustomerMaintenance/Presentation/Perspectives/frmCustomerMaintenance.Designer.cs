@@ -73,8 +73,11 @@
             this.fillByZipCodeToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.fillByStateToolStrip = new System.Windows.Forms.ToolStrip();
             this.stateToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.stateToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.fillByStateToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.stateToolStripTextBox = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButtonCancel = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonGetAllCustomers = new System.Windows.Forms.ToolStripButton();
             customerIDLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             addressLabel = new System.Windows.Forms.Label();
@@ -184,7 +187,8 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.customersBindingNavigatorSaveItem});
+            this.customersBindingNavigatorSaveItem,
+            this.toolStripButtonCancel});
             this.customersBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.customersBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.customersBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -372,7 +376,9 @@
             this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customerIdToolStripLabel,
             this.customerIdToolStripTextBox,
-            this.fillByCustomerIdToolStripButton});
+            this.fillByCustomerIdToolStripButton,
+            this.toolStripSeparator1,
+            this.toolStripButtonGetAllCustomers});
             this.fillByToolStrip.Location = new System.Drawing.Point(0, 25);
             this.fillByToolStrip.Name = "fillByToolStrip";
             this.fillByToolStrip.Size = new System.Drawing.Size(521, 25);
@@ -389,6 +395,7 @@
             // 
             this.customerIdToolStripTextBox.Name = "customerIdToolStripTextBox";
             this.customerIdToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            this.customerIdToolStripTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.customerIDToolStripTextBox_KeyDown);
             // 
             // fillByCustomerIdToolStripButton
             // 
@@ -433,7 +440,7 @@
             // 
             this.fillByStateToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stateToolStripLabel,
-            this.stateToolStripTextBox,
+            this.stateToolStripComboBox,
             this.fillByStateToolStripButton});
             this.fillByStateToolStrip.Location = new System.Drawing.Point(0, 75);
             this.fillByStateToolStrip.Name = "fillByStateToolStrip";
@@ -447,6 +454,12 @@
             this.stateToolStripLabel.Size = new System.Drawing.Size(36, 22);
             this.stateToolStripLabel.Text = "State:";
             // 
+            // stateToolStripComboBox
+            // 
+            this.stateToolStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stateToolStripComboBox.Name = "stateToolStripComboBox";
+            this.stateToolStripComboBox.Size = new System.Drawing.Size(100, 25);
+            // 
             // fillByStateToolStripButton
             // 
             this.fillByStateToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -455,11 +468,30 @@
             this.fillByStateToolStripButton.Text = "FillByState";
             this.fillByStateToolStripButton.Click += new System.EventHandler(this.fillByStateToolStripButton_Click);
             // 
-            // stateToolStripTextBox
+            // toolStripButtonCancel
             // 
-            this.stateToolStripTextBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.stateToolStripTextBox.Name = "stateToolStripTextBox";
-            this.stateToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            this.toolStripButtonCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonCancel.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCancel.Image")));
+            this.toolStripButtonCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCancel.Name = "toolStripButtonCancel";
+            this.toolStripButtonCancel.Size = new System.Drawing.Size(47, 22);
+            this.toolStripButtonCancel.Text = "Cancel";
+            this.toolStripButtonCancel.Click += new System.EventHandler(this.toolStripButtonCancel_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonGetAllCustomers
+            // 
+            this.toolStripButtonGetAllCustomers.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonGetAllCustomers.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonGetAllCustomers.Image")));
+            this.toolStripButtonGetAllCustomers.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonGetAllCustomers.Name = "toolStripButtonGetAllCustomers";
+            this.toolStripButtonGetAllCustomers.Size = new System.Drawing.Size(106, 22);
+            this.toolStripButtonGetAllCustomers.Text = "Get All Customers";
+            this.toolStripButtonGetAllCustomers.Click += new System.EventHandler(this.toolStripButtonGetAllCustomers_Click);
             // 
             // frmCustomerMaintenance
             // 
@@ -543,7 +575,10 @@
         private System.Windows.Forms.ToolStrip fillByStateToolStrip;
         private System.Windows.Forms.ToolStripLabel stateToolStripLabel;
         private System.Windows.Forms.ToolStripButton fillByStateToolStripButton;
-        private System.Windows.Forms.ToolStripComboBox stateToolStripTextBox;
+        private System.Windows.Forms.ToolStripComboBox stateToolStripComboBox;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCancel;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonGetAllCustomers;
     }
 }
 
