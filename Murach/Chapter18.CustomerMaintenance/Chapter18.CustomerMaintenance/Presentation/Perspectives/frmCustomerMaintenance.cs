@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Chapter18.CustomerMaintenance
@@ -20,38 +14,93 @@ namespace Chapter18.CustomerMaintenance
 
         private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
+            if (customersBindingSource.Count > 0)
+            {
+                if (IsValidData())
+                {
+                    try
+                    {
+                        customersBindingSource.EndEdit();
+                        tableAdapterManager.UpdateAll(this.mMABooksDataSet);
+                    }
+                    catch(ArgumentException ae)
+                    {
+                        MessageBox.Show(ae.Message, "Argument Exception");
+                        customersBindingSource.CancelEdit();
+                    }
+                    catch (DBConcurrencyException)
+                    {
+                        MessageBox.Show("Someone has modified the customer database.  The application will update the table now.  Please resubmit.");
+                        this.customersTableAdapter.Fill(mMABooksDataSet.Customers);
+                    }
+                    catch (DataException de)
+                    {
+                        MessageBox.Show(de.Message, de.GetType().ToString());
+                        customersBindingSource.CancelEdit();
+                    }
+                    catch (SqlException se)
+                    {
+                        MessageBox.Show($"Database error # {se.Number} : {se.Message}", se.GetType().ToString());
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    tableAdapterManager.UpdateAll(mMABooksDataSet);
+                }
+                catch(DBConcurrencyException)
+                {
+                    MessageBox.Show("A concurrency error occurred.  Some rows were not updated.", "Concurrency Exception");
+                    customersTableAdapter.Fill(mMABooksDataSet.Customers);
+                }
+                catch(SqlException se)
+                {
+                    MessageBox.Show($"Database error # {se.Number} : {se.Message}", se.GetType().ToString());
+                }
+            }
+        }
 
-            try
+        private bool IsValidData()
+        {
+            return
+                IsPresent(nameTextBox, "Name") &&
+                IsPresent(addressTextBox, "Address") &&
+                IsPresent(cityTextBox, "City") &&
+                IsPresent(stateNameComboBox, "State") &&
+                IsPresent(zipCodeTextBox, "Zip Code");
+        }
+
+        private bool IsPresent(ComboBox comboBox, string name)
+        {
+            if(comboBox.SelectedIndex == -1)
             {
-                this.customersBindingSource.EndEdit();
-                this.tableAdapterManager.UpdateAll(this.mMABooksDataSet);
-            }
-            catch(DBConcurrencyException)
-            {
-                MessageBox.Show("Someone has modified the customer database.  The application will update the table now.  Please resubmit.");
-                this.customersTableAdapter.Fill(mMABooksDataSet.Customers);
-            }
-            catch (DataException ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-                customersBindingSource.CancelEdit();
-            }
-            catch(SqlException se)
-            {
-                MessageBox.Show("Database error # " + se.Number + ": " + se.Message, se.GetType().ToString());
+                MessageBox.Show($"{name} is a required field.", "Entry Error");
+                comboBox.Focus();
+                return false;
             }
 
+            return true;
+        }
+
+        private bool IsPresent(TextBox textBox, string name)
+        {
+            if (textBox.Text == "")
+            {
+                MessageBox.Show($"{name} is a required field", "Entry error");
+                textBox.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'statesDataSet.States' table. You can move, or remove it, as needed.
             this.statesTableAdapter.Fill(this.statesDataSet.States);
-
-            // TODO: This line of code loads data into the 'mMABooksDataSet.Customers' table. You can move, or remove it, as needed.
-            this.customersTableAdapter.Fill(this.mMABooksDataSet.Customers);
-
+            stateNameComboBox.SelectedIndex = -1;
             
             stateToolStripComboBox.ComboBox.DataSource = this.statesDataSet.States;
             stateToolStripComboBox.ComboBox.DisplayMember = "StateCode";
@@ -79,10 +128,19 @@ namespace Chapter18.CustomerMaintenance
                 var customerID = Convert.ToInt32(customerIdToolStripTextBox.Text);
 
                 this.customersTableAdapter.FillByCustomerID(this.mMABooksDataSet.Customers, customerID);
+
+                if(customersBindingSource.Count == 0)
+                {
+                    MessageBox.Show("No customer found with this ID.  Please try again.", "Customer Not Found");
+                }
             }
-            catch (System.Exception ex)
+            catch(FormatException)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Customer ID must be an integer.", "Entry error");
+            }
+            catch (SqlException se)
+            {
+                MessageBox.Show($"Database error # {se.Number} : {se.Message}", se.GetType().ToString());
             }
         }
 
@@ -125,7 +183,7 @@ namespace Chapter18.CustomerMaintenance
             }
             catch(SqlException se)
             {
-                MessageBox.Show("Database error # " + se.Number + ": " + se.Message, se.GetType().ToString());
+                MessageBox.Show($"Database error # {se.Number} : {se.Message}", se.GetType().ToString());
             }
         }
     }
