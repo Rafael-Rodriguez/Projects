@@ -52,6 +52,9 @@
     <Compile Include="frmCustomerInvoices.Designer.cs">
       <DependentUpon>frmCustomerInvoices.cs</DependentUpon>
     </Compile>
+    <Compile Include="MMABooksDataSet.cs">
+      <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MMABooksDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
