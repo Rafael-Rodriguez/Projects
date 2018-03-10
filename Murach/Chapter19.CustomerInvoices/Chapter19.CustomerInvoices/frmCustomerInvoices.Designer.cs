@@ -55,6 +55,10 @@
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.zipCodeTextBox = new System.Windows.Forms.TextBox();
+            this.fillByCustomerIDToolStrip = new System.Windows.Forms.ToolStrip();
+            this.customerIDToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.customerIDToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.fillByCustomerIDToolStripButton = new System.Windows.Forms.ToolStripButton();
             nameLabel = new System.Windows.Forms.Label();
             addressLabel = new System.Windows.Forms.Label();
             cityStateZipLabel = new System.Windows.Forms.Label();
@@ -62,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingNavigator)).BeginInit();
             this.customersBindingNavigator.SuspendLayout();
+            this.fillByCustomerIDToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -281,11 +286,43 @@
             this.zipCodeTextBox.Size = new System.Drawing.Size(72, 20);
             this.zipCodeTextBox.TabIndex = 12;
             // 
+            // fillByCustomerIDToolStrip
+            // 
+            this.fillByCustomerIDToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customerIDToolStripLabel,
+            this.customerIDToolStripTextBox,
+            this.fillByCustomerIDToolStripButton});
+            this.fillByCustomerIDToolStrip.Location = new System.Drawing.Point(0, 25);
+            this.fillByCustomerIDToolStrip.Name = "fillByCustomerIDToolStrip";
+            this.fillByCustomerIDToolStrip.Size = new System.Drawing.Size(744, 25);
+            this.fillByCustomerIDToolStrip.TabIndex = 13;
+            this.fillByCustomerIDToolStrip.Text = "fillByCustomerIDToolStrip";
+            // 
+            // customerIDToolStripLabel
+            // 
+            this.customerIDToolStripLabel.Name = "customerIDToolStripLabel";
+            this.customerIDToolStripLabel.Size = new System.Drawing.Size(73, 22);
+            this.customerIDToolStripLabel.Text = "CustomerID:";
+            // 
+            // customerIDToolStripTextBox
+            // 
+            this.customerIDToolStripTextBox.Name = "customerIDToolStripTextBox";
+            this.customerIDToolStripTextBox.Size = new System.Drawing.Size(100, 23);
+            // 
+            // fillByCustomerIDToolStripButton
+            // 
+            this.fillByCustomerIDToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByCustomerIDToolStripButton.Name = "fillByCustomerIDToolStripButton";
+            this.fillByCustomerIDToolStripButton.Size = new System.Drawing.Size(102, 19);
+            this.fillByCustomerIDToolStripButton.Text = "FillByCustomerID";
+            this.fillByCustomerIDToolStripButton.Click += new System.EventHandler(this.fillByCustomerIDToolStripButton_Click);
+            // 
             // frmCustomerInvoices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 485);
+            this.Controls.Add(this.fillByCustomerIDToolStrip);
             this.Controls.Add(nameLabel);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(addressLabel);
@@ -303,6 +340,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingNavigator)).EndInit();
             this.customersBindingNavigator.ResumeLayout(false);
             this.customersBindingNavigator.PerformLayout();
+            this.fillByCustomerIDToolStrip.ResumeLayout(false);
+            this.fillByCustomerIDToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,6 +371,10 @@
         private System.Windows.Forms.TextBox cityTextBox;
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox zipCodeTextBox;
+        private System.Windows.Forms.ToolStrip fillByCustomerIDToolStrip;
+        private System.Windows.Forms.ToolStripLabel customerIDToolStripLabel;
+        private System.Windows.Forms.ToolStripTextBox customerIDToolStripTextBox;
+        private System.Windows.Forms.ToolStripButton fillByCustomerIDToolStripButton;
     }
 }
 

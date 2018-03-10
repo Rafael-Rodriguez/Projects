@@ -31,5 +31,18 @@ namespace Chapter19.CustomerInvoices
             this.customersTableAdapter.Fill(this.mMABooksDataSet.Customers);
 
         }
+
+        private void fillByCustomerIDToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.customersTableAdapter.FillByCustomerID(this.mMABooksDataSet.Customers, ((int)(System.Convert.ChangeType(customerIDToolStripTextBox.Text, typeof(int)))));
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }
