@@ -26,8 +26,8 @@ namespace Chapter19.CustomerInvoices.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=TUCPD033\\MYSUPERSQLSERVER;Initial Catalog=MMABooks;Integrated Securit" +
-            "y=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RAFAELSDESKTOP\\MYSQLSERVER;Initial Catalog=MMABooks;Integrated Securi" +
+            "ty=True")]
         public string MMABooksConnectionString {
             get {
                 return ((string)(this["MMABooksConnectionString"]));
