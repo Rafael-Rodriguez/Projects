@@ -23,6 +23,8 @@ namespace Chapter19.CustomerInvoices
         {
             // TODO: This line of code loads data into the 'mMABooksDataSet.Invoices' table. You can move, or remove it, as needed.
             this.invoicesTableAdapter.Fill(this.mMABooksDataSet.Invoices);
+            // TODO: This line of code loads data into the 'mMABooksDataSet.Invoices' table. You can move, or remove it, as needed.
+            //this.invoicesTableAdapter.Fill(this.mMABooksDataSet.Invoices);
 
             // TODO: This line of code loads data into the 'mMABooksDataSet.Customers' table. You can move, or remove it, as needed.
             //this.customersTableAdapter.Fill(this.mMABooksDataSet.Customers);
@@ -35,11 +37,12 @@ namespace Chapter19.CustomerInvoices
             try
             {
                 var customerID = Convert.ToInt32(customerIDToolStripTextBox.Text);
-                this.customersTableAdapter.FillByCustomerID(this.mMABooksDataSet.Customers, customerID);
+                customersTableAdapter.FillByCustomerID(this.mMABooksDataSet.Customers, customerID);
 
                 if(customersBindingSource.Count > 0)
                 {
-                    //this.invoicesTableAdapter.FillByCustomerID(mMABooksDataSet.Invoices, customerID);
+                    //invoicesTableAdapter.FillByCustomerID(mMABooksDataSet.Invoices, customerID);
+                    invoices1TableAdapter.FillByCustomerID(mMABooksDataSet.Invoices1, customerID);
                 }
                 else
                 {

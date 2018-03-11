@@ -32,12 +32,9 @@
             System.Windows.Forms.Label nameLabel;
             System.Windows.Forms.Label addressLabel;
             System.Windows.Forms.Label cityStateZipLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mMABooksDataSet = new Chapter19.CustomerInvoices.MMABooksDataSet();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.stateTextBox = new System.Windows.Forms.TextBox();
@@ -47,26 +44,31 @@
             this.customerIDToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.fillByCustomerIDToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.invoicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mMABooksDataSet = new Chapter19.CustomerInvoices.MMABooksDataSet();
             this.customersTableAdapter = new Chapter19.CustomerInvoices.MMABooksDataSetTableAdapters.CustomersTableAdapter();
             this.tableAdapterManager = new Chapter19.CustomerInvoices.MMABooksDataSetTableAdapters.TableAdapterManager();
             this.invoicesTableAdapter = new Chapter19.CustomerInvoices.MMABooksDataSetTableAdapters.InvoicesTableAdapter();
-            this.invoicesDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoices1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoices1TableAdapter = new Chapter19.CustomerInvoices.MMABooksDataSetTableAdapters.Invoices1TableAdapter();
+            this.invoices1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.invoices1DataGridView = new System.Windows.Forms.DataGridView();
+            this.fKInvoicesCustomersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.invoiceIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salesTaxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shippingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             nameLabel = new System.Windows.Forms.Label();
             addressLabel = new System.Windows.Forms.Label();
             cityStateZipLabel = new System.Windows.Forms.Label();
-            this.fillByCustomerIDToolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mMABooksDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoicesDataGridView)).BeginInit();
+            this.fillByCustomerIDToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoices1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoices1BindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoices1DataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKInvoicesCustomersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -107,6 +109,16 @@
             this.nameTextBox.Size = new System.Drawing.Size(510, 20);
             this.nameTextBox.TabIndex = 2;
             this.nameTextBox.TabStop = false;
+            // 
+            // customersBindingSource
+            // 
+            this.customersBindingSource.DataMember = "Customers";
+            this.customersBindingSource.DataSource = this.mMABooksDataSet;
+            // 
+            // mMABooksDataSet
+            // 
+            this.mMABooksDataSet.DataSetName = "MMABooksDataSet";
+            this.mMABooksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // addressTextBox
             // 
@@ -192,16 +204,6 @@
             this.invoicesBindingSource.DataMember = "FK_Invoices_Customers";
             this.invoicesBindingSource.DataSource = this.customersBindingSource;
             // 
-            // customersBindingSource
-            // 
-            this.customersBindingSource.DataMember = "Customers";
-            this.customersBindingSource.DataSource = this.mMABooksDataSet;
-            // 
-            // mMABooksDataSet
-            // 
-            this.mMABooksDataSet.DataSetName = "MMABooksDataSet";
-            this.mMABooksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // customersTableAdapter
             // 
             this.customersTableAdapter.ClearBeforeFill = true;
@@ -217,92 +219,93 @@
             // 
             this.invoicesTableAdapter.ClearBeforeFill = true;
             // 
-            // invoicesDataGridView
+            // invoices1BindingSource
             // 
-            this.invoicesDataGridView.AllowUserToAddRows = false;
-            this.invoicesDataGridView.AllowUserToDeleteRows = false;
-            this.invoicesDataGridView.AutoGenerateColumns = false;
-            this.invoicesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.invoicesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.invoicesDataGridView.DataSource = this.invoicesBindingSource;
-            this.invoicesDataGridView.Location = new System.Drawing.Point(14, 132);
-            this.invoicesDataGridView.Name = "invoicesDataGridView";
-            this.invoicesDataGridView.ReadOnly = true;
-            this.invoicesDataGridView.Size = new System.Drawing.Size(588, 220);
-            this.invoicesDataGridView.TabIndex = 9;
+            this.invoices1BindingSource.DataSource = this.mMABooksDataSet;
+            this.invoices1BindingSource.Position = 0;
             // 
-            // dataGridViewTextBoxColumn1
+            // invoices1TableAdapter
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "InvoiceID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Invoice ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 80;
+            this.invoices1TableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // invoices1BindingSource1
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "InvoiceDate";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Invoice Date";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.invoices1BindingSource1.DataSource = this.mMABooksDataSet;
+            this.invoices1BindingSource1.Position = 0;
             // 
-            // dataGridViewTextBoxColumn4
+            // invoices1DataGridView
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "ProductTotal";
-            dataGridViewCellStyle7.Format = "C2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Product Total";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.invoices1DataGridView.AllowUserToAddRows = false;
+            this.invoices1DataGridView.AllowUserToDeleteRows = false;
+            this.invoices1DataGridView.AutoGenerateColumns = false;
+            this.invoices1DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.invoices1DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.invoiceIDDataGridViewTextBoxColumn,
+            this.invoiceDateDataGridViewTextBoxColumn,
+            this.productTotalDataGridViewTextBoxColumn,
+            this.salesTaxDataGridViewTextBoxColumn,
+            this.shippingDataGridViewTextBoxColumn,
+            this.invoiceTotalDataGridViewTextBoxColumn});
+            this.invoices1DataGridView.DataSource = this.fKInvoicesCustomersBindingSource;
+            this.invoices1DataGridView.Location = new System.Drawing.Point(16, 139);
+            this.invoices1DataGridView.Name = "invoices1DataGridView";
+            this.invoices1DataGridView.ReadOnly = true;
+            this.invoices1DataGridView.Size = new System.Drawing.Size(586, 220);
+            this.invoices1DataGridView.TabIndex = 10;
             // 
-            // dataGridViewTextBoxColumn5
+            // fKInvoicesCustomersBindingSource
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "SalesTax";
-            dataGridViewCellStyle8.Format = "C2";
-            dataGridViewCellStyle8.NullValue = null;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Sales Tax";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 80;
+            this.fKInvoicesCustomersBindingSource.DataMember = "FK_Invoices_Customers";
+            this.fKInvoicesCustomersBindingSource.DataSource = this.customersBindingSource;
             // 
-            // dataGridViewTextBoxColumn6
+            // invoiceIDDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Shipping";
-            dataGridViewCellStyle9.Format = "C2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Shipping";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 80;
+            this.invoiceIDDataGridViewTextBoxColumn.DataPropertyName = "InvoiceID";
+            this.invoiceIDDataGridViewTextBoxColumn.HeaderText = "InvoiceID";
+            this.invoiceIDDataGridViewTextBoxColumn.Name = "invoiceIDDataGridViewTextBoxColumn";
+            this.invoiceIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn7
+            // invoiceDateDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "InvoiceTotal";
-            dataGridViewCellStyle10.Format = "C2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Invoice Total";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.invoiceDateDataGridViewTextBoxColumn.DataPropertyName = "InvoiceDate";
+            this.invoiceDateDataGridViewTextBoxColumn.HeaderText = "InvoiceDate";
+            this.invoiceDateDataGridViewTextBoxColumn.Name = "invoiceDateDataGridViewTextBoxColumn";
+            this.invoiceDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // productTotalDataGridViewTextBoxColumn
+            // 
+            this.productTotalDataGridViewTextBoxColumn.DataPropertyName = "ProductTotal";
+            this.productTotalDataGridViewTextBoxColumn.HeaderText = "ProductTotal";
+            this.productTotalDataGridViewTextBoxColumn.Name = "productTotalDataGridViewTextBoxColumn";
+            this.productTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // salesTaxDataGridViewTextBoxColumn
+            // 
+            this.salesTaxDataGridViewTextBoxColumn.DataPropertyName = "SalesTax";
+            this.salesTaxDataGridViewTextBoxColumn.HeaderText = "SalesTax";
+            this.salesTaxDataGridViewTextBoxColumn.Name = "salesTaxDataGridViewTextBoxColumn";
+            this.salesTaxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // shippingDataGridViewTextBoxColumn
+            // 
+            this.shippingDataGridViewTextBoxColumn.DataPropertyName = "Shipping";
+            this.shippingDataGridViewTextBoxColumn.HeaderText = "Shipping";
+            this.shippingDataGridViewTextBoxColumn.Name = "shippingDataGridViewTextBoxColumn";
+            this.shippingDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // invoiceTotalDataGridViewTextBoxColumn
+            // 
+            this.invoiceTotalDataGridViewTextBoxColumn.DataPropertyName = "InvoiceTotal";
+            this.invoiceTotalDataGridViewTextBoxColumn.HeaderText = "InvoiceTotal";
+            this.invoiceTotalDataGridViewTextBoxColumn.Name = "invoiceTotalDataGridViewTextBoxColumn";
+            this.invoiceTotalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // frmCustomerInvoices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 382);
-            this.Controls.Add(this.invoicesDataGridView);
+            this.Controls.Add(this.invoices1DataGridView);
             this.Controls.Add(this.fillByCustomerIDToolStrip);
             this.Controls.Add(nameLabel);
             this.Controls.Add(this.nameTextBox);
@@ -315,12 +318,15 @@
             this.Name = "frmCustomerInvoices";
             this.Text = "Customer Invoices";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mMABooksDataSet)).EndInit();
             this.fillByCustomerIDToolStrip.ResumeLayout(false);
             this.fillByCustomerIDToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mMABooksDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.invoicesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoices1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoices1BindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoices1DataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKInvoicesCustomersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,13 +349,17 @@
         private System.Windows.Forms.ToolStripButton fillByCustomerIDToolStripButton;
         private System.Windows.Forms.BindingSource invoicesBindingSource;
         private MMABooksDataSetTableAdapters.InvoicesTableAdapter invoicesTableAdapter;
-        private System.Windows.Forms.DataGridView invoicesDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.BindingSource invoices1BindingSource;
+        private MMABooksDataSetTableAdapters.Invoices1TableAdapter invoices1TableAdapter;
+        private System.Windows.Forms.BindingSource invoices1BindingSource1;
+        private System.Windows.Forms.DataGridView invoices1DataGridView;
+        private System.Windows.Forms.BindingSource fKInvoicesCustomersBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salesTaxDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shippingDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceTotalDataGridViewTextBoxColumn;
     }
 }
 
