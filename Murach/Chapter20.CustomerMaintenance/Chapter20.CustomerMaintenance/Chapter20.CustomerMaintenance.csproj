@@ -51,6 +51,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmAddModifyCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmAddModifyCustomer.Designer.cs">
+      <DependentUpon>frmAddModifyCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmCustomerMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Views\frmAddModifyCustomer.resx">
+      <DependentUpon>frmAddModifyCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmCustomerMaintenance.resx">
       <DependentUpon>frmCustomerMaintenance.cs</DependentUpon>
     </EmbeddedResource>
