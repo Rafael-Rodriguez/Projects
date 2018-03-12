@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance
@@ -16,7 +13,7 @@ namespace Chapter20.CustomerMaintenance
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCustomerMaintenance());
+            Application.Run(new Views.frmCustomerMaintenance());
         }
     }
 }

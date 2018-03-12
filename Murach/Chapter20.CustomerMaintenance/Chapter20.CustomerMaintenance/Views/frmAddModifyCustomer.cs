@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance.Views
 {
@@ -15,6 +7,11 @@ namespace Chapter20.CustomerMaintenance.Views
         public frmAddModifyCustomer()
         {
             InitializeComponent();
+        }
+
+        private void btnAccept_Click(object sender, System.EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }
