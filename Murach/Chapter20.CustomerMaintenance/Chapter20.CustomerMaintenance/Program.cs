@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Controller = Chapter20.CustomerMaintenance.Controller;
 
 namespace Chapter20.CustomerMaintenance
 {
@@ -15,7 +14,7 @@ namespace Chapter20.CustomerMaintenance
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Controller::Controller().Run());
+            Application.Run(new DomainController().Run());
         }
     }
 }

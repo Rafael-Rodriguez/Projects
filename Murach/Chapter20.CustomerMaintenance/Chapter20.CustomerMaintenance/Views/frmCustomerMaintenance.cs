@@ -1,12 +1,11 @@
-﻿using Chapter20.CustomerMaintenance.Controller;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance.Views
 {
     public partial class frmCustomerMaintenance : AbstractView
     {
-        public frmCustomerMaintenance(IController controller) : base(controller)
+        public frmCustomerMaintenance(IDomainController controller) : base(controller)
         {
             InitializeComponent();
         }
