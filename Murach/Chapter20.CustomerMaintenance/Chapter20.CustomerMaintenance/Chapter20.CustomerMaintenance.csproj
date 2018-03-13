@@ -46,10 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Controller\IController.cs" />
     <Compile Include="MMABooksDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AbstractView.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\frmAddModifyCustomer.cs">
       <SubType>Form</SubType>
@@ -65,6 +70,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IView.cs" />
     <EmbeddedResource Include="Views\frmAddModifyCustomer.resx">
       <DependentUpon>frmAddModifyCustomer.cs</DependentUpon>
     </EmbeddedResource>

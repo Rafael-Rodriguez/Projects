@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Chapter20.CustomerMaintenance.Controller;
+using System;
 using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance.Views
 {
-    public partial class frmCustomerMaintenance : Form
+    public partial class frmCustomerMaintenance : AbstractView
     {
-        public frmCustomerMaintenance()
+        public frmCustomerMaintenance(IController controller) : base(controller)
         {
             InitializeComponent();
         }
@@ -21,7 +22,7 @@ namespace Chapter20.CustomerMaintenance.Views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var addCustomerForm = new frmAddModifyCustomer();
+            var addCustomerForm = new frmAddModifyCustomer(Controller);
             DialogResult result = addCustomerForm.ShowDialog();
         }
     }

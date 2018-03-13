@@ -1,10 +1,11 @@
-﻿using System.Windows.Forms;
+﻿using Chapter20.CustomerMaintenance.Controller;
+using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance.Views
 {
-    public partial class frmAddModifyCustomer : Form
+    public partial class frmAddModifyCustomer : AbstractView
     {
-        public frmAddModifyCustomer()
+        public frmAddModifyCustomer(IController controller) : base(controller)
         {
             InitializeComponent();
         }
