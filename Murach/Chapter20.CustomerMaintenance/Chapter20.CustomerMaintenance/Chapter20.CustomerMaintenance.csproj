@@ -46,16 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainController.cs" />
-    <Compile Include="IDomainController.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="ModuleController.cs" />
+    <Compile Include="IModuleController.cs" />
     <Compile Include="MMABooksDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Views\AbstractView.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\CustomerEventArgs.cs" />
     <Compile Include="Views\frmAddModifyCustomer.cs">
       <SubType>Form</SubType>
     </Compile>

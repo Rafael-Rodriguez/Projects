@@ -2,7 +2,7 @@
 
 namespace Chapter20.CustomerMaintenance
 {
-    public interface IDomainController
+    public interface IModuleController
     {
         Form Run();
     }

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance
 {
-    public class DomainController : IDomainController
+    public class ModuleController : IModuleController
     {
         private Dictionary<Forms,IView> _views;
 
@@ -17,9 +17,11 @@ namespace Chapter20.CustomerMaintenance
 
         private void RegisterViews()
         {
-            _views = new Dictionary<Forms, IView>();
-            _views.Add(Forms.CustomerMaintenance, new frmCustomerMaintenance(this));
-            _views.Add(Forms.AddModifyCustomer, new frmAddModifyCustomer(this));
+            _views = new Dictionary<Forms, IView>
+            {
+                {Forms.CustomerMaintenance, new frmCustomerMaintenance(this)},
+                {Forms.AddModifyCustomer, new frmAddModifyCustomer(this)}
+            };
         }
 
         private Form GetFirstView()

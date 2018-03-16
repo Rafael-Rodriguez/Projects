@@ -2,16 +2,22 @@
 
 namespace Chapter20.CustomerMaintenance.Views
 {
-    public partial class frmAddModifyCustomer : AbstractView
+    public partial class frmAddModifyCustomer : Form, IView
     {
-        public frmAddModifyCustomer(IDomainController controller) : base(controller)
+        public frmAddModifyCustomer(IModuleController controller)
         {
+            Controller = controller;
+
             InitializeComponent();
         }
+
+        public IModuleController Controller { get; }
 
         private void btnAccept_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.OK;
         }
+
+        
     }
 }

@@ -14,7 +14,7 @@ namespace Chapter20.CustomerMaintenance
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DomainController().Run());
+            Application.Run(new ModuleController().Run());
         }
     }
 }
