@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\State.cs" />
     <Compile Include="ModuleController.cs" />
     <Compile Include="IModuleController.cs" />
     <Compile Include="MMABooksDataSet.Designer.cs">
@@ -54,6 +55,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddModifyCustomerController.cs" />
     <Compile Include="Views\Controller.cs" />
     <Compile Include="Views\CustomerEventArgs.cs" />
     <Compile Include="Views\AddModifyCustomerForm.cs">

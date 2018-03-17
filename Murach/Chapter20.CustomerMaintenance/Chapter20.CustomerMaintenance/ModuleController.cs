@@ -8,27 +8,61 @@ namespace Chapter20.CustomerMaintenance
     {
         private Dictionary<Forms,IView> _views;
 
+        private AddModifyCustomerForm AddModifyCustomerForm
+        {
+            get
+            {
+                return _views[Forms.AddModifyCustomer] as AddModifyCustomerForm;
+            }
+        }
+
+        private CustomerMaintenanceForm CustomerMaintenanceForm
+        {
+            get
+            {
+                return _views[Forms.CustomerMaintenance] as CustomerMaintenanceForm;
+            }
+        }
+
         public Form Run()
         {
             RegisterViews();
 
-            return GetFirstView();
+            RegisterEventHandlers();
+
+            return CustomerMaintenanceForm;
         }
 
         private void RegisterViews()
         {
             _views = new Dictionary<Forms, IView>
             {
-                {Forms.CustomerMaintenance, new CustomerMaintenanceForm()},
-                {Forms.AddModifyCustomer, new AddModifyCustomerForm()}
+                {Forms.CustomerMaintenance, new CustomerMaintenanceForm(new CustomerMaintenanceController() as IController<IView>)},
+                {Forms.AddModifyCustomer, new AddModifyCustomerForm(new AddModifyCustomerController() as IController<IView>)}
             };
         }
-
-        private Form GetFirstView()
-        {
-            return _views[Forms.CustomerMaintenance] as Form;
-        } 
         
+        private void RegisterEventHandlers()
+        {
+            CustomerMaintenanceForm.AddButtonClicked += OnAddNewCustomerButtonClicked;
+            CustomerMaintenanceForm.ModifyButtonClicked += OnModifyCustomerButtonClicked;
+            CustomerMaintenanceForm.DeleteButtonClicked += OnDeleteCustomerButtonClicked;
+        }
+
+        private void OnDeleteCustomerButtonClicked(object sender, CustomerEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void OnModifyCustomerButtonClicked(object sender, CustomerEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void OnAddNewCustomerButtonClicked(object sender, CustomerEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 }

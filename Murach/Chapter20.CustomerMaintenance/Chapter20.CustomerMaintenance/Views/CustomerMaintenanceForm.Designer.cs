@@ -204,7 +204,6 @@
             this.MinimizeBox = false;
             this.Name = "CustomerMaintenanceForm";
             this.Text = "Customer Maintenance";
-            this.Load += new System.EventHandler(this.frmCustomerMaintenance_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

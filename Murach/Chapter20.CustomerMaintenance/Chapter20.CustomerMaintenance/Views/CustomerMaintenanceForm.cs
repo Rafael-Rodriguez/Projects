@@ -11,9 +11,11 @@ namespace Chapter20.CustomerMaintenance.Views
 
         private IController<IView> _controller;
           
-        public CustomerMaintenanceForm()
+        public CustomerMaintenanceForm(IController<IView> controller)
         {
             InitializeComponent();
+
+            Controller = controller;
         }
 
         public IController<IView> Controller {
@@ -25,10 +27,6 @@ namespace Chapter20.CustomerMaintenance.Views
             }
         }
 
-        private void frmCustomerMaintenance_Load(object sender, EventArgs e)
-        {
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -36,8 +34,8 @@ namespace Chapter20.CustomerMaintenance.Views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var addCustomerForm = new AddModifyCustomerForm();
-            DialogResult result = addCustomerForm.ShowDialog();
+            //var addCustomerForm = new AddModifyCustomerForm();
+            //DialogResult result = addCustomerForm.ShowDialog();
 
             var handler = AddButtonClicked;
             handler?.Invoke(this, new CustomerEventArgs());

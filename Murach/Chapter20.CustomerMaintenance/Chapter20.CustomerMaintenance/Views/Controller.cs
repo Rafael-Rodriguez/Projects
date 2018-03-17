@@ -2,7 +2,7 @@
 
 namespace Chapter20.CustomerMaintenance.Views
 {
-    public abstract class Controller<T> : IController<T> where T : class
+    public abstract class Controller<T> : IController<T> where T : IView
     {
         private T _view;
 
