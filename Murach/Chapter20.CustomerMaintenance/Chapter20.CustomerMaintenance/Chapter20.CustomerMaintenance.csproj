@@ -54,28 +54,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controller.cs" />
     <Compile Include="Views\CustomerEventArgs.cs" />
-    <Compile Include="Views\frmAddModifyCustomer.cs">
+    <Compile Include="Views\AddModifyCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmAddModifyCustomer.Designer.cs">
-      <DependentUpon>frmAddModifyCustomer.cs</DependentUpon>
+    <Compile Include="Views\AddModifyCustomerForm.Designer.cs">
+      <DependentUpon>AddModifyCustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmCustomerMaintenance.cs">
+    <Compile Include="Views\CustomerMaintenanceController.cs" />
+    <Compile Include="Views\CustomerMaintenanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmCustomerMaintenance.Designer.cs">
-      <DependentUpon>frmCustomerMaintenance.cs</DependentUpon>
+    <Compile Include="Views\CustomerMaintenanceForm.Designer.cs">
+      <DependentUpon>CustomerMaintenanceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\IController.cs" />
     <Compile Include="Views\IView.cs" />
     <Compile Include="Views\Views.cs" />
-    <EmbeddedResource Include="Views\frmAddModifyCustomer.resx">
-      <DependentUpon>frmAddModifyCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="Views\AddModifyCustomerForm.resx">
+      <DependentUpon>AddModifyCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmCustomerMaintenance.resx">
-      <DependentUpon>frmCustomerMaintenance.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CustomerMaintenanceForm.resx">
+      <DependentUpon>CustomerMaintenanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

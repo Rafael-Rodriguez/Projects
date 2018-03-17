@@ -1,6 +1,6 @@
 ﻿namespace Chapter20.CustomerMaintenance.Views
 {
-    partial class frmAddModifyCustomer
+    partial class AddModifyCustomerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -139,7 +139,7 @@
             this.Controls.Add(this.txtBoxCity);
             this.Controls.Add(this.txtBoxAddress);
             this.Controls.Add(this.txtBoxName);
-            this.Name = "frmAddModifyCustomer";
+            this.Name = "AddModifyCustomerForm";
             this.Text = "Add/Modify Customer";
             this.ResumeLayout(false);
             this.PerformLayout();

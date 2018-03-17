@@ -19,8 +19,8 @@ namespace Chapter20.CustomerMaintenance
         {
             _views = new Dictionary<Forms, IView>
             {
-                {Forms.CustomerMaintenance, new frmCustomerMaintenance(this)},
-                {Forms.AddModifyCustomer, new frmAddModifyCustomer(this)}
+                {Forms.CustomerMaintenance, new CustomerMaintenanceForm()},
+                {Forms.AddModifyCustomer, new AddModifyCustomerForm()}
             };
         }
 

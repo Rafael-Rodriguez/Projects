@@ -1,6 +1,6 @@
 ﻿namespace Chapter20.CustomerMaintenance.Views
 {
-    partial class frmCustomerMaintenance
+    partial class CustomerMaintenanceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -63,6 +63,7 @@
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnModify
             // 
@@ -177,7 +178,7 @@
             this.btnGetCustomer.Text = "Get Customer";
             this.btnGetCustomer.UseVisualStyleBackColor = true;
             // 
-            // frmCustomerMaintenance
+            // CustomerMaintenanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -201,7 +202,7 @@
             this.Controls.Add(this.btnAdd);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmCustomerMaintenance";
+            this.Name = "CustomerMaintenanceForm";
             this.Text = "Customer Maintenance";
             this.Load += new System.EventHandler(this.frmCustomerMaintenance_Load);
             this.ResumeLayout(false);

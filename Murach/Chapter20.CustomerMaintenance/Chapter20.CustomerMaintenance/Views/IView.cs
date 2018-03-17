@@ -2,6 +2,6 @@
 {
     public interface IView
     {
-        IModuleController Controller { get; }
+        IController<IView> Controller { get; set; }
     }
 }
