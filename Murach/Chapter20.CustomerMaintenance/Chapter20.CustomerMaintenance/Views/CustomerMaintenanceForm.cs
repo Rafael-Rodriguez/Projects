@@ -3,22 +3,18 @@ using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance.Views
 {
-    public partial class CustomerMaintenanceForm : Form, IView
+    public partial class CustomerMaintenanceForm : Form, ICustomerMaintenanceView
     {
-        public event EventHandler<CustomerEventArgs> AddButtonClicked;
-        public event EventHandler<CustomerEventArgs> ModifyButtonClicked;
-        public event EventHandler<CustomerEventArgs> DeleteButtonClicked; 
-
-        private IController<IView> _controller;
+        private CustomerMaintenanceController _controller;
           
-        public CustomerMaintenanceForm(IController<IView> controller)
+        public CustomerMaintenanceForm(CustomerMaintenanceController controller)
         {
             InitializeComponent();
 
             Controller = controller;
         }
 
-        public IController<IView> Controller {
+        public CustomerMaintenanceController Controller {
             get { return _controller; }
             set
             {
@@ -37,20 +33,17 @@ namespace Chapter20.CustomerMaintenance.Views
             //var addCustomerForm = new AddModifyCustomerForm();
             //DialogResult result = addCustomerForm.ShowDialog();
 
-            var handler = AddButtonClicked;
-            handler?.Invoke(this, new CustomerEventArgs());
+            Controller.OnAddButtonClicked(new CustomerEventArgs());
         }
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            var handler = ModifyButtonClicked;
-            handler?.Invoke(this, new CustomerEventArgs());
+            Controller.OnModifyButtonClicked(new CustomerEventArgs());
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var handler = DeleteButtonClicked;
-            handler?.Invoke(this, new CustomerEventArgs());
+            Controller.OnDeleteButtonClicked(new CustomerEventArgs());
         }
     }
 }

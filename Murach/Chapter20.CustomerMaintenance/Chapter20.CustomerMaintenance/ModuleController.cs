@@ -1,68 +1,54 @@
 ﻿using Chapter20.CustomerMaintenance.Views;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System;
+using System.Linq;
+using Chapter20.CustomerMaintenance.Services;
 
 namespace Chapter20.CustomerMaintenance
 {
     public class ModuleController : IModuleController
     {
-        private Dictionary<Forms,IView> _views;
-
-        private AddModifyCustomerForm AddModifyCustomerForm
-        {
-            get
-            {
-                return _views[Forms.AddModifyCustomer] as AddModifyCustomerForm;
-            }
-        }
-
-        private CustomerMaintenanceForm CustomerMaintenanceForm
-        {
-            get
-            {
-                return _views[Forms.CustomerMaintenance] as CustomerMaintenanceForm;
-            }
-        }
+        private List<IView> _views;
+        private List<IService> _services;
 
         public Form Run()
         {
+            RegisterServices();
+
             RegisterViews();
 
-            RegisterEventHandlers();
+            return GetView<CustomerMaintenanceForm>();
+        }
 
-            return CustomerMaintenanceForm;
+        public FormType GetView<FormType>()
+        {
+            return _views.OfType<FormType>().Single();
+        }
+
+        public ServiceType GetService<ServiceType>()
+        {
+            return _services.OfType<ServiceType>().Single();
+        }
+
+        private void RegisterServices()
+        {
+            _services = new List<IService>
+            {
+                new ProgramFlowManager(this)
+            };
         }
 
         private void RegisterViews()
         {
-            _views = new Dictionary<Forms, IView>
+            _views = new List<IView>
             {
-                {Forms.CustomerMaintenance, new CustomerMaintenanceForm(new CustomerMaintenanceController() as IController<IView>)},
-                {Forms.AddModifyCustomer, new AddModifyCustomerForm(new AddModifyCustomerController() as IController<IView>)}
+                {new CustomerMaintenanceForm(new CustomerMaintenanceController(this))},
+                {new AddModifyCustomerForm(new AddModifyCustomerController(this))}
             };
         }
-        
-        private void RegisterEventHandlers()
-        {
-            CustomerMaintenanceForm.AddButtonClicked += OnAddNewCustomerButtonClicked;
-            CustomerMaintenanceForm.ModifyButtonClicked += OnModifyCustomerButtonClicked;
-            CustomerMaintenanceForm.DeleteButtonClicked += OnDeleteCustomerButtonClicked;
-        }
 
-        private void OnDeleteCustomerButtonClicked(object sender, CustomerEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void OnModifyCustomerButtonClicked(object sender, CustomerEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void OnAddNewCustomerButtonClicked(object sender, CustomerEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
+                
     }
 
 }

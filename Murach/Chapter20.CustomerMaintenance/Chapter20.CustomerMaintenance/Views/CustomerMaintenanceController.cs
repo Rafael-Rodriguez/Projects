@@ -1,32 +1,34 @@
-﻿using System;
+﻿using Chapter20.CustomerMaintenance.Services;
+using System;
+using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance.Views
 {
     public class CustomerMaintenanceController : Controller<CustomerMaintenanceForm>
     {
-        public CustomerMaintenanceController() { }
+        public CustomerMaintenanceController(IModuleController moduleController)
+            : base(moduleController) { }
 
         protected override void OnViewSet()
-        {
-            View.AddButtonClicked += OnAddButtonClicked;
-            View.ModifyButtonClicked += OnModifyButtonClicked;
-            View.DeleteButtonClicked += OnDeleteButtonClicked;
+        { 
             base.OnViewSet();
         }
 
-        private void OnDeleteButtonClicked(object sender, CustomerEventArgs customerEventArgs)
+        public void OnDeleteButtonClicked(CustomerEventArgs customerEventArgs)
         {
             throw new NotImplementedException();
         }
 
-        private void OnModifyButtonClicked(object sender, CustomerEventArgs customerEventArgs)
+        public void OnModifyButtonClicked(CustomerEventArgs customerEventArgs)
         {
             throw new NotImplementedException();
         }
 
-        private void OnAddButtonClicked(object sender, CustomerEventArgs customerEventArgs)
+        public void OnAddButtonClicked(EventArgs eventArgs)
         {
-            throw new NotImplementedException();
+            var programFlowManager = ModuleController.GetService<IProgramFlowManager>();
+
+            programFlowManager.AddNewCustomer();
         }
 
         protected override void Dispose(bool disposing)

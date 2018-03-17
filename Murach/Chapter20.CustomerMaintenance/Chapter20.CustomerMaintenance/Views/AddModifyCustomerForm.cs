@@ -3,21 +3,21 @@ using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance.Views
 {
-    public partial class AddModifyCustomerForm : Form, IView
+    public partial class AddModifyCustomerForm : Form, IAddModifyCustomerView
     {
         public event EventHandler<CustomerEventArgs> AcceptButtonClicked;
         public event EventHandler<CustomerEventArgs> CancelButtonClicked;
 
-        private IController<IView> _controller;
+        private IController<AddModifyCustomerForm> _controller;
 
-        public AddModifyCustomerForm(IController<IView> controller)
+        public AddModifyCustomerForm(IController<AddModifyCustomerForm> controller)
         {
             InitializeComponent();
 
             Controller = controller;
         }
 
-        public IController<IView> Controller
+        public IController<AddModifyCustomerForm> Controller
         {
             get { return _controller; }
             set
@@ -39,6 +39,11 @@ namespace Chapter20.CustomerMaintenance.Views
         {
             var handler = CancelButtonClicked;
             handler?.Invoke(this, new CustomerEventArgs());
+        }
+
+        DialogResult IAddModifyCustomerView.ShowDialog()
+        {
+            return ShowDialog();
         }
     }
 }

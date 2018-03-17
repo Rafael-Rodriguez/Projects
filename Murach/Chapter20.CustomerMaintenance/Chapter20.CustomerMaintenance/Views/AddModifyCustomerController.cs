@@ -2,6 +2,9 @@
 {
     public class AddModifyCustomerController : Controller<AddModifyCustomerForm>
     {
+        public AddModifyCustomerController(IModuleController moduleController)
+            :base(moduleController) { }
+
         protected override void OnViewSet()
         {
 

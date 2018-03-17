@@ -2,6 +2,5 @@
 {
     public interface IView
     {
-        IController<IView> Controller { get; set; }
     }
 }
