@@ -1,9 +1,10 @@
-﻿using Chapter20.CustomerMaintenance.Views;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using System;
 using System.Linq;
 using Chapter20.CustomerMaintenance.Services;
+using Chapter20.CustomerMaintenance.Collections;
+using Chapter20.CustomerMaintenance.Presentation.Views;
+using Chapter20.CustomerMaintenance.Presentation.Controllers;
 
 namespace Chapter20.CustomerMaintenance
 {
@@ -11,10 +12,13 @@ namespace Chapter20.CustomerMaintenance
     {
         private List<IView> _views;
         private List<IService> _services;
+        private List<ICollection> _collections;
 
         public Form Run()
         {
             RegisterServices();
+
+            RegisterCollections();
 
             RegisterViews();
 
@@ -31,11 +35,24 @@ namespace Chapter20.CustomerMaintenance
             return _services.OfType<ServiceType>().Single();
         }
 
+        public CollectionType GetCollection<CollectionType>()
+        {
+            return _collections.OfType<CollectionType>().Single();
+        }
+
         private void RegisterServices()
         {
             _services = new List<IService>
             {
                 new ProgramFlowManager(this)
+            };
+        }
+
+        private void RegisterCollections()
+        {
+            _collections = new List<ICollection>
+            {
+                new DatabaseObjectCollection()
             };
         }
 

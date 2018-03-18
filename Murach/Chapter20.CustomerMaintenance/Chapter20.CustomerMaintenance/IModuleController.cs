@@ -10,5 +10,7 @@ namespace Chapter20.CustomerMaintenance
         FormType GetView<FormType>();
 
         ServiceType GetService<ServiceType>();
+
+        CollectionType GetCollection<CollectionType>();
     }
 }

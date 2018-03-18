@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Chapter20.CustomerMaintenance.Views
+namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
     public interface IAddModifyCustomerView : IView
     {

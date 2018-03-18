@@ -1,4 +1,4 @@
-﻿namespace Chapter20.CustomerMaintenance.Views
+﻿namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
     partial class CustomerMaintenanceForm
     {
@@ -177,6 +177,7 @@
             this.btnGetCustomer.TabIndex = 2;
             this.btnGetCustomer.Text = "Get Customer";
             this.btnGetCustomer.UseVisualStyleBackColor = true;
+            this.btnGetCustomer.Click += new System.EventHandler(this.btnGetCustomer_Click);
             // 
             // CustomerMaintenanceForm
             // 

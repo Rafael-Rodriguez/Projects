@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Chapter20.CustomerMaintenance.Models;
+using Chapter20.CustomerMaintenance.Presentation.Controllers;
+using System;
 using System.Windows.Forms;
 
-namespace Chapter20.CustomerMaintenance.Views
+namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
     public partial class CustomerMaintenanceForm : Form, ICustomerMaintenanceView
     {
@@ -21,6 +23,27 @@ namespace Chapter20.CustomerMaintenance.Views
                 _controller = value;
                 _controller.View = this;
             }
+        }
+        
+        public void SetFocusOnCustomerIDTextBox()
+        {
+            txtBoxCustomerID.Clear();
+            txtBoxCustomerID.Focus();
+        }
+        
+        public void FillWithCustomerInfo(Customer customer)
+        {
+            if(customer == null)
+            {
+                throw new ArgumentNullException(nameof(customer));
+            }
+
+
+            txtBoxName.Text = customer.Name;
+            txtBoxAddress.Text = customer.Address;
+            txtBoxCity.Text = customer.City;
+            txtBoxState.Text = customer.State.StateName;
+            txtBoxZip.Text = customer.ZipCode;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -44,6 +67,11 @@ namespace Chapter20.CustomerMaintenance.Views
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Controller.OnDeleteButtonClicked(new CustomerEventArgs());
+        }
+
+        private void btnGetCustomer_Click(object sender, EventArgs e)
+        {
+            Controller.OnGetCustomerButtonClicked(txtBoxCustomerID.Text);
         }
     }
 }

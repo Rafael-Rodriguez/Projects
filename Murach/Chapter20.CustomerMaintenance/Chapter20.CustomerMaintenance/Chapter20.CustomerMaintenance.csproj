@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\ICollection.cs" />
+    <Compile Include="Collections\IDatabaseObjectCollection.cs" />
+    <Compile Include="Database\CustomerDbo.cs" />
+    <Compile Include="Database\IDbo.cs" />
+    <Compile Include="Collections\DatabaseObjectCollection.cs" />
     <Compile Include="Services\IProgramFlowManager.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\ProgramFlowManager.cs" />
@@ -58,32 +63,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddModifyCustomerController.cs" />
-    <Compile Include="Views\Controller.cs" />
-    <Compile Include="Views\CustomerEventArgs.cs" />
-    <Compile Include="Views\AddModifyCustomerForm.cs">
+    <Compile Include="Presentation\Controllers\AddModifyCustomerController.cs" />
+    <Compile Include="Presentation\Controllers\Controller.cs" />
+    <Compile Include="Presentation\Views\CustomerEventArgs.cs" />
+    <Compile Include="Presentation\Views\AddModifyCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\AddModifyCustomerForm.Designer.cs">
+    <Compile Include="Presentation\Views\AddModifyCustomerForm.Designer.cs">
       <DependentUpon>AddModifyCustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CustomerMaintenanceController.cs" />
-    <Compile Include="Views\CustomerMaintenanceForm.cs">
+    <Compile Include="Presentation\Controllers\CustomerMaintenanceController.cs" />
+    <Compile Include="Presentation\Views\CustomerMaintenanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CustomerMaintenanceForm.Designer.cs">
+    <Compile Include="Presentation\Views\CustomerMaintenanceForm.Designer.cs">
       <DependentUpon>CustomerMaintenanceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\IAddModifyCustomerView.cs" />
-    <Compile Include="Views\IController.cs" />
-    <Compile Include="Views\ICustomerMaintenanceView.cs" />
-    <Compile Include="Views\IView.cs" />
-    <EmbeddedResource Include="Views\AddModifyCustomerForm.resx">
+    <Compile Include="Presentation\Views\IAddModifyCustomerView.cs" />
+    <Compile Include="Presentation\Controllers\IController.cs" />
+    <Compile Include="Presentation\Views\ICustomerMaintenanceView.cs" />
+    <Compile Include="Presentation\Views\IView.cs" />
+    <EmbeddedResource Include="Presentation\Views\AddModifyCustomerForm.resx">
       <DependentUpon>AddModifyCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CustomerMaintenanceForm.resx">
+    <EmbeddedResource Include="Presentation\Views\CustomerMaintenanceForm.resx">
       <DependentUpon>CustomerMaintenanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -1,4 +1,4 @@
-﻿namespace Chapter20.CustomerMaintenance.Views
+﻿namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
     partial class AddModifyCustomerForm
     {

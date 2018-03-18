@@ -1,23 +1,24 @@
-﻿using System;
+﻿using Chapter20.CustomerMaintenance.Presentation.Controllers;
+using System;
 using System.Windows.Forms;
 
-namespace Chapter20.CustomerMaintenance.Views
+namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
     public partial class AddModifyCustomerForm : Form, IAddModifyCustomerView
     {
         public event EventHandler<CustomerEventArgs> AcceptButtonClicked;
         public event EventHandler<CustomerEventArgs> CancelButtonClicked;
 
-        private IController<AddModifyCustomerForm> _controller;
+        private AddModifyCustomerController _controller;
 
-        public AddModifyCustomerForm(IController<AddModifyCustomerForm> controller)
+        public AddModifyCustomerForm(AddModifyCustomerController controller)
         {
             InitializeComponent();
 
             Controller = controller;
         }
 
-        public IController<AddModifyCustomerForm> Controller
+        public AddModifyCustomerController Controller
         {
             get { return _controller; }
             set

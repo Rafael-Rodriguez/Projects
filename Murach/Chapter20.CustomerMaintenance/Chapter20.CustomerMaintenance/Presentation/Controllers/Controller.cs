@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Chapter20.CustomerMaintenance.Presentation.Views;
+using System;
 
-namespace Chapter20.CustomerMaintenance.Views
+namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
     public abstract class Controller<T> : IController<T> where T : IView
     {
