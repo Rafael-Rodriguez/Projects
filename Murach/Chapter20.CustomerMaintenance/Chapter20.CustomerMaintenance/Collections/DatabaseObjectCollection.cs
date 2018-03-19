@@ -6,7 +6,7 @@ namespace Chapter20.CustomerMaintenance.Collections
 {
     public class DatabaseObjectCollection : IDatabaseObjectCollection
     {
-        private List<IDbo> dbos;
+        private List<IDbo> _dbos;
 
         public DatabaseObjectCollection()
         {
@@ -15,15 +15,15 @@ namespace Chapter20.CustomerMaintenance.Collections
 
         private void CreateDbos()
         {
-            dbos = new List<IDbo>()
+            _dbos = new List<IDbo>()
             {
                 new CustomerDbo()
             };
         }
 
-        public DatabaseObjectType GetDbo<DatabaseObjectType>()
+        public TDatabaseObjectType GetDbo<TDatabaseObjectType>()
         {
-            return dbos.OfType<DatabaseObjectType>().Single();
+            return _dbos.OfType<TDatabaseObjectType>().Single();
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IDatabaseObjectCollection : ICollection
     {
-        DatabaseObjectType GetDbo<DatabaseObjectType>();
+        TDatabaseObjectType GetDbo<TDatabaseObjectType>();
     }
 }

@@ -7,12 +7,6 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         public AddModifyCustomerController(IModuleController moduleController)
             :base(moduleController) { }
 
-        protected override void OnViewSet()
-        {
-
-            base.OnViewSet();
-        }
-
         protected override void Dispose(bool disposing)
         {
             

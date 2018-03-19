@@ -1,22 +1,17 @@
 ﻿using Chapter20.CustomerMaintenance.Presentation.Views;
-using System;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
     public abstract class Controller<T> : IController<T> where T : IView
     {
         private T _view;
-        private readonly IModuleController _moduleController;
 
-        public Controller(IModuleController moduleController)
+        protected Controller(IModuleController moduleController)
         {
-            _moduleController = moduleController;
+            ModuleController = moduleController;
         }
 
-        protected IModuleController ModuleController
-        {
-            get { return _moduleController; }
-        }
+        protected IModuleController ModuleController { get; }
 
         public T View
         {

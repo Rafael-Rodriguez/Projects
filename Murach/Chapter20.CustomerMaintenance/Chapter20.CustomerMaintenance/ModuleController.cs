@@ -25,19 +25,19 @@ namespace Chapter20.CustomerMaintenance
             return GetView<CustomerMaintenanceForm>();
         }
 
-        public FormType GetView<FormType>()
+        public TFormType GetView<TFormType>()
         {
-            return _views.OfType<FormType>().Single();
+            return _views.OfType<TFormType>().Single();
         }
 
-        public ServiceType GetService<ServiceType>()
+        public TServiceType GetService<TServiceType>()
         {
-            return _services.OfType<ServiceType>().Single();
+            return _services.OfType<TServiceType>().Single();
         }
 
-        public CollectionType GetCollection<CollectionType>()
+        public TCollectionType GetCollection<TCollectionType>()
         {
-            return _collections.OfType<CollectionType>().Single();
+            return _collections.OfType<TCollectionType>().Single();
         }
 
         private void RegisterServices()
@@ -60,8 +60,8 @@ namespace Chapter20.CustomerMaintenance
         {
             _views = new List<IView>
             {
-                {new CustomerMaintenanceForm(new CustomerMaintenanceController(this))},
-                {new AddModifyCustomerForm(new AddModifyCustomerController(this))}
+                new CustomerMaintenanceForm(new CustomerMaintenanceController(this)),
+                new AddModifyCustomerForm(new AddModifyCustomerController(this))
             };
         }
 

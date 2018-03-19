@@ -4,6 +4,7 @@ using Chapter20.CustomerMaintenance.Presentation.Views;
 using Chapter20.CustomerMaintenance.Services;
 using System;
 using System.Windows.Forms;
+using Chapter20.CustomerMaintenance.Properties;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
@@ -11,11 +12,6 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
     {
         public CustomerMaintenanceController(IModuleController moduleController)
             : base(moduleController) { }
-
-        protected override void OnViewSet()
-        { 
-            base.OnViewSet();
-        }
 
         public void OnDeleteButtonClicked(CustomerEventArgs customerEventArgs)
         {
@@ -36,16 +32,16 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 
         public void OnGetCustomerButtonClicked(string text)
         {
-            if(!IsValidCustomerID(text))
+            if(!IsValidCustomerId(text))
             {
-                MessageBox.Show("Invalid customer ID entered.  Please try again", "Invalid Entry");
-                View.SetFocusOnCustomerIDTextBox();
+                MessageBox.Show(Resources.InvalidCustomerIDErrorMessage, Resources.InvalidEntryTitle);
+                View.SetFocusOnCustomerIdTextBox();
                 return;
             }
 
-            var customerID = ParseCustomerID(text);
+            var customerId = ParseCustomerId(text);
 
-            var customer = GetCustomerDbo().GetCustomer(customerID);
+            var customer = GetCustomerDbo().GetCustomer(customerId);
 
             try
             {
@@ -53,14 +49,13 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             }
             catch (ArgumentNullException)
             {
-                MessageBox.Show("Invalid customer id was entered.  Please choose another ID.", "Invalid Customer ID");
-                View.SetFocusOnCustomerIDTextBox();
-                return;
+                MessageBox.Show(Resources.InvalidCustomerIDErrorMessage, Resources.InvalidCustomerIDTitle);
+                View.SetFocusOnCustomerIdTextBox();
             }
             
         }
 
-        private bool IsValidCustomerID(string text)
+        private static bool IsValidCustomerId(string text)
         {
             int resultingNumber;
             if (text != null && int.TryParse(text, out resultingNumber))
@@ -71,9 +66,9 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             return false;
         }
         
-        private int ParseCustomerID(string text)
+        private int ParseCustomerId(string text)
         {
-            if(!IsValidCustomerID(text))
+            if(!IsValidCustomerId(text))
             {
                 return -1;
             }

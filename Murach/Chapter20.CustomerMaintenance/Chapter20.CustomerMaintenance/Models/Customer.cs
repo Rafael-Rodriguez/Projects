@@ -7,6 +7,6 @@
         public string City { get; set; }
         public State State { get; set; }
         public string ZipCode { get; set; }
-        public int CustomerID { get; set; }
+        public int CustomerId { get; set; }
     }
 }

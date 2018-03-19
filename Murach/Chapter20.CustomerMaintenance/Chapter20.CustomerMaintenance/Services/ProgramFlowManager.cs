@@ -4,7 +4,7 @@ namespace Chapter20.CustomerMaintenance.Services
 {
     public class ProgramFlowManager : IProgramFlowManager
     {
-        private IModuleController _moduleController;
+        private readonly IModuleController _moduleController;
 
         public ProgramFlowManager(IModuleController moduleController)
         {

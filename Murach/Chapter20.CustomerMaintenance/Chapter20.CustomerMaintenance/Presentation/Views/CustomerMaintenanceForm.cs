@@ -25,7 +25,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             }
         }
         
-        public void SetFocusOnCustomerIDTextBox()
+        public void SetFocusOnCustomerIdTextBox()
         {
             txtBoxCustomerID.Clear();
             txtBoxCustomerID.Focus();

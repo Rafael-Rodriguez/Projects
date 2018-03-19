@@ -4,7 +4,7 @@ namespace Chapter20.CustomerMaintenance.Database
 {
     public class CustomerDbo : IDbo
     {
-        public Customer GetCustomer(int customerID)
+        public Customer GetCustomer(int customerId)
         {
             return null;
         }
