@@ -18,8 +18,6 @@ namespace Chapter20.CustomerMaintenance.Test.Views
 
             var form = new CustomerMaintenanceForm(controller);
             form.FillWithCustomerInfo(null);
-
-
         }
     }
 }

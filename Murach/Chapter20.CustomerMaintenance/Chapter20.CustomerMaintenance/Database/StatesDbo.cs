@@ -10,7 +10,7 @@ namespace Chapter20.CustomerMaintenance.Database
         {
             var connection = new SqlConnection(Properties.Settings.Default.MMABooksConnectionString);
             var selectStatement =
-                "SELECT StateCode, StateName" +
+                "SELECT StateCode, StateName " +
                 "FROM States";
             var selectCommand = new SqlCommand(selectStatement, connection);
 

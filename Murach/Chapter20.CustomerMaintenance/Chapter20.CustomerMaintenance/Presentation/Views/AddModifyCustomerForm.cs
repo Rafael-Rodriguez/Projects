@@ -43,9 +43,6 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //var handler = CancelButtonClicked;
-            //handler?.Invoke(this, new CustomerEventArgs());
-
             Controller.OnCancelButtonClicked();
         }
 
