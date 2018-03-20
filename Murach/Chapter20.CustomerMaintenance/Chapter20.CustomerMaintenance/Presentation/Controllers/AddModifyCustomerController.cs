@@ -2,7 +2,7 @@
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
-    public class AddModifyCustomerController : Controller<AddModifyCustomerForm>
+    public sealed class AddModifyCustomerController : Controller<AddModifyCustomerForm>
     {
         public AddModifyCustomerController(IModuleController moduleController)
             :base(moduleController) { }

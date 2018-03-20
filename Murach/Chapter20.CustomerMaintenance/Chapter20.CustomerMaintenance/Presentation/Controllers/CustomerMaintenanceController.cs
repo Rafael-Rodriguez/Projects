@@ -8,7 +8,7 @@ using Chapter20.CustomerMaintenance.Properties;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
-    public class CustomerMaintenanceController : Controller<CustomerMaintenanceForm>
+    public sealed class CustomerMaintenanceController : Controller<CustomerMaintenanceForm>
     {
         public CustomerMaintenanceController(IModuleController moduleController)
             : base(moduleController) { }

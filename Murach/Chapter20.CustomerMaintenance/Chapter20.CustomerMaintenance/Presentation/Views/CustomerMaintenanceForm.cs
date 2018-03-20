@@ -42,7 +42,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             txtBoxName.Text = customer.Name;
             txtBoxAddress.Text = customer.Address;
             txtBoxCity.Text = customer.City;
-            txtBoxState.Text = customer.State.StateName;
+            txtBoxState.Text = customer.State;
             txtBoxZip.Text = customer.ZipCode;
         }
 
