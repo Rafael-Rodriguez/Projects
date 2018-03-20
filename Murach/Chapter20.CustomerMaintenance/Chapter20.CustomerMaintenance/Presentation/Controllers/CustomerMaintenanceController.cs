@@ -20,10 +20,12 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 
         public void OnModifyButtonClicked(CustomerEventArgs customerEventArgs)
         {
-            throw new NotImplementedException();
+            var programFlowManager = ModuleController.GetService<IProgramFlowManager>();
+
+            programFlowManager.ModifyExistingCustomer(customerEventArgs);
         }
 
-        public void OnAddButtonClicked(EventArgs eventArgs)
+        public void OnAddButtonClicked()
         {
             var programFlowManager = ModuleController.GetService<IProgramFlowManager>();
 

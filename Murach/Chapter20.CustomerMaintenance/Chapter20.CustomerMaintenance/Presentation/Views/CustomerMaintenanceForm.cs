@@ -8,6 +8,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
     public partial class CustomerMaintenanceForm : Form, ICustomerMaintenanceView
     {
         private CustomerMaintenanceController _controller;
+        private Customer _customer;
           
         public CustomerMaintenanceForm(CustomerMaintenanceController controller)
         {
@@ -44,6 +45,8 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             txtBoxCity.Text = customer.City;
             txtBoxState.Text = customer.State;
             txtBoxZip.Text = customer.ZipCode;
+
+            _customer = customer;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -53,20 +56,17 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //var addCustomerForm = new AddModifyCustomerForm();
-            //DialogResult result = addCustomerForm.ShowDialog();
-
-            Controller.OnAddButtonClicked(new CustomerEventArgs());
+            Controller.OnAddButtonClicked();
         }
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            Controller.OnModifyButtonClicked(new CustomerEventArgs());
+            Controller.OnModifyButtonClicked(new CustomerEventArgs(_customer));
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Controller.OnDeleteButtonClicked(new CustomerEventArgs());
+            Controller.OnDeleteButtonClicked(new CustomerEventArgs(_customer));
         }
 
         private void btnGetCustomer_Click(object sender, EventArgs e)

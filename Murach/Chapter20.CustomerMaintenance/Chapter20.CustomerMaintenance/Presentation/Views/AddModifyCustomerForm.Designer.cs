@@ -37,7 +37,7 @@
             this.txtBoxName = new System.Windows.Forms.TextBox();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.cboBoxState = new System.Windows.Forms.ComboBox();
+            this.comboBoxStates = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtBoxZip
@@ -116,13 +116,13 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // cboBoxState
+            // comboBoxStates
             // 
-            this.cboBoxState.FormattingEnabled = true;
-            this.cboBoxState.Location = new System.Drawing.Point(363, 77);
-            this.cboBoxState.Name = "cboBoxState";
-            this.cboBoxState.Size = new System.Drawing.Size(83, 21);
-            this.cboBoxState.TabIndex = 6;
+            this.comboBoxStates.FormattingEnabled = true;
+            this.comboBoxStates.Location = new System.Drawing.Point(363, 77);
+            this.comboBoxStates.Name = "comboBoxStates";
+            this.comboBoxStates.Size = new System.Drawing.Size(83, 21);
+            this.comboBoxStates.TabIndex = 6;
             // 
             // AddModifyCustomerForm
             // 
@@ -131,7 +131,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(583, 169);
-            this.Controls.Add(this.cboBoxState);
+            this.Controls.Add(this.comboBoxStates);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.txtBoxZip);
@@ -143,6 +143,7 @@
             this.Controls.Add(this.txtBoxName);
             this.Name = "AddModifyCustomerForm";
             this.Text = "Add/Modify Customer";
+            this.Load += new System.EventHandler(this.AddModifyCustomerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,6 +160,6 @@
         private System.Windows.Forms.TextBox txtBoxName;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.ComboBox cboBoxState;
+        private System.Windows.Forms.ComboBox comboBoxStates;
     }
 }

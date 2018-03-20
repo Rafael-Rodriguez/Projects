@@ -1,4 +1,5 @@
-﻿using Chapter20.CustomerMaintenance.Presentation.Views;
+﻿using System;
+using Chapter20.CustomerMaintenance.Presentation.Views;
 
 namespace Chapter20.CustomerMaintenance.Services
 {
@@ -14,6 +15,13 @@ namespace Chapter20.CustomerMaintenance.Services
         public void AddNewCustomer()
         {
             var addModifyCustomerForm = _moduleController.GetView<IAddModifyCustomerView>();
+            var dialogResult = addModifyCustomerForm.ShowDialog();
+        }
+
+        public void ModifyExistingCustomer(CustomerEventArgs customerEventArgs)
+        {
+            var addModifyCustomerForm = _moduleController.GetView<IAddModifyCustomerView>();
+            addModifyCustomerForm.Customer = customerEventArgs.Customer;
             var dialogResult = addModifyCustomerForm.ShowDialog();
         }
     }

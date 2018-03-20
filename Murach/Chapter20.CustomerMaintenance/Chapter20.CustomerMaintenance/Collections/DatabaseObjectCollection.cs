@@ -17,7 +17,8 @@ namespace Chapter20.CustomerMaintenance.Collections
         {
             _dbos = new List<IDbo>()
             {
-                new CustomerDbo()
+                new CustomerDbo(),
+                new StatesDbo()
             };
         }
 

@@ -1,14 +1,13 @@
 ﻿using Chapter20.CustomerMaintenance.Presentation.Controllers;
 using System;
 using System.Windows.Forms;
+using Chapter20.CustomerMaintenance.Models;
+using System.Collections.Generic;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
     public partial class AddModifyCustomerForm : Form, IAddModifyCustomerView
     {
-        public event EventHandler<CustomerEventArgs> AcceptButtonClicked;
-        public event EventHandler<CustomerEventArgs> CancelButtonClicked;
-
         private AddModifyCustomerController _controller;
 
         public AddModifyCustomerForm(AddModifyCustomerController controller)
@@ -28,23 +27,36 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             }
         }
 
+        public Customer Customer { get; set; }
+
+        public void FillStateComboBox(string[] stateCodes)
+        {
+            comboBoxStates.Items.AddRange(stateCodes);
+        }
+
         private void btnAccept_Click(object sender, System.EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            //DialogResult = DialogResult.OK;
 
-            var handler = AcceptButtonClicked;
-            handler?.Invoke(this, new CustomerEventArgs());
+            Controller.OnAcceptButtonClicked(new CustomerEventArgs(Customer));
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            var handler = CancelButtonClicked;
-            handler?.Invoke(this, new CustomerEventArgs());
+            //var handler = CancelButtonClicked;
+            //handler?.Invoke(this, new CustomerEventArgs());
+
+            Controller.OnCancelButtonClicked();
         }
 
         DialogResult IAddModifyCustomerView.ShowDialog()
         {
             return ShowDialog();
+        }
+
+        private void AddModifyCustomerForm_Load(object sender, EventArgs e)
+        {
+            Controller.OnLoad();
         }
     }
 }
