@@ -16,9 +16,9 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             View.FillStateComboBox(states.Select(state => state.StateCode).ToArray());
         }
 
-        public void OnAcceptButtonClicked(CustomerEventArgs eventArgs)
+        public void OnAcceptButtonClicked(NewCustomerEventArgs eventArgs)
         {
-
+            
         }
 
         public void OnCancelButtonClicked()

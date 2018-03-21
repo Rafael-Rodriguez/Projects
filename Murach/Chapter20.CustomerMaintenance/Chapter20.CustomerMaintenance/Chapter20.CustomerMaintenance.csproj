@@ -52,6 +52,7 @@
     <Compile Include="Database\IDbo.cs" />
     <Compile Include="Collections\DatabaseObjectCollection.cs" />
     <Compile Include="Database\StatesDbo.cs" />
+    <Compile Include="Presentation\Views\NewCustomerEventArgs.cs" />
     <Compile Include="Services\IProgramFlowManager.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\ProgramFlowManager.cs" />

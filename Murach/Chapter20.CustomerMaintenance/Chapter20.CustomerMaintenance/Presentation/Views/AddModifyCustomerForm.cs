@@ -38,7 +38,9 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
         {
             //DialogResult = DialogResult.OK;
 
-            Controller.OnAcceptButtonClicked(new CustomerEventArgs(Customer));
+            Controller.OnAcceptButtonClicked(new NewCustomerEventArgs(address: txtBoxAddress.Text,
+                city: txtBoxCity.Text, name: txtBoxName.Text, zipCode: txtBoxZip.Text,
+                stateCode: comboBoxStates.SelectedText));
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -46,14 +48,16 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             Controller.OnCancelButtonClicked();
         }
 
+        private void AddModifyCustomerForm_Load(object sender, EventArgs e)
+        {
+            Controller.OnLoad();
+        }
+
         DialogResult IAddModifyCustomerView.ShowDialog()
         {
             return ShowDialog();
         }
 
-        private void AddModifyCustomerForm_Load(object sender, EventArgs e)
-        {
-            Controller.OnLoad();
-        }
+        
     }
 }
