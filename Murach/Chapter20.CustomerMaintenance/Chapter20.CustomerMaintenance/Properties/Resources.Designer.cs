@@ -61,6 +61,15 @@ namespace Chapter20.CustomerMaintenance.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid customer entry.  One of the required fields is empty.  Please fill in all fields..
+        /// </summary>
+        internal static string InvalidCustomerEntry {
+            get {
+                return ResourceManager.GetString("InvalidCustomerEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid customer ID entered.  Please try again.
         /// </summary>
         internal static string InvalidCustomerIDErrorMessage {

@@ -1,4 +1,5 @@
 ﻿using Chapter20.CustomerMaintenance.Models;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -48,7 +49,38 @@ namespace Chapter20.CustomerMaintenance.Database
 
         public int AddCustomer(Customer customer)
         {
-            return -1;
+            var connection = new SqlConnection(Properties.Settings.Default.MMABooksConnectionString);
+            var insertStatement =
+                "INSERT INTO Customers (Name, Address, City, State, ZipCode)" +
+                "VALUES (@Name, @Address, @City, @State, @ZipCode)";
+            var insertCommand = new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue("@Name", customer.Name);
+            insertCommand.Parameters.AddWithValue("@Address", customer.Address);
+            insertCommand.Parameters.AddWithValue("@City", customer.City);
+            insertCommand.Parameters.AddWithValue("@State", customer.State);
+            insertCommand.Parameters.AddWithValue("@ZipCode", customer.ZipCode);
+
+            int customerID = -1;
+
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+
+                var selectStatement = "SELECT IDENT_CURRENT('Customers') FROM Customers";
+                var selectCommand = new SqlCommand(selectStatement, connection);
+                customerID = Convert.ToInt32(selectCommand.ExecuteScalar());
+            }
+            catch(SqlException se)
+            {
+                throw se;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return customerID;
         }
 
         public bool UpdateCustomer(Customer oldCustomer, Customer newCustomer)

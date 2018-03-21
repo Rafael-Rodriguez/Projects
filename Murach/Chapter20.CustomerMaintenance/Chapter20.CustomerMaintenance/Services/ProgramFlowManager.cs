@@ -16,6 +16,12 @@ namespace Chapter20.CustomerMaintenance.Services
         {
             var addModifyCustomerForm = _moduleController.GetView<IAddModifyCustomerView>();
             var dialogResult = addModifyCustomerForm.ShowDialog();
+
+            if(dialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                var customerMaintenanceForm = _moduleController.GetView<ICustomerMaintenanceView>();
+                customerMaintenanceForm.FillWithCustomerInfo(addModifyCustomerForm.Customer);
+            }
         }
 
         public void ModifyExistingCustomer(CustomerEventArgs customerEventArgs)

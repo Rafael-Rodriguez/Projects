@@ -45,6 +45,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             txtBoxCity.Text = customer.City;
             txtBoxState.Text = customer.State;
             txtBoxZip.Text = customer.ZipCode;
+            txtBoxCustomerID.Text = customer.CustomerId.ToString();
 
             _customer = customer;
         }

@@ -38,9 +38,13 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
         {
             //DialogResult = DialogResult.OK;
 
-            Controller.OnAcceptButtonClicked(new NewCustomerEventArgs(address: txtBoxAddress.Text,
-                city: txtBoxCity.Text, name: txtBoxName.Text, zipCode: txtBoxZip.Text,
-                stateCode: comboBoxStates.SelectedText));
+            Controller.OnAcceptButtonClicked(
+                new NewCustomerEventArgs(
+                    address: txtBoxAddress.Text,
+                    city: txtBoxCity.Text, 
+                    name: txtBoxName.Text, 
+                    zipCode: txtBoxZip.Text,
+                    state: comboBoxStates.SelectedText));
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

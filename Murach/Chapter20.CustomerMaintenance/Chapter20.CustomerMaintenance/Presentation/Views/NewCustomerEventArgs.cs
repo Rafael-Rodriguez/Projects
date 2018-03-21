@@ -5,19 +5,19 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
     public class NewCustomerEventArgs : EventArgs
     {
-        public NewCustomerEventArgs(string name, string address, string city, string stateCode, string zipCode)
+        public NewCustomerEventArgs(string name, string address, string city, string state, string zipCode)
         {
             Name = name;
             Address = address;
             City = city;
-            StateCode = stateCode;
+            State = state;
             ZipCode = zipCode;
         }
 
         public string Name;
         public string Address;
         public string City;
-        public string StateCode;
+        public string State;
         public string ZipCode;
     }
 }
