@@ -118,6 +118,7 @@
             // 
             // comboBoxStates
             // 
+            this.comboBoxStates.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxStates.FormattingEnabled = true;
             this.comboBoxStates.Location = new System.Drawing.Point(363, 77);
             this.comboBoxStates.Name = "comboBoxStates";

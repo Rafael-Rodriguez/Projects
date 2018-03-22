@@ -29,9 +29,9 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 
         public Customer Customer { get; set; }
 
-        public void FillStateComboBox(string[] stateCodes)
+        public void FillStateComboBox(string[] states)
         {
-            comboBoxStates.Items.AddRange(stateCodes);
+            comboBoxStates.Items.AddRange(states);
         }
 
         private void btnAccept_Click(object sender, System.EventArgs e)
@@ -44,7 +44,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
                     city: txtBoxCity.Text, 
                     name: txtBoxName.Text, 
                     zipCode: txtBoxZip.Text,
-                    state: comboBoxStates.SelectedText));
+                    state: comboBoxStates.Text));
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

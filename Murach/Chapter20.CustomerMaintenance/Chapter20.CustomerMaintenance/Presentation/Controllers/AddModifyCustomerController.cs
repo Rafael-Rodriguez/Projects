@@ -17,7 +17,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         public void OnLoad()
         {
             var states = GetStatesDbo().GetStates();
-            View.FillStateComboBox(states.Select(state => state.StateCode).ToArray());
+            View.FillStateComboBox(states.Select(state => state.StateName).ToArray());
         }
 
         public void OnAcceptButtonClicked(NewCustomerEventArgs eventArgs)
@@ -39,15 +39,23 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 
         private Customer CreateCustomer(NewCustomerEventArgs eventArgs)
         {
-            var customer = new Customer();
+            var customer = new Customer
+            {
+                Address = eventArgs.Address,
+                City = eventArgs.City,
+                Name = eventArgs.Name,
+                State = ConvertToStateCode(eventArgs.State),
+                ZipCode = eventArgs.ZipCode
+            };
 
-            customer.Address = eventArgs.Address;
-            customer.City = eventArgs.City;
-            customer.Name = eventArgs.Name;
-            customer.State = eventArgs.State;
-            customer.ZipCode = eventArgs.ZipCode;
 
             return customer;
+        }
+
+        private string ConvertToStateCode(string stateName)
+        {
+            var states = GetStatesDbo().GetStates();
+            return states.First(state => state.StateName == stateName).StateCode;
         }
 
         private bool IsValid(NewCustomerEventArgs eventArgs)
