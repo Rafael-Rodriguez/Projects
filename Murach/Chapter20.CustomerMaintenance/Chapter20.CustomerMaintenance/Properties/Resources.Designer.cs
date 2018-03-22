@@ -61,6 +61,15 @@ namespace Chapter20.CustomerMaintenance.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occurred while updating the customer.  Please try again..
+        /// </summary>
+        internal static string ErrorOccurredWhileUpdatingCustomer {
+            get {
+                return ResourceManager.GetString("ErrorOccurredWhileUpdatingCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid customer entry.  One of the required fields is empty.  Please fill in all fields..
         /// </summary>
         internal static string InvalidCustomerEntry {
@@ -93,6 +102,33 @@ namespace Chapter20.CustomerMaintenance.Properties {
         internal static string InvalidEntryTitle {
             get {
                 return ResourceManager.GetString("InvalidEntryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No customer information has been loaded.  Please Enter in the Customer ID and click on the &quot;Get Customer&quot; button.
+        /// </summary>
+        internal static string NoCustomerInformationErrorMessage {
+            get {
+                return ResourceManager.GetString("NoCustomerInformationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No customer information.
+        /// </summary>
+        internal static string NoCustomerInformationTitle {
+            get {
+                return ResourceManager.GetString("NoCustomerInformationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to update customer..
+        /// </summary>
+        internal static string UnableToUpdateCustomer {
+            get {
+                return ResourceManager.GetString("UnableToUpdateCustomer", resourceCulture);
             }
         }
     }

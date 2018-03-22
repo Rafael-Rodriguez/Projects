@@ -50,6 +50,24 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             _customer = customer;
         }
 
+        public void ClearControls()
+        {
+            txtBoxName.Text = "";
+            txtBoxAddress.Text = "";
+            txtBoxCity.Text = "";
+            txtBoxState.Text = "";
+            txtBoxZip.Text = "";
+
+            SetFocusOnCustomerIdTextBox();
+
+            _customer = null;
+        }
+
+        public void RegrabCustomerInfoFromDb()
+        {
+            Controller.GetCustomerInfo(txtBoxCustomerID.Text);
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();

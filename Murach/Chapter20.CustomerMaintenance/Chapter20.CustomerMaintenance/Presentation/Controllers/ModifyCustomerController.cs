@@ -1,5 +1,4 @@
-﻿using System;
-using Chapter20.CustomerMaintenance.Presentation.Views;
+﻿using Chapter20.CustomerMaintenance.Presentation.Views;
 using Chapter20.CustomerMaintenance.Models;
 using System.Windows.Forms;
 using Chapter20.CustomerMaintenance.Properties;
@@ -15,79 +14,55 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         private List<State> _states = new List<State>();
 
         public ModifyCustomerController(IModuleController moduleController)
-            :base(moduleController) { }
-
-        public void OnLoad(CustomerEventArgs customerEventArgs)
+            : base(moduleController)
         {
             _states = GetStatesDbo().GetStates().ToList();
+        }
 
+        public void OnLoad(Customer customer)
+        {
             View.FillStateComboBox(_states.Select(state => state.StateName).ToArray());
 
-            if (customerEventArgs != null && customerEventArgs.Customer != null)
+            if (customer != null)
             {
-                var originalCustomer = customerEventArgs.Customer;
-                View.FillCustomerInfo(
-                    new CustomerEventArgs(
-                        new Customer()
-                        {
-                            Name = originalCustomer.Name,
-                            Address = originalCustomer.Address,
-                            City = originalCustomer.City,
-                            State = ConvertStateCodeToStateName(originalCustomer.State),
-                            ZipCode = originalCustomer.ZipCode
-                        }));
+                View.Customer = customer;
             }
         }
 
-        public void OnAcceptButtonClicked(CustomerEventArgs eventArgs)
+        public void OnAcceptButtonClicked(Customer oldCustomer, Customer newCustomer)
         {
-            if (!IsValid(eventArgs))
+            if (!IsValid(oldCustomer) || !IsValid(newCustomer))
             {
                 MessageBox.Show(Resources.InvalidCustomerEntry, Resources.InvalidEntryTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            GetCustomerDbo().UpdateCustomer(customer);
+            var customerUpdated = GetCustomerDbo().UpdateCustomer(oldCustomer, newCustomer);
+            if (!customerUpdated)
+            {
+                MessageBox.Show(Resources.ErrorOccurredWhileUpdatingCustomer,Resources.UnableToUpdateCustomer, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                View.DialogResult = DialogResult.Retry;
 
-            View.Customer = customer;
+                return;
+            }
+
+            View.Customer = newCustomer;
 
             View.DialogResult = DialogResult.OK;
         }
 
-        private Customer CreateCustomer(NewCustomerEventArgs eventArgs)
-        {
-            var customer = new Customer
-            {
-                Address = eventArgs.Address,
-                City = eventArgs.City,
-                Name = eventArgs.Name,
-                State = ConvertStateNameToStateCode(eventArgs.State),
-                ZipCode = eventArgs.ZipCode
-            };
-
-
-            return customer;
-        }
-
-        private string ConvertStateNameToStateCode(string stateName)
-        {
-            return _states.First(state => state.StateName == stateName).StateCode;
-        }
-
-        private string ConvertStateCodeToStateName(string stateCode)
+        public string ConvertStateCodeToStateName(string stateCode)
         {
             return _states.First(state => state.StateCode == stateCode).StateName;
         }
 
-        private bool IsValid(CustomerEventArgs eventArgs)
+        private bool IsValid(Customer customer)
         {
-            if (eventArgs != null &&
-                eventArgs.Customer != null &&
-                !String.IsNullOrEmpty(eventArgs.Customer.Address) &&
-                !String.IsNullOrEmpty(eventArgs.Customer.City) &&
-                !String.IsNullOrEmpty(eventArgs.Customer.Name) &&
-                !String.IsNullOrEmpty(eventArgs.Customer.State) &&
-                !String.IsNullOrEmpty(eventArgs.Customer.ZipCode))
+            if (!string.IsNullOrEmpty(customer?.Address) 
+                && !string.IsNullOrEmpty(customer.City) 
+                && !string.IsNullOrEmpty(customer.Name) 
+                && !string.IsNullOrEmpty(customer.State) 
+                && !string.IsNullOrEmpty(customer.ZipCode))
             {
                 return true;
             }

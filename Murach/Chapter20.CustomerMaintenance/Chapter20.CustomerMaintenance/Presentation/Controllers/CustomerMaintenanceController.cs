@@ -20,6 +20,17 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 
         public void OnModifyButtonClicked(CustomerEventArgs customerEventArgs)
         {
+            var customer = customerEventArgs.Customer;
+
+            if (customer == null)
+            {
+                MessageBox.Show(
+                    Resources.NoCustomerInformationErrorMessage,
+                    Resources.NoCustomerInformationTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                View.SetFocusOnCustomerIdTextBox();
+                return;
+            }
+
             var programFlowManager = ModuleController.GetService<IProgramFlowManager>();
 
             programFlowManager.ModifyExistingCustomer(customerEventArgs);
@@ -32,29 +43,40 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             programFlowManager.AddNewCustomer();
         }
 
-        public void OnGetCustomerButtonClicked(string text)
+        public void OnGetCustomerButtonClicked(string customerIdText)
         {
-            if(!IsValidCustomerId(text))
+            if(!IsValidCustomerId(customerIdText))
             {
                 MessageBox.Show(Resources.InvalidCustomerIDErrorMessage, Resources.InvalidEntryTitle);
                 View.SetFocusOnCustomerIdTextBox();
                 return;
             }
 
+            GetCustomerInfo(customerIdText);
+        }
+
+        public void GetCustomerInfo(string text)
+        {
             var customerId = ParseCustomerId(text);
 
             var customer = GetCustomerDbo().GetCustomer(customerId);
 
-            try
+            if (customer != null)
             {
-                View.FillWithCustomerInfo(customer);
+                try
+                {
+                    View.FillWithCustomerInfo(customer);
+                }
+                catch (ArgumentNullException)
+                {
+                    MessageBox.Show(Resources.InvalidCustomerIDErrorMessage, Resources.InvalidCustomerIDTitle);
+                    View.SetFocusOnCustomerIdTextBox();
+                }
             }
-            catch (ArgumentNullException)
+            else
             {
-                MessageBox.Show(Resources.InvalidCustomerIDErrorMessage, Resources.InvalidCustomerIDTitle);
-                View.SetFocusOnCustomerIdTextBox();
+                View.ClearControls();
             }
-            
         }
 
         private static bool IsValidCustomerId(string text)
@@ -86,7 +108,5 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         protected override void Dispose(bool disposing)
         {    
         }
-
-        
     }
 }

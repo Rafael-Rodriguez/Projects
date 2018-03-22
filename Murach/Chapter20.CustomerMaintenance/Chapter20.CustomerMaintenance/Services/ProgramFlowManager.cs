@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Windows.Forms;
 using Chapter20.CustomerMaintenance.Presentation.Views;
 
 namespace Chapter20.CustomerMaintenance.Services
@@ -18,7 +18,7 @@ namespace Chapter20.CustomerMaintenance.Services
             addCustomerForm.Customer = null;
             var dialogResult = addCustomerForm.ShowDialog();
 
-            if(dialogResult == System.Windows.Forms.DialogResult.OK)
+            if(dialogResult == DialogResult.OK)
             {
                 var customerMaintenanceForm = _moduleController.GetView<ICustomerMaintenanceView>();
                 customerMaintenanceForm.FillWithCustomerInfo(addCustomerForm.Customer);
@@ -28,13 +28,17 @@ namespace Chapter20.CustomerMaintenance.Services
         public void ModifyExistingCustomer(CustomerEventArgs customerEventArgs)
         {
             var modifyCustomerForm = _moduleController.GetView<IModifyCustomerView>();
-            modifyCustomerForm.Customer = customerEventArgs.Customer;
-            var dialogResult = modifyCustomerForm.ShowDialog();
+            var dialogResult = modifyCustomerForm.ShowDialog(customerEventArgs.Customer);
 
-            if(dialogResult == System.Windows.Forms.DialogResult.OK)
+            if(dialogResult == DialogResult.OK)
             {
                 var customerMaintenanceForm = _moduleController.GetView<ICustomerMaintenanceView>();
                 customerMaintenanceForm.FillWithCustomerInfo(modifyCustomerForm.Customer);
+            }
+            else if (dialogResult == DialogResult.Retry)
+            {
+                var customerMaintenanceForm = _moduleController.GetView<ICustomerMaintenanceView>();
+                customerMaintenanceForm.RegrabCustomerInfoFromDb();
             }
         }
     }

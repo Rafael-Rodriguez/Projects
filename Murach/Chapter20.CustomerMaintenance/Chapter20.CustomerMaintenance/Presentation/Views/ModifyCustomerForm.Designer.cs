@@ -144,6 +144,7 @@
             this.Controls.Add(this.txtBoxName);
             this.Name = "ModifyCustomerForm";
             this.Text = "Modify Customer";
+            this.Load += new System.EventHandler(this.ModifyCustomerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

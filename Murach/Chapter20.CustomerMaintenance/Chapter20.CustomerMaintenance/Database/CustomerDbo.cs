@@ -10,9 +10,8 @@ namespace Chapter20.CustomerMaintenance.Database
         public Customer GetCustomer(int customerId)
         {
             var connection = new SqlConnection(Properties.Settings.Default.MMABooksConnectionString);
-            var selectStatement = 
-                "SELECT CustomerID, Name, Address, City, State, ZipCode "
-               + "FROM Customers WHERE CustomerID = @CustomerID";
+            const string selectStatement = "SELECT CustomerID, Name, Address, City, State, ZipCode "
+                                           + "FROM Customers WHERE CustomerID = @CustomerID";
             var selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@CustomerID", customerId);
 
@@ -22,13 +21,15 @@ namespace Chapter20.CustomerMaintenance.Database
                 var customerReader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
                 if(customerReader.Read())
                 {
-                    var customer = new Customer();
-                    customer.CustomerId = (int)customerReader["CustomerID"];
-                    customer.Name = customerReader["Name"].ToString();
-                    customer.Address = customerReader["Address"].ToString();
-                    customer.City = customerReader["City"].ToString();
-                    customer.State = customerReader["State"].ToString();
-                    customer.ZipCode = customerReader["ZipCode"].ToString();
+                    var customer = new Customer
+                    {
+                        CustomerId = (int) customerReader["CustomerID"],
+                        Name = customerReader["Name"].ToString(),
+                        Address = customerReader["Address"].ToString(),
+                        City = customerReader["City"].ToString(),
+                        State = customerReader["State"].ToString(),
+                        ZipCode = customerReader["ZipCode"].ToString()
+                    };
 
                     return customer;
                 }
@@ -36,10 +37,6 @@ namespace Chapter20.CustomerMaintenance.Database
                 {
                     return null;
                 }
-            }
-            catch(SqlException se)
-            {
-                throw se;
             }
             finally
             {
@@ -50,9 +47,8 @@ namespace Chapter20.CustomerMaintenance.Database
         public int AddCustomer(Customer customer)
         {
             var connection = new SqlConnection(Properties.Settings.Default.MMABooksConnectionString);
-            var insertStatement =
-                "INSERT INTO Customers (Name, Address, City, State, ZipCode)" +
-                "VALUES (@Name, @Address, @City, @State, @ZipCode)";
+            const string insertStatement = "INSERT INTO Customers (Name, Address, City, State, ZipCode)" +
+                                           "VALUES (@Name, @Address, @City, @State, @ZipCode)";
             var insertCommand = new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@Name", customer.Name);
             insertCommand.Parameters.AddWithValue("@Address", customer.Address);
@@ -60,27 +56,23 @@ namespace Chapter20.CustomerMaintenance.Database
             insertCommand.Parameters.AddWithValue("@State", customer.State);
             insertCommand.Parameters.AddWithValue("@ZipCode", customer.ZipCode);
 
-            int customerID = -1;
+            int customerId;
 
             try
             {
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
 
-                var selectStatement = "SELECT IDENT_CURRENT('Customers') FROM Customers";
+                const string selectStatement = "SELECT IDENT_CURRENT('Customers') FROM Customers";
                 var selectCommand = new SqlCommand(selectStatement, connection);
-                customerID = Convert.ToInt32(selectCommand.ExecuteScalar());
-            }
-            catch(SqlException se)
-            {
-                throw se;
+                customerId = Convert.ToInt32(selectCommand.ExecuteScalar());
             }
             finally
             {
                 connection.Close();
             }
 
-            return customerID;
+            return customerId;
         }
 
         public bool UpdateCustomer(Customer oldCustomer, Customer newCustomer)

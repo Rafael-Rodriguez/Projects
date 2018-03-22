@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
-    interface IModifyCustomerView
+    public interface IModifyCustomerView : IView
     {
         Customer Customer { get; set; }
-        DialogResult ShowDialog();
+        DialogResult ShowDialog(Customer customer);
     }
 }
