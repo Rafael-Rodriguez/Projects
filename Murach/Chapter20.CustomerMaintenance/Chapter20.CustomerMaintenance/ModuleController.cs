@@ -61,7 +61,8 @@ namespace Chapter20.CustomerMaintenance
             _views = new List<IView>
             {
                 new CustomerMaintenanceForm(new CustomerMaintenanceController(this)),
-                new AddModifyCustomerForm(new AddModifyCustomerController(this))
+                new AddCustomerForm(new AddCustomerController(this)),
+                new ModifyCustomerForm(new ModifyCustomerController(this))
             };
         }
 

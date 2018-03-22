@@ -6,18 +6,22 @@ using Chapter20.CustomerMaintenance.Presentation.Views;
 using Chapter20.CustomerMaintenance.Models;
 using System.Windows.Forms;
 using Chapter20.CustomerMaintenance.Properties;
+using System.Collections.Generic;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
-    public sealed class AddModifyCustomerController : Controller<AddModifyCustomerForm>
+    public sealed class AddCustomerController : Controller<AddCustomerForm>
     {
-        public AddModifyCustomerController(IModuleController moduleController)
+        private List<State> _states = new List<State>();
+
+        public AddCustomerController(IModuleController moduleController)
             :base(moduleController) { }
 
         public void OnLoad()
         {
-            var states = GetStatesDbo().GetStates();
-            View.FillStateComboBox(states.Select(state => state.StateName).ToArray());
+            _states = GetStatesDbo().GetStates().ToList();
+
+            View.FillStateComboBox(_states.Select(state => state.StateName).ToArray());
         }
 
         public void OnAcceptButtonClicked(NewCustomerEventArgs eventArgs)
@@ -44,7 +48,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
                 Address = eventArgs.Address,
                 City = eventArgs.City,
                 Name = eventArgs.Name,
-                State = ConvertToStateCode(eventArgs.State),
+                State = ConvertStateNameToStateCode(eventArgs.State),
                 ZipCode = eventArgs.ZipCode
             };
 
@@ -52,10 +56,14 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             return customer;
         }
 
-        private string ConvertToStateCode(string stateName)
+        private string ConvertStateNameToStateCode(string stateName)
         {
-            var states = GetStatesDbo().GetStates();
-            return states.First(state => state.StateName == stateName).StateCode;
+            return _states.First(state => state.StateName == stateName).StateCode;
+        }
+
+        private string ConvertStateCodeToStateName(string stateCode)
+        {
+            return _states.First(state => state.StateCode == stateCode).StateName;
         }
 
         private bool IsValid(NewCustomerEventArgs eventArgs)

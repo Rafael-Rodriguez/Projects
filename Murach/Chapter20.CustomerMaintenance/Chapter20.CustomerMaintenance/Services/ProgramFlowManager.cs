@@ -14,21 +14,28 @@ namespace Chapter20.CustomerMaintenance.Services
 
         public void AddNewCustomer()
         {
-            var addModifyCustomerForm = _moduleController.GetView<IAddModifyCustomerView>();
-            var dialogResult = addModifyCustomerForm.ShowDialog();
+            var addCustomerForm = _moduleController.GetView<IAddCustomerView>();
+            addCustomerForm.Customer = null;
+            var dialogResult = addCustomerForm.ShowDialog();
 
             if(dialogResult == System.Windows.Forms.DialogResult.OK)
             {
                 var customerMaintenanceForm = _moduleController.GetView<ICustomerMaintenanceView>();
-                customerMaintenanceForm.FillWithCustomerInfo(addModifyCustomerForm.Customer);
+                customerMaintenanceForm.FillWithCustomerInfo(addCustomerForm.Customer);
             }
         }
 
         public void ModifyExistingCustomer(CustomerEventArgs customerEventArgs)
         {
-            var addModifyCustomerForm = _moduleController.GetView<IAddModifyCustomerView>();
-            addModifyCustomerForm.Customer = customerEventArgs.Customer;
-            var dialogResult = addModifyCustomerForm.ShowDialog();
+            var modifyCustomerForm = _moduleController.GetView<IModifyCustomerView>();
+            modifyCustomerForm.Customer = customerEventArgs.Customer;
+            var dialogResult = modifyCustomerForm.ShowDialog();
+
+            if(dialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                var customerMaintenanceForm = _moduleController.GetView<ICustomerMaintenanceView>();
+                customerMaintenanceForm.FillWithCustomerInfo(modifyCustomerForm.Customer);
+            }
         }
     }
 }

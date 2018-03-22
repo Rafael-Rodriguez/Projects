@@ -2,22 +2,21 @@
 using System;
 using System.Windows.Forms;
 using Chapter20.CustomerMaintenance.Models;
-using System.Collections.Generic;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
-    public partial class AddModifyCustomerForm : Form, IAddModifyCustomerView
+    public partial class AddCustomerForm : Form, IAddCustomerView
     {
-        private AddModifyCustomerController _controller;
+        private AddCustomerController _controller;
 
-        public AddModifyCustomerForm(AddModifyCustomerController controller)
+        public AddCustomerForm(AddCustomerController controller)
         {
             InitializeComponent();
 
             Controller = controller;
         }
 
-        public AddModifyCustomerController Controller
+        public AddCustomerController Controller
         {
             get { return _controller; }
             set
@@ -36,8 +35,6 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 
         private void btnAccept_Click(object sender, System.EventArgs e)
         {
-            //DialogResult = DialogResult.OK;
-
             Controller.OnAcceptButtonClicked(
                 new NewCustomerEventArgs(
                     address: txtBoxAddress.Text,
@@ -57,11 +54,9 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             Controller.OnLoad();
         }
 
-        DialogResult IAddModifyCustomerView.ShowDialog()
+        DialogResult IAddCustomerView.ShowDialog()
         {
             return ShowDialog();
         }
-
-        
     }
 }

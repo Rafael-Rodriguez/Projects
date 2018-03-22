@@ -1,6 +1,6 @@
 ﻿namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
-    partial class AddModifyCustomerForm
+    partial class AddCustomerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -125,13 +125,14 @@
             this.comboBoxStates.Size = new System.Drawing.Size(83, 21);
             this.comboBoxStates.TabIndex = 6;
             // 
-            // AddModifyCustomerForm
+            // AddCustomerForm
             // 
             this.AcceptButton = this.btnAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(583, 169);
+            this.ControlBox = false;
             this.Controls.Add(this.comboBoxStates);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
@@ -142,8 +143,8 @@
             this.Controls.Add(this.txtBoxCity);
             this.Controls.Add(this.txtBoxAddress);
             this.Controls.Add(this.txtBoxName);
-            this.Name = "AddModifyCustomerForm";
-            this.Text = "Add/Modify Customer";
+            this.Name = "AddCustomerForm";
+            this.Text = "Add Customer";
             this.Load += new System.EventHandler(this.AddModifyCustomerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

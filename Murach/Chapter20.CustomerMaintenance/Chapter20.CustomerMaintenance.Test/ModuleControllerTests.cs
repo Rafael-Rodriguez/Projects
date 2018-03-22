@@ -29,9 +29,9 @@ namespace Chapter20.CustomerMaintenance.Test
         [TestMethod]
         public void GetView_AddModifyCustomerForm_ReturnAddModifyCustomerForm()
         {
-            var result = _controller.GetView<IAddModifyCustomerView>();
+            var result = _controller.GetView<IAddCustomerView>();
 
-            Assert.AreEqual(result.GetType(), typeof(AddModifyCustomerForm));
+            Assert.AreEqual(result.GetType(), typeof(AddCustomerForm));
         }
 
         [TestMethod]
