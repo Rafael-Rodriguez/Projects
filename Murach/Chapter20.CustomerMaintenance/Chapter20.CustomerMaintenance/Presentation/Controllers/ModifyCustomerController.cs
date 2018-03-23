@@ -19,7 +19,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             _states = GetStatesDbo().GetStates().ToList();
         }
 
-        public void OnLoad(Customer customer)
+        public void OnLoad(ICustomer customer)
         {
             View.FillStateComboBox(_states.Select(state => state.StateName).ToArray());
 
@@ -29,7 +29,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             }
         }
 
-        public void OnAcceptButtonClicked(Customer oldCustomer, Customer newCustomer)
+        public void OnAcceptButtonClicked(ICustomer oldCustomer, ICustomer newCustomer)
         {
             if (!IsValid(oldCustomer) || !IsValid(newCustomer))
             {
@@ -40,7 +40,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             var customerUpdated = GetCustomerDbo().UpdateCustomer(oldCustomer, newCustomer);
             if (!customerUpdated)
             {
-                MessageBox.Show(Resources.ErrorOccurredWhileUpdatingCustomer,Resources.UnableToUpdateCustomer, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.ErrorOccurredWhileUpdatingCustomer, Resources.UnableToUpdateCustomer, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 View.DialogResult = DialogResult.Retry;
 
                 return;
@@ -56,7 +56,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             return _states.First(state => state.StateCode == stateCode).StateName;
         }
 
-        private bool IsValid(Customer customer)
+        private bool IsValid(ICustomer customer)
         {
             if (!string.IsNullOrEmpty(customer?.Address) 
                 && !string.IsNullOrEmpty(customer.City) 
@@ -80,14 +80,14 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 
         }
 
-        private StatesDbo GetStatesDbo()
+        private IStatesDbo GetStatesDbo()
         {
-            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<StatesDbo>();
+            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<IStatesDbo>();
         }
 
-        private CustomerDbo GetCustomerDbo()
+        private ICustomerDbo GetCustomerDbo()
         {
-            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<CustomerDbo>();
+            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<ICustomerDbo>();
         }
     }
 }

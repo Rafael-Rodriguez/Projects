@@ -8,7 +8,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
     public partial class CustomerMaintenanceForm : Form, ICustomerMaintenanceView
     {
         private CustomerMaintenanceController _controller;
-        private Customer _customer;
+        private ICustomer _customer;
           
         public CustomerMaintenanceForm(CustomerMaintenanceController controller)
         {
@@ -25,6 +25,16 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
                 _controller.View = this;
             }
         }
+
+        public string NameTextBox { get { return txtBoxName.Text; } }
+
+        public string Address { get { return txtBoxAddress.Text; } }
+
+        public string City { get { return txtBoxCity.Text; } }
+
+        public string State { get { return txtBoxState.Text; } }
+
+        public string ZipCode { get { return txtBoxZip.Text; } }
         
         public void SetFocusOnCustomerIdTextBox()
         {
@@ -32,7 +42,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             txtBoxCustomerID.Focus();
         }
         
-        public void FillWithCustomerInfo(Customer customer)
+        public void FillWithCustomerInfo(ICustomer customer)
         {
             if(customer == null)
             {
@@ -80,12 +90,12 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            Controller.OnModifyButtonClicked(new CustomerEventArgs(_customer));
+            Controller.OnModifyButtonClicked(_customer);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Controller.OnDeleteButtonClicked(new CustomerEventArgs(_customer));
+            Controller.OnDeleteButtonClicked(_customer);
         }
 
         private void btnGetCustomer_Click(object sender, EventArgs e)

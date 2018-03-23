@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Chapter20.CustomerMaintenance.Database
 {
-    public class StatesDbo : IDbo
+    public class StatesDbo : IStatesDbo
     {
         public IList<State> GetStates()
         {

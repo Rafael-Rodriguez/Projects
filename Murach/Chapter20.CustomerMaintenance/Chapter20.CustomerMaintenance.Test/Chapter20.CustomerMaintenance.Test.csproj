@@ -71,8 +71,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ModuleControllerTests.cs" />
+    <Compile Include="Presentation\Controllers\ModifyCustomerControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\CustomerMaintenanceFormTests.cs" />
+    <Compile Include="Presentation\Views\CustomerMaintenanceFormTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chapter20.CustomerMaintenance\Chapter20.CustomerMaintenance.csproj">

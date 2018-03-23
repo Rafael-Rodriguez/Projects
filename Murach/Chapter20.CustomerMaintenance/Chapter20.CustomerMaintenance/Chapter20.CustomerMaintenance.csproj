@@ -49,9 +49,13 @@
     <Compile Include="Collections\ICollection.cs" />
     <Compile Include="Collections\IDatabaseObjectCollection.cs" />
     <Compile Include="Database\CustomerDbo.cs" />
+    <Compile Include="Database\ICustomerDbo.cs" />
     <Compile Include="Database\IDbo.cs" />
+    <Compile Include="Database\IStatesDbo.cs" />
     <Compile Include="Collections\DatabaseObjectCollection.cs" />
     <Compile Include="Database\StatesDbo.cs" />
+    <Compile Include="Models\ICustomer.cs" />
+    <Compile Include="Models\IState.cs" />
     <Compile Include="Presentation\Controllers\ModifyCustomerController.cs" />
     <Compile Include="Presentation\Views\IModifyCustomerView.cs" />
     <Compile Include="Presentation\Views\ModifyCustomerForm.cs">
@@ -75,7 +79,6 @@
     </Compile>
     <Compile Include="Presentation\Controllers\AddCustomerController.cs" />
     <Compile Include="Presentation\Controllers\Controller.cs" />
-    <Compile Include="Presentation\Views\CustomerEventArgs.cs" />
     <Compile Include="Presentation\Views\AddCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>

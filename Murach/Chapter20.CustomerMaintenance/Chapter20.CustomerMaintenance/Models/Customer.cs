@@ -1,6 +1,6 @@
 ﻿namespace Chapter20.CustomerMaintenance.Models
 {
-    public sealed class Customer
+    public sealed class Customer : ICustomer
     {
         public string Name { get; set; }
         public string Address { get; set; }

@@ -8,7 +8,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
     public partial class ModifyCustomerForm : Form, IModifyCustomerView
     {
         private ModifyCustomerController _controller;
-        private Customer _customer;
+        private ICustomer _customer;
 
         public ModifyCustomerForm(ModifyCustomerController controller)
         {
@@ -27,7 +27,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             }
         }
 
-        public Customer Customer
+        public ICustomer Customer
         {
             get { return _customer; }
             set
@@ -42,7 +42,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             comboBoxStates.Items.AddRange(states);
         }
 
-        private void FillCustomerFields(Customer customer)
+        private void FillCustomerFields(ICustomer customer)
         {
             txtBoxName.Text = customer.Name;
             txtBoxAddress.Text = customer.Address;
@@ -61,7 +61,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             Controller.OnCancelButtonClicked();
         }
 
-        DialogResult IModifyCustomerView.ShowDialog(Customer customer)
+        DialogResult IModifyCustomerView.ShowDialog(ICustomer customer)
         {
             Customer = customer;
 

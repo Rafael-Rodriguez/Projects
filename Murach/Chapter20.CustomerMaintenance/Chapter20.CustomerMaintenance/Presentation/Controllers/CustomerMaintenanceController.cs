@@ -5,6 +5,7 @@ using Chapter20.CustomerMaintenance.Services;
 using System;
 using System.Windows.Forms;
 using Chapter20.CustomerMaintenance.Properties;
+using Chapter20.CustomerMaintenance.Models;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
@@ -13,15 +14,13 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         public CustomerMaintenanceController(IModuleController moduleController)
             : base(moduleController) { }
 
-        public void OnDeleteButtonClicked(CustomerEventArgs customerEventArgs)
+        public void OnDeleteButtonClicked(ICustomer customer)
         {
             throw new NotImplementedException();
         }
 
-        public void OnModifyButtonClicked(CustomerEventArgs customerEventArgs)
+        public void OnModifyButtonClicked(ICustomer customer)
         {
-            var customer = customerEventArgs.Customer;
-
             if (customer == null)
             {
                 MessageBox.Show(
@@ -33,7 +32,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 
             var programFlowManager = ModuleController.GetService<IProgramFlowManager>();
 
-            programFlowManager.ModifyExistingCustomer(customerEventArgs);
+            programFlowManager.ModifyExistingCustomer(customer);
         }
 
         public void OnAddButtonClicked()

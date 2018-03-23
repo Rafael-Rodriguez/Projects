@@ -5,7 +5,10 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
     public interface IModifyCustomerView : IView
     {
-        Customer Customer { get; set; }
-        DialogResult ShowDialog(Customer customer);
+        ICustomer Customer { get; set; }
+
+        DialogResult ShowDialog(ICustomer customer);
+
+        void FillStateComboBox(string[] states);
     }
 }

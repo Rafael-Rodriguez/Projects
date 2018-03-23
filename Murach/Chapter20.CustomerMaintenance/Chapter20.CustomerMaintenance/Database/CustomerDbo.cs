@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 
 namespace Chapter20.CustomerMaintenance.Database
 {
-    public sealed class CustomerDbo : IDbo
+    public sealed class CustomerDbo : ICustomerDbo
     {
-        public Customer GetCustomer(int customerId)
+        public ICustomer GetCustomer(int customerId)
         {
             var connection = new SqlConnection(Properties.Settings.Default.MMABooksConnectionString);
             const string selectStatement = "SELECT CustomerID, Name, Address, City, State, ZipCode "
@@ -44,7 +44,7 @@ namespace Chapter20.CustomerMaintenance.Database
             }
         }
 
-        public int AddCustomer(Customer customer)
+        public int AddCustomer(ICustomer customer)
         {
             var connection = new SqlConnection(Properties.Settings.Default.MMABooksConnectionString);
             const string insertStatement = "INSERT INTO Customers (Name, Address, City, State, ZipCode)" +
@@ -75,12 +75,12 @@ namespace Chapter20.CustomerMaintenance.Database
             return customerId;
         }
 
-        public bool UpdateCustomer(Customer oldCustomer, Customer newCustomer)
+        public bool UpdateCustomer(ICustomer oldCustomer, ICustomer newCustomer)
         {
             return false;
         }
 
-        public bool DeleteCustomer(Customer customer)
+        public bool DeleteCustomer(ICustomer customer)
         {
             return false;
         }

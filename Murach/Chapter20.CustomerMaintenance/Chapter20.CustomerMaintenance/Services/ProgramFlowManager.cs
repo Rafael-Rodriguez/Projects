@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using Chapter20.CustomerMaintenance.Presentation.Views;
+using Chapter20.CustomerMaintenance.Models;
 
 namespace Chapter20.CustomerMaintenance.Services
 {
@@ -25,10 +26,10 @@ namespace Chapter20.CustomerMaintenance.Services
             }
         }
 
-        public void ModifyExistingCustomer(CustomerEventArgs customerEventArgs)
+        public void ModifyExistingCustomer(ICustomer customer)
         {
             var modifyCustomerForm = _moduleController.GetView<IModifyCustomerView>();
-            var dialogResult = modifyCustomerForm.ShowDialog(customerEventArgs.Customer);
+            var dialogResult = modifyCustomerForm.ShowDialog(customer);
 
             if(dialogResult == DialogResult.OK)
             {
