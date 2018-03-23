@@ -9,14 +9,31 @@ using Chapter20.CustomerMaintenance.Models;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
-    public sealed class CustomerMaintenanceController : Controller<CustomerMaintenanceForm>
+    public sealed class CustomerMaintenanceController : Controller<ICustomerMaintenanceView>
     {
         public CustomerMaintenanceController(IModuleController moduleController, IDialogService dialogService)
             : base(moduleController, dialogService) { }
 
-        public void OnDeleteButtonClicked(ICustomer customer)
+        public void OnGetCustomerButtonClicked(string customerIdText)
         {
-            throw new NotImplementedException();
+            if (!IsValidCustomerId(customerIdText))
+            {
+                DialogService.ShowMessageBox(
+                    Resources.InvalidCustomerIDErrorMessage,
+                    Resources.InvalidEntryTitle);
+
+                View.SetFocusOnCustomerIdTextBox();
+                return;
+            }
+
+            GetCustomerInfo(customerIdText);
+        }
+
+        public void OnAddButtonClicked()
+        {
+            var programFlowManager = ModuleController.GetService<IProgramFlowManager>();
+
+            programFlowManager.AddNewCustomer();
         }
 
         public void OnModifyButtonClicked(ICustomer customer)
@@ -38,30 +55,18 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             programFlowManager.ModifyExistingCustomer(customer);
         }
 
-        public void OnAddButtonClicked()
+        public void OnDeleteButtonClicked(ICustomer customer)
         {
-            var programFlowManager = ModuleController.GetService<IProgramFlowManager>();
-
-            programFlowManager.AddNewCustomer();
-        }
-
-        public void OnGetCustomerButtonClicked(string customerIdText)
-        {
-            if(!IsValidCustomerId(customerIdText))
-            {
-                DialogService.ShowMessageBox(
-                    Resources.InvalidCustomerIDErrorMessage, 
-                    Resources.InvalidEntryTitle);
-
-                View.SetFocusOnCustomerIdTextBox();
-                return;
-            }
-
-            GetCustomerInfo(customerIdText);
+            throw new NotImplementedException();
         }
 
         public void GetCustomerInfo(string text)
         {
+            if(text == null)
+            {
+                throw new ArgumentNullException(text);
+            }
+
             var customerId = ParseCustomerId(text);
 
             var customer = GetCustomerDbo().GetCustomer(customerId);
@@ -102,15 +107,15 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         {
             if(!IsValidCustomerId(text))
             {
-                return -1;
+                throw new ArgumentException("Text is not a valid customer ID", "text");
             }
 
             return int.Parse(text);
         }
 
-        private CustomerDbo GetCustomerDbo()
+        private ICustomerDbo GetCustomerDbo()
         {
-            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<CustomerDbo>();
+            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<ICustomerDbo>();
         }
 
         protected override void Dispose(bool disposing)
