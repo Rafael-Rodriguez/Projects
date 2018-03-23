@@ -4,6 +4,7 @@ using Moq;
 using Chapter20.CustomerMaintenance.Presentation.Views;
 using Chapter20.CustomerMaintenance.Presentation.Controllers;
 using Chapter20.CustomerMaintenance.Models;
+using Chapter20.CustomerMaintenance.Services;
 
 namespace Chapter20.CustomerMaintenance.Test.Views
 {
@@ -12,12 +13,15 @@ namespace Chapter20.CustomerMaintenance.Test.Views
     {
         Mock<IModuleController> _mockedModuleController;
         CustomerMaintenanceController _customerMaintenanceController;
+        private Mock<IDialogService> _mockedDialogService;
 
         [TestInitialize]
         public void Initialize()
         {
             _mockedModuleController = new Mock<IModuleController>();
-            _customerMaintenanceController = new CustomerMaintenanceController(_mockedModuleController.Object);
+            _mockedDialogService = new Mock<IDialogService>();
+
+            _customerMaintenanceController = new CustomerMaintenanceController(_mockedModuleController.Object, _mockedDialogService.Object);
         }
 
         [TestMethod]

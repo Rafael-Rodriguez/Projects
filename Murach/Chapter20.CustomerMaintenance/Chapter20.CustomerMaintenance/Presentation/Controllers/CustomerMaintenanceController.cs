@@ -11,8 +11,8 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
     public sealed class CustomerMaintenanceController : Controller<CustomerMaintenanceForm>
     {
-        public CustomerMaintenanceController(IModuleController moduleController)
-            : base(moduleController) { }
+        public CustomerMaintenanceController(IModuleController moduleController, IDialogService dialogService)
+            : base(moduleController, dialogService) { }
 
         public void OnDeleteButtonClicked(ICustomer customer)
         {
@@ -23,9 +23,12 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         {
             if (customer == null)
             {
-                MessageBox.Show(
+                DialogService.ShowMessageBox(
                     Resources.NoCustomerInformationErrorMessage,
-                    Resources.NoCustomerInformationTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Resources.NoCustomerInformationTitle, 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
+
                 View.SetFocusOnCustomerIdTextBox();
                 return;
             }
@@ -46,7 +49,10 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         {
             if(!IsValidCustomerId(customerIdText))
             {
-                MessageBox.Show(Resources.InvalidCustomerIDErrorMessage, Resources.InvalidEntryTitle);
+                DialogService.ShowMessageBox(
+                    Resources.InvalidCustomerIDErrorMessage, 
+                    Resources.InvalidEntryTitle);
+
                 View.SetFocusOnCustomerIdTextBox();
                 return;
             }
@@ -68,7 +74,10 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
                 }
                 catch (ArgumentNullException)
                 {
-                    MessageBox.Show(Resources.InvalidCustomerIDErrorMessage, Resources.InvalidCustomerIDTitle);
+                    DialogService.ShowMessageBox(
+                        Resources.InvalidCustomerIDErrorMessage, 
+                        Resources.InvalidCustomerIDTitle);
+
                     View.SetFocusOnCustomerIdTextBox();
                 }
             }

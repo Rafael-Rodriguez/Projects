@@ -9,6 +9,8 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 
         DialogResult ShowDialog(ICustomer customer);
 
+        void SetDialogResult(DialogResult result);
+
         void FillStateComboBox(string[] states);
     }
 }

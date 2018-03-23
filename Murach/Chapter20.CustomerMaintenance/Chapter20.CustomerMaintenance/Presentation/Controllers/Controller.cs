@@ -1,4 +1,5 @@
 ﻿using Chapter20.CustomerMaintenance.Presentation.Views;
+using Chapter20.CustomerMaintenance.Services;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
@@ -6,12 +7,16 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
     {
         private T _view;
 
-        protected Controller(IModuleController moduleController)
+        protected Controller(IModuleController moduleController, IDialogService dialogService)
         {
             ModuleController = moduleController;
+
+            DialogService = dialogService;
         }
 
         protected IModuleController ModuleController { get; }
+
+        protected IDialogService DialogService { get; }
 
         public T View
         {

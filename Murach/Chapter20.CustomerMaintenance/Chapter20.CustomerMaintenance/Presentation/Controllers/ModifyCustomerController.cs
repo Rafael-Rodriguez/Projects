@@ -6,15 +6,16 @@ using Chapter20.CustomerMaintenance.Database;
 using Chapter20.CustomerMaintenance.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Chapter20.CustomerMaintenance.Services;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
-    public sealed class ModifyCustomerController : Controller<ModifyCustomerForm>
+    public sealed class ModifyCustomerController : Controller<IModifyCustomerView>
     {
         private List<State> _states = new List<State>();
 
-        public ModifyCustomerController(IModuleController moduleController)
-            : base(moduleController)
+        public ModifyCustomerController(IModuleController moduleController, IDialogService dialogService)
+            : base(moduleController, dialogService)
         {
             _states = GetStatesDbo().GetStates().ToList();
         }
@@ -33,22 +34,27 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         {
             if (!IsValid(oldCustomer) || !IsValid(newCustomer))
             {
-                MessageBox.Show(Resources.InvalidCustomerEntry, Resources.InvalidEntryTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogService.ShowMessageBox(Resources.InvalidCustomerEntry, Resources.InvalidEntryTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             var customerUpdated = GetCustomerDbo().UpdateCustomer(oldCustomer, newCustomer);
             if (!customerUpdated)
             {
-                MessageBox.Show(Resources.ErrorOccurredWhileUpdatingCustomer, Resources.UnableToUpdateCustomer, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                View.DialogResult = DialogResult.Retry;
+                DialogService.ShowMessageBox(Resources.ErrorOccurredWhileUpdatingCustomer, Resources.UnableToUpdateCustomer, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                View.SetDialogResult(DialogResult.Retry);
 
                 return;
             }
 
             View.Customer = newCustomer;
 
-            View.DialogResult = DialogResult.OK;
+            View.SetDialogResult(DialogResult.OK);
+        }
+
+        public void OnCancelButtonClicked()
+        {
+
         }
 
         public string ConvertStateCodeToStateName(string stateCode)
@@ -68,11 +74,6 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             }
 
             return false;
-        }
-
-        public void OnCancelButtonClicked()
-        {
-
         }
 
         protected override void Dispose(bool disposing)

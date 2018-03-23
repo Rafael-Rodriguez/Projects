@@ -44,7 +44,8 @@ namespace Chapter20.CustomerMaintenance
         {
             _services = new List<IService>
             {
-                new ProgramFlowManager(this)
+                new ProgramFlowManager(this),
+                new DialogService()
             };
         }
 
@@ -60,9 +61,9 @@ namespace Chapter20.CustomerMaintenance
         {
             _views = new List<IView>
             {
-                new CustomerMaintenanceForm(new CustomerMaintenanceController(this)),
-                new AddCustomerForm(new AddCustomerController(this)),
-                new ModifyCustomerForm(new ModifyCustomerController(this))
+                new CustomerMaintenanceForm(new CustomerMaintenanceController(this, GetService<IDialogService>())),
+                new AddCustomerForm(new AddCustomerController(this, GetService<IDialogService>())),
+                new ModifyCustomerForm(new ModifyCustomerController(this, GetService<IDialogService>()))
             };
         }
 

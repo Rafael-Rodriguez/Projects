@@ -7,6 +7,7 @@ using Chapter20.CustomerMaintenance.Models;
 using System.Windows.Forms;
 using Chapter20.CustomerMaintenance.Properties;
 using System.Collections.Generic;
+using Chapter20.CustomerMaintenance.Services;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
@@ -14,8 +15,8 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
     {
         private List<State> _states = new List<State>();
 
-        public AddCustomerController(IModuleController moduleController)
-            :base(moduleController) { }
+        public AddCustomerController(IModuleController moduleController, IDialogService dialogService)
+            :base(moduleController, dialogService) { }
 
         public void OnLoad()
         {
@@ -28,7 +29,12 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         {
             if (!IsValid(eventArgs))
             {
-                MessageBox.Show(Resources.InvalidCustomerEntry, Resources.InvalidEntryTitle,MessageBoxButtons.OK,MessageBoxIcon.Error);
+                DialogService.ShowMessageBox(
+                    Resources.InvalidCustomerEntry, 
+                    Resources.InvalidEntryTitle,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
                 return;
             }
 

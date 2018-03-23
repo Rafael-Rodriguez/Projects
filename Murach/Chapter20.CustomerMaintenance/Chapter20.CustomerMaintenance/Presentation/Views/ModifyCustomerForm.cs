@@ -42,6 +42,11 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             comboBoxStates.Items.AddRange(states);
         }
 
+        public void SetDialogResult(DialogResult result)
+        {
+            DialogResult = result;
+        }
+
         private void FillCustomerFields(ICustomer customer)
         {
             txtBoxName.Text = customer.Name;
