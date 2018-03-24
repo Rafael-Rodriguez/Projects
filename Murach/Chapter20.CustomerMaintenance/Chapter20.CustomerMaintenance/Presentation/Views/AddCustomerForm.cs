@@ -2,6 +2,8 @@
 using System;
 using System.Windows.Forms;
 using Chapter20.CustomerMaintenance.Models;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
@@ -28,8 +30,21 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 
         public ICustomer Customer { get; set; }
 
+        public IList<string> States
+        {
+            get
+            {
+                return comboBoxStates.Items.Cast<string>().ToList();
+            }
+        }
+
         public void FillStateComboBox(string[] states)
         {
+            if(states == null)
+            {
+                throw new ArgumentNullException("states");
+            }
+
             comboBoxStates.Items.AddRange(states);
         }
 
