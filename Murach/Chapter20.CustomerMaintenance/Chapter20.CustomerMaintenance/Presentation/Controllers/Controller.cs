@@ -34,7 +34,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             Dispose(true);
         }
 
-        protected abstract void Dispose(bool disposing);
+        protected virtual void Dispose(bool disposing) { }
 
         protected virtual void OnBeforeViewSet() { }
 

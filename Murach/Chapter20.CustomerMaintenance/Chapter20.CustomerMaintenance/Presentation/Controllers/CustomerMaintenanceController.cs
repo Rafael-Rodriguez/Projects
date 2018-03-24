@@ -117,9 +117,5 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         {
             return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<ICustomerDbo>();
         }
-
-        protected override void Dispose(bool disposing)
-        {    
-        }
     }
 }

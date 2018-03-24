@@ -26,17 +26,22 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             }
         }
 
-        public Customer Customer { get; set; }
+        public ICustomer Customer { get; set; }
 
         public void FillStateComboBox(string[] states)
         {
             comboBoxStates.Items.AddRange(states);
         }
 
+        public void SetDialogResult(DialogResult result)
+        {
+            DialogResult = result;
+        }
+
         private void btnAccept_Click(object sender, System.EventArgs e)
         {
             Controller.OnAcceptButtonClicked(
-                new NewCustomerEventArgs(
+                new NewCustomerArgs(
                     address: txtBoxAddress.Text,
                     city: txtBoxCity.Text, 
                     name: txtBoxName.Text, 

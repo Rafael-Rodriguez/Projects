@@ -1,11 +1,8 @@
-﻿using System;
-using Chapter20.CustomerMaintenance.Models;
-
-namespace Chapter20.CustomerMaintenance.Presentation.Views
+﻿namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
-    public class NewCustomerEventArgs : EventArgs
+    public class NewCustomerArgs
     {
-        public NewCustomerEventArgs(string name, string address, string city, string state, string zipCode)
+        public NewCustomerArgs(string name, string address, string city, string state, string zipCode)
         {
             Name = name;
             Address = address;

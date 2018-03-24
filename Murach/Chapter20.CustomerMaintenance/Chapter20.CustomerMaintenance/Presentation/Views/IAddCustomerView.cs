@@ -5,7 +5,12 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
     public interface IAddCustomerView : IView
     {
-        Customer Customer { get; set; }
+        ICustomer Customer { get; set; }
+
         DialogResult ShowDialog();
+
+        void SetDialogResult(DialogResult result);
+
+        void FillStateComboBox(string[] states);
     }
 }

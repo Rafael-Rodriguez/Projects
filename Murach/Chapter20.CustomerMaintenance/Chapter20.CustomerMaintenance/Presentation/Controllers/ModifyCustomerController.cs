@@ -76,11 +76,6 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             return false;
         }
 
-        protected override void Dispose(bool disposing)
-        {
-
-        }
-
         private IStatesDbo GetStatesDbo()
         {
             return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<IStatesDbo>();

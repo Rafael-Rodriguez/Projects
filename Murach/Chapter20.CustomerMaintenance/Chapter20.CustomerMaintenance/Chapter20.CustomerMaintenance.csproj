@@ -64,7 +64,7 @@
     <Compile Include="Presentation\Views\ModifyCustomerForm.Designer.cs">
       <DependentUpon>ModifyCustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\NewCustomerEventArgs.cs" />
+    <Compile Include="Presentation\Views\NewCustomerArgs.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\IProgramFlowManager.cs" />

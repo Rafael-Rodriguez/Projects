@@ -71,6 +71,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ModuleControllerTests.cs" />
+    <Compile Include="Presentation\Controllers\AddCustomerControllerTests.cs" />
     <Compile Include="Presentation\Controllers\CustomerMaintenanceControllerTests.cs" />
     <Compile Include="Presentation\Controllers\ModifyCustomerControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

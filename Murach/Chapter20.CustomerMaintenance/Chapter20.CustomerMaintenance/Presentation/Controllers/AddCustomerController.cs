@@ -11,21 +11,22 @@ using Chapter20.CustomerMaintenance.Services;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 {
-    public sealed class AddCustomerController : Controller<AddCustomerForm>
+    public sealed class AddCustomerController : Controller<IAddCustomerView>
     {
         private List<State> _states = new List<State>();
 
         public AddCustomerController(IModuleController moduleController, IDialogService dialogService)
-            :base(moduleController, dialogService) { }
+            :base(moduleController, dialogService)
+        {
+            _states = GetStatesDbo().GetStates().ToList();
+        }
 
         public void OnLoad()
         {
-            _states = GetStatesDbo().GetStates().ToList();
-
             View.FillStateComboBox(_states.Select(state => state.StateName).ToArray());
         }
 
-        public void OnAcceptButtonClicked(NewCustomerEventArgs eventArgs)
+        public void OnAcceptButtonClicked(NewCustomerArgs eventArgs)
         {
             if (!IsValid(eventArgs))
             {
@@ -44,10 +45,15 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 
             View.Customer = customer;
 
-            View.DialogResult = DialogResult.OK;
+            View.SetDialogResult(DialogResult.OK);
         }
 
-        private Customer CreateCustomer(NewCustomerEventArgs eventArgs)
+        public void OnCancelButtonClicked()
+        {
+
+        }
+
+        private ICustomer CreateCustomer(NewCustomerArgs eventArgs)
         {
             var customer = new Customer
             {
@@ -72,10 +78,14 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             return _states.First(state => state.StateCode == stateCode).StateName;
         }
 
-        private bool IsValid(NewCustomerEventArgs eventArgs)
+        private bool IsValid(NewCustomerArgs eventArgs)
         {
-            if( eventArgs != null &&
-                !String.IsNullOrEmpty(eventArgs.Address) &&
+            if(eventArgs == null)
+            {
+                throw new ArgumentNullException("eventArgs");
+            }
+
+            if( !String.IsNullOrEmpty(eventArgs.Address) &&
                 !String.IsNullOrEmpty(eventArgs.City) &&
                 !String.IsNullOrEmpty(eventArgs.Name) &&
                 !String.IsNullOrEmpty(eventArgs.State) &&
@@ -87,24 +97,14 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             return false;
         }
 
-        public void OnCancelButtonClicked()
+        private IStatesDbo GetStatesDbo()
         {
-
+            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<IStatesDbo>();
         }
 
-        protected override void Dispose(bool disposing)
+        private ICustomerDbo GetCustomerDbo()
         {
-            
-        }
-
-        private StatesDbo GetStatesDbo()
-        {
-            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<StatesDbo>();
-        }
-
-        private CustomerDbo GetCustomerDbo()
-        {
-            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<CustomerDbo>();
+            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<ICustomerDbo>();
         }
     }
 }
