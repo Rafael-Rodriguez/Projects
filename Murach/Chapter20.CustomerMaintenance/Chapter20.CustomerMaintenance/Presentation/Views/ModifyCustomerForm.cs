@@ -1,6 +1,8 @@
 ﻿using Chapter20.CustomerMaintenance.Models;
 using Chapter20.CustomerMaintenance.Presentation.Controllers;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Views
@@ -34,6 +36,14 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             {
                 _customer = value;
                 FillCustomerFields(_customer);
+            }
+        }
+
+        public IList<string> States
+        {
+            get
+            {
+                return comboBoxStates.Items.Cast<string>().ToList();
             }
         }
 
