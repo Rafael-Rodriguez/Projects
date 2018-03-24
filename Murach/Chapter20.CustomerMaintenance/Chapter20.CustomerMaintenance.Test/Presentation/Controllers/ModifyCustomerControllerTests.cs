@@ -110,9 +110,26 @@ namespace Chapter20.CustomerMaintenance.Test.Presentation.Controllers
 
             _mockedCustomerDbo.Setup(customerDbo => customerDbo.UpdateCustomer(oldCustomer, newCustomer)).Returns(true);
 
+            _mockedModifyCustomerView.SetupProperty(view => view.Customer);
             _controller.OnAcceptButtonClicked(oldCustomer, newCustomer);
 
             _mockedModifyCustomerView.VerifySet(view => view.Customer = newCustomer, Times.Once);
+        }
+
+        [TestMethod]
+        public void OnAcceptButtonClicked_OldCustomerAndNewCustomerAreValid_UpdateCustomerIsCalledAndReturnsTrue_ViewCustomerIdMatchesOldCustomerId()
+        {
+            var oldCustomer = CreateCustomer();
+            var newCustomer = CreateCustomer();
+
+            oldCustomer.CustomerId = 100;
+
+            _mockedCustomerDbo.Setup(customerDbo => customerDbo.UpdateCustomer(oldCustomer, newCustomer)).Returns(true);
+
+            _mockedModifyCustomerView.SetupProperty(view => view.Customer);
+            _controller.OnAcceptButtonClicked(oldCustomer, newCustomer);
+
+            Assert.AreEqual(_mockedModifyCustomerView.Object.Customer.CustomerId, oldCustomer.CustomerId);
         }
 
         private ICustomer CreateCustomer()

@@ -48,6 +48,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
             }
 
             View.Customer = newCustomer;
+            View.Customer.CustomerId = oldCustomer.CustomerId;
 
             View.SetDialogResult(DialogResult.OK);
         }
@@ -60,6 +61,11 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
         public string ConvertStateCodeToStateName(string stateCode)
         {
             return _states.First(state => state.StateCode == stateCode).StateName;
+        }
+
+        public string ConvertStateNameToStateCode(string stateName)
+        {
+            return _states.First(state => state.StateName == stateName).StateCode;
         }
 
         private bool IsValid(ICustomer customer)

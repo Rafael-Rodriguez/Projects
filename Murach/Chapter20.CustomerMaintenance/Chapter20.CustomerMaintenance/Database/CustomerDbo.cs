@@ -77,7 +77,51 @@ namespace Chapter20.CustomerMaintenance.Database
 
         public bool UpdateCustomer(ICustomer oldCustomer, ICustomer newCustomer)
         {
-            return false;
+            var connection = new SqlConnection(Properties.Settings.Default.MMABooksConnectionString);
+            const string updateStatement = "UPDATE Customers SET " +
+                "Name = @NewName, " +
+                "Address = @NewAddress, " +
+                "City = @NewCity, " +
+                "State = @NewState, " +
+                "ZipCode = @NewZipCode " +
+                "WHERE CustomerID = @CustomerID " +
+                "AND Name = @OldName " +
+                "AND Address = @OldAddress " +
+                "AND City = @OldCity " +
+                "AND State = @OldState " +
+                "AND ZipCode = @OldZipCode";
+            var updateCommand = new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue("@NewName", newCustomer.Name);
+            updateCommand.Parameters.AddWithValue("@NewAddress", newCustomer.Address);
+            updateCommand.Parameters.AddWithValue("@NewCity", newCustomer.City);
+            updateCommand.Parameters.AddWithValue("@NewState", newCustomer.State);
+            updateCommand.Parameters.AddWithValue("@NewZipCode", newCustomer.ZipCode);
+            updateCommand.Parameters.AddWithValue("@CustomerID", oldCustomer.CustomerId);
+            updateCommand.Parameters.AddWithValue("@OldName", oldCustomer.Name);
+            updateCommand.Parameters.AddWithValue("@OldAddress", oldCustomer.Address);
+            updateCommand.Parameters.AddWithValue("@OldCity", oldCustomer.City);
+            updateCommand.Parameters.AddWithValue("@OldState", oldCustomer.State);
+            updateCommand.Parameters.AddWithValue("@OldZipCode", oldCustomer.ZipCode);
+
+            try
+            {
+                connection.Open();
+
+                var count = updateCommand.ExecuteNonQuery();
+                if(count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+
         }
 
         public bool DeleteCustomer(ICustomer customer)

@@ -68,7 +68,16 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            Controller.OnAcceptButtonClicked(Customer, new Customer {Address =  txtBoxName.Text, City = txtBoxCity.Text, Name = txtBoxName.Text, State = comboBoxStates.Text, ZipCode = txtBoxZip.Text});
+            Controller.OnAcceptButtonClicked(Customer, 
+                new Customer
+                {
+                    Address =  txtBoxAddress.Text,
+                    City = txtBoxCity.Text,
+                    Name = txtBoxName.Text,
+                    State = Controller.ConvertStateNameToStateCode(comboBoxStates.Text),
+                    ZipCode = txtBoxZip.Text
+                }
+                );
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
