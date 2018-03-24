@@ -1,25 +1,25 @@
-﻿using Chapter20.CustomerMaintenance.Models;
+﻿using System;
+using System.Windows.Forms;
+using Chapter20.CustomerMaintenance.Models;
 using Chapter20.CustomerMaintenance.Presentation.Controllers;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace Chapter20.CustomerMaintenance.Presentation.Views
 {
-    public partial class ModifyCustomerForm : Form, IModifyCustomerView
+    public partial class DeleteCustomerForm : Form, IDeleteCustomerView
     {
-        private ModifyCustomerController _controller;
         private ICustomer _customer;
+        private DeleteCustomerController _controller;
 
-        public ModifyCustomerForm(ModifyCustomerController controller)
+        public DeleteCustomerForm(DeleteCustomerController controller)
         {
             InitializeComponent();
 
             Controller = controller;
         }
 
-        public ModifyCustomerController Controller
+        public DeleteCustomerController Controller
         {
             get { return _controller; }
             set
@@ -31,7 +31,11 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 
         public ICustomer Customer
         {
-            get { return _customer; }
+            get
+            {
+                return _customer;
+            }
+
             set
             {
                 _customer = value;
@@ -46,6 +50,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
                 return comboBoxStates.Items.Cast<string>().ToList();
             }
         }
+
 
         public void FillStateComboBox(string[] states)
         {
@@ -75,16 +80,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            Controller.OnAcceptButtonClicked(Customer, 
-                new Customer
-                {
-                    Address =  txtBoxAddress.Text,
-                    City = txtBoxCity.Text,
-                    Name = txtBoxName.Text,
-                    State = Controller.ConvertStateNameToStateCode(comboBoxStates.Text),
-                    ZipCode = txtBoxZip.Text
-                }
-                );
+            Controller.OnAcceptButtonClicked(Customer);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -92,7 +88,7 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             Controller.OnCancelButtonClicked();
         }
 
-        private void ModifyCustomerForm_Load(object sender, EventArgs e)
+        private void DeleteCustomerForm_Load(object sender, EventArgs e)
         {
             Controller.OnLoad(Customer);
         }

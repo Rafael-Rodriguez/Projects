@@ -63,7 +63,8 @@ namespace Chapter20.CustomerMaintenance
             {
                 new CustomerMaintenanceForm(new CustomerMaintenanceController(this, GetService<IDialogService>())),
                 new AddCustomerForm(new AddCustomerController(this, GetService<IDialogService>())),
-                new ModifyCustomerForm(new ModifyCustomerController(this, GetService<IDialogService>()))
+                new ModifyCustomerForm(new ModifyCustomerController(this, GetService<IDialogService>())),
+                new DeleteCustomerForm(new DeleteCustomerController(this, GetService<IDialogService>()))
             };
         }
 

@@ -7,5 +7,6 @@ namespace Chapter20.CustomerMaintenance.Services
     {
         void AddNewCustomer();
         void ModifyExistingCustomer(ICustomer customer);
+        void DeleteExistingCustomer(ICustomer customer);
     }
 }

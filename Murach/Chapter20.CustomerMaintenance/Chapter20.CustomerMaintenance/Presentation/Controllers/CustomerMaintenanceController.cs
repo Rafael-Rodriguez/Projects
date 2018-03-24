@@ -57,7 +57,21 @@ namespace Chapter20.CustomerMaintenance.Presentation.Controllers
 
         public void OnDeleteButtonClicked(ICustomer customer)
         {
-            throw new NotImplementedException();
+            if (customer == null)
+            {
+                DialogService.ShowMessageBox(
+                    Resources.NoCustomerInformationErrorMessage,
+                    Resources.NoCustomerInformationTitle,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                View.SetFocusOnCustomerIdTextBox();
+                return;
+            }
+
+            var programFlowManager = ModuleController.GetService<IProgramFlowManager>();
+
+            programFlowManager.DeleteExistingCustomer(customer);
         }
 
         public void GetCustomerInfo(string text)

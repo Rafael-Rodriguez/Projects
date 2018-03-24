@@ -73,8 +73,10 @@
     <Compile Include="ModuleControllerTests.cs" />
     <Compile Include="Presentation\Controllers\AddCustomerControllerTests.cs" />
     <Compile Include="Presentation\Controllers\CustomerMaintenanceControllerTests.cs" />
+    <Compile Include="Presentation\Controllers\DeleteCustomerControllerTests.cs" />
     <Compile Include="Presentation\Controllers\ModifyCustomerControllerTests.cs" />
     <Compile Include="Presentation\Views\AddCustomerFormTests.cs" />
+    <Compile Include="Presentation\Views\DeleteCustomerFormTests.cs" />
     <Compile Include="Presentation\Views\ModifyCustomerFormTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Presentation\Views\CustomerMaintenanceFormTests.cs" />

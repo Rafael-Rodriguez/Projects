@@ -117,34 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ErrorOccurredWhileDeletingCustomer" xml:space="preserve">
-    <value>An error occurred while trying to delete the customer.</value>
-  </data>
-  <data name="ErrorOccurredWhileUpdatingCustomer" xml:space="preserve">
-    <value>Error occurred while updating the customer.  Please try again.</value>
-  </data>
-  <data name="InvalidCustomerEntry" xml:space="preserve">
-    <value>Invalid customer entry.  One of the required fields is empty.  Please fill in all fields.</value>
-  </data>
-  <data name="InvalidCustomerIDErrorMessage" xml:space="preserve">
-    <value>Invalid customer ID entered.  Please try again</value>
-  </data>
-  <data name="InvalidCustomerIDTitle" xml:space="preserve">
-    <value>Invalid Customer ID</value>
-  </data>
-  <data name="InvalidEntryTitle" xml:space="preserve">
-    <value>Invalid Entry</value>
-  </data>
-  <data name="NoCustomerInformationErrorMessage" xml:space="preserve">
-    <value>No customer information has been loaded.  Please Enter in the Customer ID and click on the "Get Customer" button</value>
-  </data>
-  <data name="NoCustomerInformationTitle" xml:space="preserve">
-    <value>No customer information</value>
-  </data>
-  <data name="UnableToDeleteCustomer" xml:space="preserve">
-    <value>Unable to delete the customer.</value>
-  </data>
-  <data name="UnableToUpdateCustomer" xml:space="preserve">
-    <value>Unable to update customer.</value>
-  </data>
 </root>

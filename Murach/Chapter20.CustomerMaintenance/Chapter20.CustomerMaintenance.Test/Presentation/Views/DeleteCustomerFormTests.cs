@@ -12,12 +12,12 @@ using System.Collections.Generic;
 namespace Chapter20.CustomerMaintenance.Test.Presentation.Views
 {
     [TestClass]
-    public class ModifyCustomerFormTests
+    public class DeleteCustomerFormTests
     {
-        private ModifyCustomerController _modifyCustomerController;
+        private DeleteCustomerController _deleteCustomerController;
         private Mock<IDialogService> _mockedDialogService;
         private Mock<IModuleController> _mockedModuleController;
-        private IModifyCustomerView _view;
+        private IDeleteCustomerView _view;
         private Mock<IDatabaseObjectCollection> _mockedDatabaseObjectCollection;
         private Mock<ICustomerDbo> _mockedCustomerDbo;
         private Mock<IStatesDbo> _mockedStatesDbo;
@@ -41,9 +41,9 @@ namespace Chapter20.CustomerMaintenance.Test.Presentation.Views
 
             _mockedModuleController.Setup(moduleController => moduleController.GetCollection<IDatabaseObjectCollection>()).Returns(_mockedDatabaseObjectCollection.Object);
 
-            _modifyCustomerController = new ModifyCustomerController(_mockedModuleController.Object, _mockedDialogService.Object);
+            _deleteCustomerController = new DeleteCustomerController(_mockedModuleController.Object, _mockedDialogService.Object);
 
-            _view = new ModifyCustomerForm(_modifyCustomerController);
+            _view = new DeleteCustomerForm(_deleteCustomerController);
         }
 
         [TestMethod]

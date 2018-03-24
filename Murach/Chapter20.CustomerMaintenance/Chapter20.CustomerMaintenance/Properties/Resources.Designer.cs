@@ -61,6 +61,15 @@ namespace Chapter20.CustomerMaintenance.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while trying to delete the customer..
+        /// </summary>
+        internal static string ErrorOccurredWhileDeletingCustomer {
+            get {
+                return ResourceManager.GetString("ErrorOccurredWhileDeletingCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error occurred while updating the customer.  Please try again..
         /// </summary>
         internal static string ErrorOccurredWhileUpdatingCustomer {
@@ -120,6 +129,15 @@ namespace Chapter20.CustomerMaintenance.Properties {
         internal static string NoCustomerInformationTitle {
             get {
                 return ResourceManager.GetString("NoCustomerInformationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to delete the customer..
+        /// </summary>
+        internal static string UnableToDeleteCustomer {
+            get {
+                return ResourceManager.GetString("UnableToDeleteCustomer", resourceCulture);
             }
         }
         

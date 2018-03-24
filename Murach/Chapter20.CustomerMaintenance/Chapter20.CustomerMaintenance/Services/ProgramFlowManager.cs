@@ -42,5 +42,22 @@ namespace Chapter20.CustomerMaintenance.Services
                 customerMaintenanceForm.RegrabCustomerInfoFromDb();
             }
         }
+
+        public void DeleteExistingCustomer(ICustomer customer)
+        {
+            var deleteCustomerForm = _moduleController.GetView<IDeleteCustomerView>();
+            var dialogResult = deleteCustomerForm.ShowDialog(customer);
+
+            if(dialogResult == DialogResult.OK)
+            {
+                var customerMaintenanceForm = _moduleController.GetView<ICustomerMaintenanceView>();
+                customerMaintenanceForm.ClearControls();
+            }
+            else if(dialogResult == DialogResult.Retry)
+            {
+                var customerMaintenanceForm = _moduleController.GetView<ICustomerMaintenanceView>();
+                customerMaintenanceForm.RegrabCustomerInfoFromDb();
+            }
+        }
     }
 }

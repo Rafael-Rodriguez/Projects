@@ -56,7 +56,15 @@
     <Compile Include="Database\StatesDbo.cs" />
     <Compile Include="Models\ICustomer.cs" />
     <Compile Include="Models\IState.cs" />
+    <Compile Include="Presentation\Controllers\DeleteCustomerController.cs" />
     <Compile Include="Presentation\Controllers\ModifyCustomerController.cs" />
+    <Compile Include="Presentation\Views\DeleteCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Views\DeleteCustomerForm.Designer.cs">
+      <DependentUpon>DeleteCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Views\IDeleteCustomerView.cs" />
     <Compile Include="Presentation\Views\IModifyCustomerView.cs" />
     <Compile Include="Presentation\Views\ModifyCustomerForm.cs">
       <SubType>Form</SubType>
@@ -105,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Views\CustomerMaintenanceForm.resx">
       <DependentUpon>CustomerMaintenanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Views\DeleteCustomerForm.resx">
+      <DependentUpon>DeleteCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Views\ModifyCustomerForm.resx">
       <DependentUpon>ModifyCustomerForm.cs</DependentUpon>

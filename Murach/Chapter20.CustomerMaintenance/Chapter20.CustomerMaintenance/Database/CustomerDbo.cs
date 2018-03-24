@@ -126,7 +126,40 @@ namespace Chapter20.CustomerMaintenance.Database
 
         public bool DeleteCustomer(ICustomer customer)
         {
-            return false;
+            var connection = new SqlConnection(Properties.Settings.Default.MMABooksConnectionString);
+            var deleteStatement =
+                "DELETE FROM Customers " +
+                "WHERE CustomerID = @CustomerID " +
+                "AND Name = @Name " +
+                "AND Address = @Address " +
+                "AND City = @City " +
+                "AND State = @State " +
+                "AND ZipCode = @ZipCode";
+            var deleteCommand = new SqlCommand(deleteStatement, connection);
+            deleteCommand.Parameters.AddWithValue("@CustomerID", customer.CustomerId);
+            deleteCommand.Parameters.AddWithValue("@Name", customer.Name);
+            deleteCommand.Parameters.AddWithValue("@Address", customer.Address);
+            deleteCommand.Parameters.AddWithValue("@City", customer.City);
+            deleteCommand.Parameters.AddWithValue("@State", customer.State);
+            deleteCommand.Parameters.AddWithValue("@ZipCode", customer.ZipCode);
+
+            try
+            {
+                connection.Open();
+                int count = deleteCommand.ExecuteNonQuery();
+                if(count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }
