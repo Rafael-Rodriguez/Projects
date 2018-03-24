@@ -14,6 +14,7 @@ namespace Chapter20.CustomerMaintenance.Test.Views
         Mock<IModuleController> _mockedModuleController;
         CustomerMaintenanceController _customerMaintenanceController;
         private Mock<IDialogService> _mockedDialogService;
+        private ICustomerMaintenanceView _view;
 
         [TestInitialize]
         public void Initialize()
@@ -22,46 +23,58 @@ namespace Chapter20.CustomerMaintenance.Test.Views
             _mockedDialogService = new Mock<IDialogService>();
 
             _customerMaintenanceController = new CustomerMaintenanceController(_mockedModuleController.Object, _mockedDialogService.Object);
+
+            _view = new CustomerMaintenanceForm(_customerMaintenanceController);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void FillWithCustomerInfo_CustomerIsNull_ArgumentNullExceptionThrown()
         {
-            var form = new CustomerMaintenanceForm(_customerMaintenanceController);
-            form.FillWithCustomerInfo(null);
+            _view.FillWithCustomerInfo(null);
         }
 
         [TestMethod]
         public void FillWithCustomerInfo_CustomerIsValid_TextFieldsAreFilledWithCustomerInfo()
         {
-            var form = new CustomerMaintenanceForm(_customerMaintenanceController);
-            var customer = new Customer { Name = "Benjamin Blue", Address = "1364 Hickamore Road", City = "Blountsville", State = "Alabama", ZipCode = "35031" };
+            var customer = CreateCustomer();
 
-            form.FillWithCustomerInfo(customer);
+            _view.FillWithCustomerInfo(customer);
 
-            Assert.AreEqual(customer.Name, form.NameTextBox);
-            Assert.AreEqual(customer.Address, form.Address);
-            Assert.AreEqual(customer.City, form.City);
-            Assert.AreEqual(customer.State, form.State);
-            Assert.AreEqual(customer.ZipCode, form.ZipCode);
+            Assert.AreEqual(customer.Name, _view.NameTextBox);
+            Assert.AreEqual(customer.Address, _view.Address);
+            Assert.AreEqual(customer.City, _view.City);
+            Assert.AreEqual(customer.State, _view.State);
+            Assert.AreEqual(customer.ZipCode, _view.ZipCode);
         }
 
         [TestMethod]
         public void ClearControls_TextFieldsAreEmpty()
         {
-            var form = new CustomerMaintenanceForm(_customerMaintenanceController);
-            var customer = new Customer { Name = "Benjamin Blue", Address = "1364 Hickamore Road", City = "Blountsville", State = "Alabama", ZipCode = "35031" };
+            var customer = CreateCustomer();
 
-            form.FillWithCustomerInfo(customer);
+            _view.FillWithCustomerInfo(customer);
 
-            form.ClearControls();
+            _view.ClearControls();
 
-            Assert.AreEqual("", form.NameTextBox);
-            Assert.AreEqual("", form.Address);
-            Assert.AreEqual("", form.City);
-            Assert.AreEqual("", form.State);
-            Assert.AreEqual("", form.ZipCode);
+            Assert.AreEqual("", _view.NameTextBox);
+            Assert.AreEqual("", _view.Address);
+            Assert.AreEqual("", _view.City);
+            Assert.AreEqual("", _view.State);
+            Assert.AreEqual("", _view.ZipCode);
+        }
+        
+        private ICustomer CreateCustomer()
+        {
+            return new Customer
+            {
+                Name = "Benjamin Blue",
+                Address = "1364 Hickamore Road",
+                City = "Blountsville",
+                State = "Alabama",
+                ZipCode = "35031"
+            };
+
         }
     }
 }

@@ -26,15 +26,15 @@ namespace Chapter20.CustomerMaintenance.Presentation.Views
             }
         }
 
-        public string NameTextBox { get { return txtBoxName.Text; } }
+        public string NameTextBox { get { return txtBoxName.Text; } set { txtBoxName.Text = value; } }
 
-        public string Address { get { return txtBoxAddress.Text; } }
+        public string Address { get { return txtBoxAddress.Text; } set { txtBoxAddress.Text = value; } }
 
-        public string City { get { return txtBoxCity.Text; } }
+        public string City { get { return txtBoxCity.Text; } set { txtBoxCity.Text = value; } }
 
-        public string State { get { return txtBoxState.Text; } }
+        public string State { get { return txtBoxState.Text; } set { txtBoxState.Text = value; } }
 
-        public string ZipCode { get { return txtBoxZip.Text; } }
+        public string ZipCode { get { return txtBoxZip.Text; } set { txtBoxZip.Text = value; } }
         
         public void SetFocusOnCustomerIdTextBox()
         {
