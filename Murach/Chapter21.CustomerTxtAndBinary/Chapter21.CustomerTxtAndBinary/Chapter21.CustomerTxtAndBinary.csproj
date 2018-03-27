@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\CustomerWriter.cs" />
+    <Compile Include="Components\CustomerTableWriter.cs" />
+    <Compile Include="Components\ITableWriter.cs" />
     <Compile Include="IModuleController.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="ModuleController.cs" />
     <Compile Include="Presentation\Controllers\Controller.cs" />
     <Compile Include="Presentation\Controllers\CustomerTableController.cs" />

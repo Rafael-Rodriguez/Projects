@@ -4,6 +4,7 @@ using System.IO;
 using Chapter21.CustomerTxtAndBinary.Services;
 using System.Data;
 using System.Collections.Generic;
+using Chapter21.CustomerTxtAndBinary.Models;
 
 namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
 {
@@ -43,20 +44,25 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
             FileStream filestream;
             try
             {
-                filestream = new FileStream(fileName, FileMode.CreateNew, FileAccess.Write);
+                filestream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
             }
             catch (IOException)
             {
-                var result = DialogService.ShowMessageBox("File exists.  Overwrite?", "File Exists", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (result == DialogResult.OK)
-                {
-                    filestream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
-                }
+                return;
             }
 
-            foreach(DataRow dataRow in collection)
+            using (var streamWriter = new StreamWriter(filestream))
             {
-                //dataRow.ItemArray
+                streamWriter.WriteLine(string.Format( "| {0,10} | {1,25} | {2,30} | {3,25} | {4,5} | {5,10} | ", "CustomerID", "Name", "Address", "City", "State", "ZipCode"));
+
+                foreach (DataRow dataRow in collection)
+                {
+                    var items = dataRow.ItemArray;
+                    var customer = Customer.FromItemArray(items);
+                    streamWriter.WriteLine(customer.ToString());
+                }
+
+                streamWriter.Flush();
             }
         }
     }
