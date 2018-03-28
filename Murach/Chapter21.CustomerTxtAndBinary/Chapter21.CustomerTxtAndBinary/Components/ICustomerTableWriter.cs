@@ -4,10 +4,10 @@ using System.IO;
 
 namespace Chapter21.CustomerTxtAndBinary.Components
 {
-    public interface ITableWriter
-    { 
+    public interface ICustomerTableWriter
+    {
         string FilterString { get; }
 
-        void WriteTable(FileStream filestream, IEnumerable<DataRow> tableRowCollection);
+        void WriteTable(FileStream filestream, int filterIndex, IEnumerable<DataRow> tableRowCollection);
     }
 }

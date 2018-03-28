@@ -2,8 +2,10 @@
 using Chapter21.CustomerTxtAndBinary.Presentation.Views;
 using Chapter21.CustomerTxtAndBinary.Services;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
+using Chapter21.CustomerTxtAndBinary.Components;
 
 namespace Chapter21.CustomerTxtAndBinary
 {
@@ -11,10 +13,13 @@ namespace Chapter21.CustomerTxtAndBinary
     {
         private List<IView> _views;
         private List<IService> _services;
+        private List<ICustomerTableWriter> _customerTableWriters;
 
         public Form Run()
         {
             RegisterServices();
+
+            RegisterTableWriters();
 
             RegisterViews();
 
@@ -29,12 +34,25 @@ namespace Chapter21.CustomerTxtAndBinary
             };
         }
 
+        private void RegisterTableWriters()
+        {
+            _customerTableWriters = new List<ICustomerTableWriter>()
+            {
+                new CustomerTableWriter()
+            };
+        }
+
         private void RegisterViews()
         {
             _views = new List<IView>
             {
-                new CustomerTableForm(new CustomerTableController(this, GetService<IDialogService>()))
+                new CustomerTableForm(new CustomerTableController(this, GetService<DialogService>(), GetCustomerTableWriter<CustomerTableWriter>()))
             };
+        }
+
+        public TCustomerTableWriterType GetCustomerTableWriter<TCustomerTableWriterType>()
+        {
+            return _customerTableWriters.OfType<TCustomerTableWriterType>().Single();
         }
 
         public TServiceType GetService<TServiceType>()

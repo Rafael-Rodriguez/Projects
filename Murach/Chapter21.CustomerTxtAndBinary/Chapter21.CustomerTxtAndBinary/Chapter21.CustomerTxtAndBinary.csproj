@@ -46,8 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\BinaryWriter.cs" />
     <Compile Include="Components\CustomerTableWriter.cs" />
+    <Compile Include="Components\ICustomerTableWriter.cs" />
     <Compile Include="Components\ITableWriter.cs" />
+    <Compile Include="Components\JsonWriter.cs" />
+    <Compile Include="Components\TextWriter.cs" />
     <Compile Include="IModuleController.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="ModuleController.cs" />

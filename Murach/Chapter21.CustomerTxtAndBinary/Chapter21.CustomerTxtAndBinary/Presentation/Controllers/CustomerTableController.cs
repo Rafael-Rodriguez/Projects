@@ -4,6 +4,7 @@ using System.IO;
 using Chapter21.CustomerTxtAndBinary.Services;
 using System.Data;
 using System.Collections.Generic;
+using Chapter21.CustomerTxtAndBinary.Components;
 using Chapter21.CustomerTxtAndBinary.Models;
 
 namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
@@ -12,13 +13,17 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
     {
         public ICustomerTableView View { get; set; }
 
-        public CustomerTableController(IModuleController moduleController, IDialogService dialogService)
+        public CustomerTableController(IModuleController moduleController, IDialogService dialogService, ICustomerTableWriter tableWriter)
         {
             ModuleController = moduleController;
             DialogService = dialogService;
+            TableWriter = tableWriter;
         }
 
+        public ICustomerTableWriter TableWriter { get; set; }
+
         private IModuleController ModuleController { get; set; }
+
         private IDialogService DialogService { get; set; }
 
 
@@ -27,7 +32,7 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
             // Displays a SaveFileDialog so the user can save the Image  
             // assigned to Button2.  
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Text File|*.txt|Binary File|*.dat|JSON File|*.json";
+            saveFileDialog.Filter = TableWriter.FilterString;//"Text File|*.txt|Binary File|*.dat|JSON File|*.json";
             saveFileDialog.Title = "Save Customers";
             saveFileDialog.CreatePrompt = true;
             saveFileDialog.OverwritePrompt = true;
@@ -51,19 +56,21 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
                 return;
             }
 
-            using (var streamWriter = new StreamWriter(filestream))
-            {
-                streamWriter.WriteLine(string.Format( "| {0,10} | {1,25} | {2,30} | {3,25} | {4,5} | {5,10} | ", "CustomerID", "Name", "Address", "City", "State", "ZipCode"));
+            TableWriter.WriteTable(filestream, filterIndex, collection);
 
-                foreach (DataRow dataRow in collection)
-                {
-                    var items = dataRow.ItemArray;
-                    var customer = Customer.FromItemArray(items);
-                    streamWriter.WriteLine(customer.ToString());
-                }
+            //using (var streamWriter = new StreamWriter(filestream))
+            //{
+            //    streamWriter.WriteLine(string.Format( "| {0,10} | {1,25} | {2,30} | {3,25} | {4,5} | {5,10} | ", "CustomerID", "Name", "Address", "City", "State", "ZipCode"));
 
-                streamWriter.Flush();
-            }
+            //    foreach (DataRow dataRow in collection)
+            //    {
+            //        var items = dataRow.ItemArray;
+            //        var customer = Customer.FromItemArray(items);
+            //        streamWriter.WriteLine(customer.ToString());
+            //    }
+
+            //    streamWriter.Flush();
+            //}
         }
     }
 }
