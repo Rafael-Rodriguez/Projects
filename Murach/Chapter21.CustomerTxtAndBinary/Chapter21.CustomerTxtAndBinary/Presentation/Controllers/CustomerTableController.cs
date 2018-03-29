@@ -57,20 +57,6 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
             }
 
             TableWriter.WriteTable(filestream, filterIndex, collection);
-
-            //using (var streamWriter = new StreamWriter(filestream))
-            //{
-            //    streamWriter.WriteLine(string.Format( "| {0,10} | {1,25} | {2,30} | {3,25} | {4,5} | {5,10} | ", "CustomerID", "Name", "Address", "City", "State", "ZipCode"));
-
-            //    foreach (DataRow dataRow in collection)
-            //    {
-            //        var items = dataRow.ItemArray;
-            //        var customer = Customer.FromItemArray(items);
-            //        streamWriter.WriteLine(customer.ToString());
-            //    }
-
-            //    streamWriter.Flush();
-            //}
         }
     }
 }
