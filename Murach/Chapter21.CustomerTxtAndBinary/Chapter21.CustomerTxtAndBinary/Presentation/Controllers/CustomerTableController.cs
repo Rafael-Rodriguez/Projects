@@ -20,7 +20,7 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
             TableWriter = tableWriter;
         }
 
-        public ICustomerTableWriter TableWriter { get; set; }
+        private ICustomerTableWriter TableWriter { get; set; }
 
         private IModuleController ModuleController { get; set; }
 
@@ -29,10 +29,8 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
 
         public void OnSaveAsClicked(IEnumerable<DataRow> collection)
         {
-            // Displays a SaveFileDialog so the user can save the Image  
-            // assigned to Button2.  
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = TableWriter.FilterString;//"Text File|*.txt|Binary File|*.dat|JSON File|*.json";
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = TableWriter.FilterString;
             saveFileDialog.Title = "Save Customers";
             saveFileDialog.CreatePrompt = true;
             saveFileDialog.OverwritePrompt = true;
