@@ -19,7 +19,12 @@ namespace Chapter21.CustomerTxtAndBinary.Components
                 {
                     var items = dataRow.ItemArray;
                     var customer = Customer.FromItemArray(items);
-                    binaryWriter.Write(customer.ToString());
+                    binaryWriter.Write(customer.CustomerID);
+                    binaryWriter.Write(customer.Name);
+                    binaryWriter.Write(customer.Address);
+                    binaryWriter.Write(customer.City);
+                    binaryWriter.Write(customer.State);
+                    binaryWriter.Write(customer.ZipCode);
                 }
 
                 binaryWriter.Flush();
