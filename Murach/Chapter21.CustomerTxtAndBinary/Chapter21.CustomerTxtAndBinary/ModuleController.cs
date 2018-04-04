@@ -14,12 +14,15 @@ namespace Chapter21.CustomerTxtAndBinary
         private List<IView> _views;
         private List<IService> _services;
         private List<ICustomerTableWriter> _customerTableWriters;
+        private List<ICustomerTableReader> _customerTableReaders;
 
         public Form Run()
         {
             RegisterServices();
 
             RegisterTableWriters();
+
+            RegisterTableReaders();
 
             RegisterViews();
 
@@ -42,18 +45,31 @@ namespace Chapter21.CustomerTxtAndBinary
             };
         }
 
+        private void RegisterTableReaders()
+        {
+            _customerTableReaders = new List<ICustomerTableReader>()
+            {
+                new CustomerTableReader()
+            };
+        }
+
         private void RegisterViews()
         {
             _views = new List<IView>
             {
                 new CustomerTableForm(new CustomerTableController(this, GetService<DialogService>(), GetCustomerTableWriter<CustomerTableWriter>())),
-                new ImportCustomersForm(new ImportCustomersController(this, GetService<DialogService>(),GetCustomerTableWriter<CustomerTableWriter>()))
+                new ImportCustomersForm(new ImportCustomersController(this, GetService<DialogService>(),GetCustomerTableReader<CustomerTableReader>()))
             };
         }
 
         public TCustomerTableWriterType GetCustomerTableWriter<TCustomerTableWriterType>()
         {
             return _customerTableWriters.OfType<TCustomerTableWriterType>().Single();
+        }
+
+        public TCustomerTableReaderType GetCustomerTableReader<TCustomerTableReaderType>()
+        {
+            return _customerTableReaders.OfType<TCustomerTableReaderType>().Single();
         }
 
         public TServiceType GetService<TServiceType>()

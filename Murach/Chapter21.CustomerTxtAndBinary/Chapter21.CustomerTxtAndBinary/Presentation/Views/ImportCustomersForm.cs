@@ -20,6 +20,11 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Views
             set { _controller = value;  _controller.View = this; }
         }
 
+        public DataGridView DataGrid
+        {
+            get { return dataGridView; }
+        }
+
         private void exitToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             Close();

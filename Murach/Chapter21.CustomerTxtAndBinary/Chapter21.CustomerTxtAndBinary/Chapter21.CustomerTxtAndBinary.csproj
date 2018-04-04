@@ -51,10 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\BinaryWriter.cs" />
+    <Compile Include="Components\CustomerTableReader.cs" />
     <Compile Include="Components\CustomerTableWriter.cs" />
+    <Compile Include="Components\ICustomerTableReader.cs" />
     <Compile Include="Components\ICustomerTableWriter.cs" />
+    <Compile Include="Components\ITableReader.cs" />
     <Compile Include="Components\ITableWriter.cs" />
     <Compile Include="Components\JsonWriter.cs" />
+    <Compile Include="Components\TextReader.cs" />
     <Compile Include="Components\TextWriter.cs" />
     <Compile Include="IModuleController.cs" />
     <Compile Include="Models\Customer.cs" />

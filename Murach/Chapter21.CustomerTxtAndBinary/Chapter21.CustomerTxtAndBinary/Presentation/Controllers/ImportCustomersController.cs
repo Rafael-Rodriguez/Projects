@@ -3,22 +3,25 @@ using Chapter21.CustomerTxtAndBinary.Presentation.Views;
 using System.Windows.Forms;
 using Chapter21.CustomerTxtAndBinary.Services;
 using Chapter21.CustomerTxtAndBinary.Components;
+using System.IO;
+using System.Collections.Generic;
+using Chapter21.CustomerTxtAndBinary.Models;
 
 namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
 {
     public class ImportCustomersController : IImportCustomerController<IImportCustomersView>
     {
 
-        public ImportCustomersController(IModuleController moduleController, IDialogService dialogService, ICustomerTableWriter tableWriter)
+        public ImportCustomersController(IModuleController moduleController, IDialogService dialogService, ICustomerTableReader tableReader)
         {
             ModuleController = moduleController;
             DialogService = dialogService;
-            TableWriter = tableWriter;
+            TableReader = tableReader;
         }
 
         public IImportCustomersView View { get; set; }
 
-        private ICustomerTableWriter TableWriter { get; set; }
+        private ICustomerTableReader TableReader { get; set; }
 
         private IModuleController ModuleController { get; set; }
 
@@ -27,7 +30,7 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
         public void OnImportCustomersClicked()
         {
             var openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = TableWriter.FilterString;
+            openFileDialog.Filter = TableReader.FilterString;
             openFileDialog.Title = "Import Customers";
             openFileDialog.Multiselect = false;
             var result = openFileDialog.ShowDialog();
@@ -45,7 +48,18 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
 
         private void OpenFile(string fileName, int filterIndex)
         {
-            
+            FileStream filestream;
+            try
+            {
+                filestream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+            }
+            catch (IOException)
+            {
+                return;
+            }
+
+            var customers = TableReader.ReadCustomers(filestream, filterIndex);
+            View.DataGrid.DataSource = customers;
         }
     }
 }
