@@ -13,9 +13,9 @@ namespace Chapter21.CustomerTxtAndBinary.Components
 
         public void WriteTable(FileStream filestream, IEnumerable<DataRow> collection)
         {
-            using (var streamWriter = new System.IO.StreamWriter(filestream))
+            using (var streamWriter = new StreamWriter(filestream))
             {
-                using (var jsonWriter = new JsonTextWriter(streamWriter))
+                /*using (var jsonWriter = new JsonTextWriter(streamWriter))
                 {
                     jsonWriter.Formatting = Formatting.Indented;
                     jsonWriter.IndentChar = '\t';
@@ -44,8 +44,16 @@ namespace Chapter21.CustomerTxtAndBinary.Components
                     }
 
                     jsonWriter.Flush();
+                }*/
+
+                JsonSerializer serializer = new JsonSerializer();
+                foreach(var dataRow in collection)
+                {
+                    var items = dataRow.ItemArray;
+                    var customer = Customer.FromItemArray(items);
+
+                    serializer.Serialize(streamWriter, customer);
                 }
-                    
             }
         }
     }

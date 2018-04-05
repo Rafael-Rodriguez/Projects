@@ -58,6 +58,7 @@
     <Compile Include="Components\ICustomerTableWriter.cs" />
     <Compile Include="Components\ITableReader.cs" />
     <Compile Include="Components\ITableWriter.cs" />
+    <Compile Include="Components\JsonReader.cs" />
     <Compile Include="Components\JsonWriter.cs" />
     <Compile Include="Components\TextReader.cs" />
     <Compile Include="Components\TextWriter.cs" />

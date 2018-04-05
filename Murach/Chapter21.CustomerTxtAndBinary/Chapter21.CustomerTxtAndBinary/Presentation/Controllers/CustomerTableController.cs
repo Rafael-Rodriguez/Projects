@@ -5,7 +5,6 @@ using Chapter21.CustomerTxtAndBinary.Services;
 using System.Data;
 using System.Collections.Generic;
 using Chapter21.CustomerTxtAndBinary.Components;
-using Chapter21.CustomerTxtAndBinary.Models;
 
 namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
 {
