@@ -21,7 +21,8 @@ namespace Chapter21.CustomerTxtAndBinary.Components
         {
             _tableReaders = new List<ITableReader>()
             {
-                new TextReader()
+                new TextReader(),
+                new BinaryReader()
             };
 
             var sb = new StringBuilder();

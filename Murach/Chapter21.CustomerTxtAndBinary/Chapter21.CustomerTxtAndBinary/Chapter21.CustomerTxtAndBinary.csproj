@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\BinaryReader.cs" />
     <Compile Include="Components\BinaryWriter.cs" />
     <Compile Include="Components\CustomerTableReader.cs" />
     <Compile Include="Components\CustomerTableWriter.cs" />
