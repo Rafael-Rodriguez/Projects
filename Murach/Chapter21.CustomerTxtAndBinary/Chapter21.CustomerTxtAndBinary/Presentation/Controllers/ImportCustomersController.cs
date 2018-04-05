@@ -51,7 +51,7 @@ namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
             FileStream filestream;
             try
             {
-                filestream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+                filestream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
             }
             catch (IOException)
             {
