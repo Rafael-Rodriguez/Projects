@@ -8,11 +8,11 @@ using Chapter21.CustomerTxtAndBinary.Components;
 
 namespace Chapter21.CustomerTxtAndBinary.Presentation.Controllers
 {
-    public class CustomerTableController : ICustomerTableController<ICustomerTableView>
+    public class ExportCustomersController : IExportCustomersController<IExportCustomersView>
     {
-        public ICustomerTableView View { get; set; }
+        public IExportCustomersView View { get; set; }
 
-        public CustomerTableController(IModuleController moduleController, IDialogService dialogService, ICustomerTableWriter tableWriter)
+        public ExportCustomersController(IModuleController moduleController, IDialogService dialogService, ICustomerTableWriter tableWriter)
         {
             ModuleController = moduleController;
             DialogService = dialogService;

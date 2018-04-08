@@ -26,7 +26,7 @@ namespace Chapter21.CustomerTxtAndBinary
 
             RegisterViews();
 
-            return GetView<ImportCustomersForm>();
+            return GetView<ExportCustomersForm>();
         }
 
         private void RegisterServices()
@@ -57,7 +57,7 @@ namespace Chapter21.CustomerTxtAndBinary
         {
             _views = new List<IView>
             {
-                new CustomerTableForm(new CustomerTableController(this, GetService<DialogService>(), GetCustomerTableWriter<CustomerTableWriter>())),
+                new ExportCustomersForm(new ExportCustomersController(this, GetService<DialogService>(), GetCustomerTableWriter<CustomerTableWriter>())),
                 new ImportCustomersForm(new ImportCustomersController(this, GetService<DialogService>(),GetCustomerTableReader<CustomerTableReader>()))
             };
         }

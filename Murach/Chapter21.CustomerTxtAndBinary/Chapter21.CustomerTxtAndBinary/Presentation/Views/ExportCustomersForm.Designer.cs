@@ -1,6 +1,6 @@
 ﻿namespace Chapter21.CustomerTxtAndBinary.Presentation.Views
 {
-    partial class CustomerTableForm
+    partial class ExportCustomersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -157,7 +157,7 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // CustomersForm
+            // ExportCustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -166,8 +166,8 @@
             this.Controls.Add(this.customersDataGridView);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
-            this.Name = "CustomersForm";
-            this.Text = "Customer Reader";
+            this.Name = "ExportCustomersForm";
+            this.Text = "Export Customers";
             this.Load += new System.EventHandler(this.CustomersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mMABooksDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();

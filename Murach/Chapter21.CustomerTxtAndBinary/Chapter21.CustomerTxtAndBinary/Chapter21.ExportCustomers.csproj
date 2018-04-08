@@ -65,10 +65,9 @@
     <Compile Include="IModuleController.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="ModuleController.cs" />
-    <Compile Include="Presentation\Controllers\Controller.cs" />
-    <Compile Include="Presentation\Controllers\CustomerTableController.cs" />
+    <Compile Include="Presentation\Controllers\ExportCustomersController.cs" />
     <Compile Include="Presentation\Controllers\IController.cs" />
-    <Compile Include="Presentation\Controllers\ICustomerTableController.cs" />
+    <Compile Include="Presentation\Controllers\IExportCustomersController.cs" />
     <Compile Include="Presentation\Controllers\IImportCustomersController.cs" />
     <Compile Include="Presentation\Controllers\ImportCustomersController.cs" />
     <Compile Include="Presentation\Views\IImportCustomersView.cs" />
@@ -78,18 +77,18 @@
     <Compile Include="Presentation\Views\ImportCustomersForm.Designer.cs">
       <DependentUpon>ImportCustomersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\CustomerTableForm.cs">
+    <Compile Include="Presentation\Views\ExportCustomersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\Views\CustomerTableForm.Designer.cs">
-      <DependentUpon>CustomerTableForm.cs</DependentUpon>
+    <Compile Include="Presentation\Views\ExportCustomersForm.Designer.cs">
+      <DependentUpon>ExportCustomersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MMABooksDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Views\ICustomerTableView.cs" />
+    <Compile Include="Presentation\Views\IExportCustomersView.cs" />
     <Compile Include="Presentation\Views\IView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,8 +98,8 @@
     <EmbeddedResource Include="Presentation\Views\ImportCustomersForm.resx">
       <DependentUpon>ImportCustomersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\Views\CustomerTableForm.resx">
-      <DependentUpon>CustomerTableForm.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\Views\ExportCustomersForm.resx">
+      <DependentUpon>ExportCustomersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

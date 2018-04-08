@@ -2,10 +2,8 @@
 
 namespace Chapter21.CustomerTxtAndBinary.Presentation.Views
 {
-    public interface IImportCustomersView : IView
+    public interface IExportCustomersView : IView
     {
-        DataGridView DataGrid { get; }
-
         DialogResult ShowDialog();
     }
 }

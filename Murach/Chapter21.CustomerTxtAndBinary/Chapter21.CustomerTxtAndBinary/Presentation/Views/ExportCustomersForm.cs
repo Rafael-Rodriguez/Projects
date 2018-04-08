@@ -5,17 +5,17 @@ using System.Windows.Forms;
 
 namespace Chapter21.CustomerTxtAndBinary.Presentation.Views
 {
-    public partial class CustomerTableForm : Form, ICustomerTableView
+    public partial class ExportCustomersForm : Form, IExportCustomersView
     {
-        private ICustomerTableController<ICustomerTableView> _controller;
-        public CustomerTableForm(ICustomerTableController<ICustomerTableView> controller)
+        private IExportCustomersController<IExportCustomersView> _controller;
+        public ExportCustomersForm(IExportCustomersController<IExportCustomersView> controller)
         {
             InitializeComponent();
 
             _controller = controller;
         }
 
-        public ICustomerTableController<ICustomerTableView> Controller
+        public IExportCustomersController<IExportCustomersView> Controller
         {
             get
             {

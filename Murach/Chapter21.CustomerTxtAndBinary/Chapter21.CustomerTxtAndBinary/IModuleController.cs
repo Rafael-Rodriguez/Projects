@@ -9,7 +9,5 @@ namespace Chapter21.CustomerTxtAndBinary
         FormType GetView<FormType>();
 
         ServiceType GetService<ServiceType>();
-
-        //CollectionType GetCollection<CollectionType>();
     }
 }
