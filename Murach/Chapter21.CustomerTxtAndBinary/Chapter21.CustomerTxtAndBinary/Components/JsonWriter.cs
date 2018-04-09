@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using Chapter21.CustomerTxtAndBinary.Models;
@@ -15,45 +14,16 @@ namespace Chapter21.CustomerTxtAndBinary.Components
         {
             using (var streamWriter = new StreamWriter(filestream))
             {
-                /*using (var jsonWriter = new JsonTextWriter(streamWriter))
-                {
-                    jsonWriter.Formatting = Formatting.Indented;
-                    jsonWriter.IndentChar = '\t';
-
-                    foreach (var dataRow in collection)
-                    {
-                        var items = dataRow.ItemArray;
-                        var customer = Customer.FromItemArray(items);
-
-                        jsonWriter.WriteStartObject();
-                        jsonWriter.WritePropertyName("CustomerID");
-                        jsonWriter.WriteValue(customer.CustomerID);
-                        jsonWriter.WritePropertyName("Name");
-                        jsonWriter.WriteValue(customer.Name);
-                        jsonWriter.WritePropertyName("Address");
-                        jsonWriter.WriteValue(customer.Address);
-                        jsonWriter.WritePropertyName("City");
-                        jsonWriter.WriteValue(customer.City);
-                        jsonWriter.WritePropertyName("State");
-                        jsonWriter.WriteValue(customer.State);
-                        jsonWriter.WritePropertyName("ZipCode");
-                        jsonWriter.WriteValue(customer.ZipCode);
-                        jsonWriter.WriteEndObject();
-
-                        streamWriter.WriteLine();
-                    }
-
-                    jsonWriter.Flush();
-                }*/
-
-                JsonSerializer serializer = new JsonSerializer();
+                var customers = new List<Customer>();
                 foreach(var dataRow in collection)
                 {
                     var items = dataRow.ItemArray;
                     var customer = Customer.FromItemArray(items);
-
-                    serializer.Serialize(streamWriter, customer);
+                    customers.Add(customer);
                 }
+
+                var jsonCustomerArray = JsonConvert.SerializeObject(customers.ToArray());
+                streamWriter.Write(jsonCustomerArray.ToString());
             }
         }
     }
