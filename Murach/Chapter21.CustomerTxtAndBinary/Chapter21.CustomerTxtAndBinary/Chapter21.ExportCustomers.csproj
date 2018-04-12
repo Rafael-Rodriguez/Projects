@@ -56,6 +56,7 @@
     <Compile Include="Components\ITableWriter.cs" />
     <Compile Include="Components\JsonWriter.cs" />
     <Compile Include="Components\TextWriter.cs" />
+    <Compile Include="Components\XmlCustomerWriter.cs" />
     <Compile Include="IModuleController.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="ModuleController.cs" />

@@ -34,7 +34,8 @@ namespace Chapter21.CustomerTxtAndBinary.Components
             {
                 new TextWriter(),
                 new BinaryWriter(),
-                new JsonWriter()
+                new JsonWriter(),
+                new XmlCustomerWriter()
             };
 
             var sb = new StringBuilder();
