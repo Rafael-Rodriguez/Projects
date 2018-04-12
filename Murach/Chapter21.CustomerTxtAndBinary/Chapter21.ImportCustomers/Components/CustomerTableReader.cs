@@ -23,7 +23,8 @@ namespace Chapter21.CustomerTxtAndBinary.Components
             {
                 new TextReader(),
                 new BinaryReader(),
-                new JsonReader()
+                new JsonReader(),
+                new XmlCustomerReader()
             };
 
             var sb = new StringBuilder();
