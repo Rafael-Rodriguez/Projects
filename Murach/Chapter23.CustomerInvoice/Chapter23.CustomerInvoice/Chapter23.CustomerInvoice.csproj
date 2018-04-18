@@ -46,14 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DatabaseObjectCollection.cs" />
+    <Compile Include="Database\ICustomersDbo.cs" />
+    <Compile Include="Database\IDatabaseObjectCollection.cs" />
+    <Compile Include="Database\IDbo.cs" />
+    <Compile Include="Database\IInvoicesDbo.cs" />
+    <Compile Include="IModuleController.cs" />
+    <Compile Include="Presentation\Controllers\CustomerInvoicesController.cs" />
     <Compile Include="Database\CustomersDbo.cs" />
     <Compile Include="Database\InvoicesDbo.cs" />
-    <Compile Include="Form.cs">
+    <Compile Include="Presentation\Views\CustomerInvoicesView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form.Designer.cs">
-      <DependentUpon>Form.cs</DependentUpon>
+    <Compile Include="Presentation\Views\CustomerInvoicesView.Designer.cs">
+      <DependentUpon>CustomerInvoicesView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\Controllers\IController.cs" />
+    <Compile Include="Presentation\Views\IView.cs" />
     <Compile Include="MMABooksDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -63,10 +72,11 @@
     <Compile Include="Models\ICustomer.cs" />
     <Compile Include="Models\IInvoice.cs" />
     <Compile Include="Models\Invoice.cs" />
+    <Compile Include="ModuleController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form.resx">
-      <DependentUpon>Form.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\Views\CustomerInvoicesView.resx">
+      <DependentUpon>CustomerInvoicesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

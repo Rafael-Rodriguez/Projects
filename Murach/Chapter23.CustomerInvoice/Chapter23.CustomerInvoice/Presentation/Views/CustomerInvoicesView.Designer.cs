@@ -1,6 +1,6 @@
 ﻿namespace Chapter23.CustomerInvoice
 {
-    partial class Form
+    partial class CustomerInvoicesView
     {
         /// <summary>
         /// Required designer variable.
@@ -77,6 +77,7 @@
             this.Controls.Add(this.listView);
             this.Name = "Form";
             this.Text = "Customer Invoices by Invoice Total";
+            this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
 
         }
