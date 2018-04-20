@@ -46,15 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\DatabaseObjectCollection.cs" />
-    <Compile Include="Database\ICustomersDbo.cs" />
-    <Compile Include="Database\IDatabaseObjectCollection.cs" />
-    <Compile Include="Database\IDbo.cs" />
-    <Compile Include="Database\IInvoicesDbo.cs" />
+    <Compile Include="Database\DatabaseAccessObjectCollection.cs" />
+    <Compile Include="Database\ICustomersDataAccessObject.cs" />
+    <Compile Include="Database\IDatabaseAccessObjectCollection.cs" />
+    <Compile Include="Database\IDataAccessObject.cs" />
+    <Compile Include="Database\IInvoicesDataAccessObject.cs" />
     <Compile Include="IModuleController.cs" />
     <Compile Include="Presentation\Controllers\CustomerInvoicesController.cs" />
-    <Compile Include="Database\CustomersDbo.cs" />
-    <Compile Include="Database\InvoicesDbo.cs" />
+    <Compile Include="Database\CustomersDataAccessObject.cs" />
+    <Compile Include="Database\InvoicesDataAccessObject.cs" />
     <Compile Include="Presentation\Views\CustomerInvoicesView.cs">
       <SubType>Form</SubType>
     </Compile>

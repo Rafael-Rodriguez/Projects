@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Chapter23.CustomerInvoice.Database
 {
-    public sealed class CustomersDbo : ICustomersDbo
+    public sealed class CustomersDataAccessObject : ICustomersDataAccessObject
     {
         public IList<Customer> GetCustomers()
         {

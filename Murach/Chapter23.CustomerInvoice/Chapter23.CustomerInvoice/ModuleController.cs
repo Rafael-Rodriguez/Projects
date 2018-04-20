@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Chapter23.CustomerInvoice.Presentation.Controllers;
+using Chapter23.CustomerInvoice.Presentation.Views;
 
 namespace Chapter23.CustomerInvoice
 {
     public class ModuleController : IModuleController
     {
         private IList<IView> _views;
-        private IList<IDatabaseObjectCollection> _databaseObjectCollections;
+        private IList<IDatabaseAccessObjectCollection> _databaseObjectCollections;
 
         public Form Run()
         {
@@ -21,9 +23,9 @@ namespace Chapter23.CustomerInvoice
 
         private void RegisterDatabaseObjectCollections()
         {
-            _databaseObjectCollections = new List<IDatabaseObjectCollection>
+            _databaseObjectCollections = new List<IDatabaseAccessObjectCollection>
             {
-                new DatabaseObjectCollection()
+                new DatabaseAccessObjectCollection()
             };
         }
 

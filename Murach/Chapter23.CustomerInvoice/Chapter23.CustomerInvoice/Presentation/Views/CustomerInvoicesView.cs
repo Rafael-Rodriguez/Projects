@@ -1,6 +1,7 @@
 ﻿using System;
+using Chapter23.CustomerInvoice.Presentation.Controllers;
 
-namespace Chapter23.CustomerInvoice
+namespace Chapter23.CustomerInvoice.Presentation.Views
 {
     public partial class CustomerInvoicesView : System.Windows.Forms.Form, IView
     {

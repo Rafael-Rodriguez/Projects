@@ -1,9 +1,9 @@
-﻿using Chapter23.CustomerInvoice.Database;
+﻿using System.Collections.Generic;
+using Chapter23.CustomerInvoice.Database;
 using Chapter23.CustomerInvoice.Models;
-using System;
-using System.Collections.Generic;
+using Chapter23.CustomerInvoice.Presentation.Views;
 
-namespace Chapter23.CustomerInvoice
+namespace Chapter23.CustomerInvoice.Presentation.Controllers
 {
     public class CustomerInvoicesController : IController<IView>
     {
@@ -24,24 +24,24 @@ namespace Chapter23.CustomerInvoice
 
         }
 
-        private IList<Invoice> GetInvoices()
+        private IEnumerable<Invoice> GetInvoices()
         {
-            return GetInvoicesDbo().GetInvoices();
+            return GetInvoicesDataAccessObject().GetInvoices();
         }
 
-        private IList<Customer> GetCustomers()
+        private IEnumerable<Customer> GetCustomers()
         {
-            return GetCustomerDbo().GetCustomers();
+            return GetCustomersDataAccessObject().GetCustomers();
         }
 
-        private ICustomersDbo GetCustomerDbo()
+        private ICustomersDataAccessObject GetCustomersDataAccessObject()
         {
-            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<ICustomersDbo>();
+            return ModuleController.GetCollection<IDatabaseAccessObjectCollection>().GetDataAccessObject<ICustomersDataAccessObject>();
         }
 
-        private IInvoicesDbo GetInvoicesDbo()
+        private IInvoicesDataAccessObject GetInvoicesDataAccessObject()
         {
-            return ModuleController.GetCollection<IDatabaseObjectCollection>().GetDbo<IInvoicesDbo>();
+            return ModuleController.GetCollection<IDatabaseAccessObjectCollection>().GetDataAccessObject<IInvoicesDataAccessObject>();
         }
     }
 }

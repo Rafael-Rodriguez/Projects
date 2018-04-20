@@ -3,8 +3,8 @@ using Chapter23.CustomerInvoice.Models;
 
 namespace Chapter23.CustomerInvoice.Database
 {
-    public interface ICustomersDbo : IDbo
+    public interface IInvoicesDataAccessObject : IDataAccessObject
     {
-        IList<Customer> GetCustomers();
+        IList<Invoice> GetInvoices();
     }
 }
