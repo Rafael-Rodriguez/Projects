@@ -13,7 +13,7 @@ namespace CustomerMaintenanceMVP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Presentation.View.CustomerMaintenanceView());
+            Application.Run(new ModuleController().Run());
         }
     }
 }
