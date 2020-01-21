@@ -13,6 +13,7 @@ namespace Chapter18.CustomerMaintenance
 {
     public partial class CustomerMaintenance : Form
     {
+
         public CustomerMaintenance()
         {
             InitializeComponent();
@@ -23,14 +24,12 @@ namespace Chapter18.CustomerMaintenance
             this.Validate();
             this.customersBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.mMABooksDataSet);
-
         }
 
         private void CustomerMaintenance_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'mMABooksDataSet.Customers' table. You can move, or remove it, as needed.
             this.customersTableAdapter.Fill(this.mMABooksDataSet.Customers);
-
         }
 
         private void zipCodeTextBox_TextChanged(object sender, EventArgs e)

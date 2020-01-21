@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AFB1AE6C-B6BD-4ADD-9825-4A68F9040E36}</ProjectGuid>
+    <ProjectGuid>{ADFA6A89-F0FC-45CE-8A23-C3643AF726C8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Chapter18.CustomerMaintenance</RootNamespace>
-    <AssemblyName>Chapter18.CustomerMaintenance</AssemblyName>
+    <RootNamespace>CustomerMaintenanceMVP</RootNamespace>
+    <AssemblyName>CustomerMaintenanceMVP</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,24 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MMABooksDataSet.cs">
-      <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="View\CustomerMaintenance.cs">
+    <Compile Include="Presentation\View\CustomerMaintenanceView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\CustomerMaintenance.Designer.cs">
-      <DependentUpon>CustomerMaintenance.cs</DependentUpon>
+    <Compile Include="Presentation\View\CustomerMaintenanceView.Designer.cs">
+      <DependentUpon>CustomerMaintenanceView.cs</DependentUpon>
     </Compile>
     <Compile Include="MMABooksDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MMABooksDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\View\IView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="View\CustomerMaintenance.resx">
-      <DependentUpon>CustomerMaintenance.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\View\CustomerMaintenanceView.resx">
+      <DependentUpon>CustomerMaintenanceView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,6 +95,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Database\" />
+    <Folder Include="Models\" />
+    <Folder Include="Presentation\Presenter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
