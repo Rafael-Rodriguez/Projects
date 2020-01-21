@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\ICustomer.cs" />
     <Compile Include="Presentation\View\CustomerMaintenanceView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,7 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
-    <Folder Include="Models\" />
     <Folder Include="Presentation\Presenter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
