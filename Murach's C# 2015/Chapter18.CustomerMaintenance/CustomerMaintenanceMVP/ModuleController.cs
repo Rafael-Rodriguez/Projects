@@ -7,7 +7,7 @@ using CustomerMaintenanceMVP.Presentation.View;
 
 namespace CustomerMaintenanceMVP
 {
-    public class ModuleController
+    public class ModuleController : IModuleController
     {
         private IList<IDatabaseObjectCollection> _databaseObjectCollections;
         private IList<IView> _views;

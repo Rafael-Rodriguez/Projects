@@ -10,22 +10,25 @@ namespace CustomerMaintenanceMVP.Database
 
         public DatabaseObjectCollection()
         {
-            CreateDataAccessObjects();
+            _dataAccessObjects = null;
         }
 
-        public TDatabaseObjectType GetDataAccessObjects<TDatabaseObjectType>()
+        public void CreateDataAccessObjects()
         {
-            return _dataAccessObjects.OfType<TDatabaseObjectType>().Single();
-        }
+            if(_dataAccessObjects != null)
+            {
+                return;
+            }
 
-        private void CreateDataAccessObjects()
-        {
             _dataAccessObjects = new List<IDataAccessObject>()
             {
                 new CustomerDataAccessObject()
             };
         }
 
-        
+        public TDatabaseObjectType GetDataAccessObject<TDatabaseObjectType>()
+        {
+            return _dataAccessObjects.OfType<TDatabaseObjectType>().Single();
+        }
     }
 }

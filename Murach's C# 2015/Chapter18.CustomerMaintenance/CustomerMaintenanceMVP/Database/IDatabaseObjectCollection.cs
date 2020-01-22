@@ -2,6 +2,8 @@
 {
     public interface IDatabaseObjectCollection
     {
-        TDatabaseObjectType GetDataAccessObjects<TDatabaseObjectType>();
+        void CreateDataAccessObjects();
+
+        TDatabaseObjectType GetDataAccessObject<TDatabaseObjectType>();
     }
 }

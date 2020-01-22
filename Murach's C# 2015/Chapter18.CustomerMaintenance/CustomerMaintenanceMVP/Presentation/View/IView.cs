@@ -1,6 +1,6 @@
 ﻿namespace CustomerMaintenanceMVP.Presentation.View
 {
-    interface IView
+    public interface IView
     {
     }
 }

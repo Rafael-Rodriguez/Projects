@@ -51,9 +51,12 @@
     <Compile Include="Database\ICustomerDataAccessObject.cs" />
     <Compile Include="Database\IDataAccessObject.cs" />
     <Compile Include="Database\IDatabaseObjectCollection.cs" />
+    <Compile Include="IModuleController.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\ICustomer.cs" />
     <Compile Include="ModuleController.cs" />
+    <Compile Include="Presentation\Presenter\CustomerMaintenancePresenter.cs" />
+    <Compile Include="Presentation\Presenter\IPresenter.cs" />
     <Compile Include="Presentation\View\CustomerMaintenanceView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,8 +107,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Presentation\Presenter\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
