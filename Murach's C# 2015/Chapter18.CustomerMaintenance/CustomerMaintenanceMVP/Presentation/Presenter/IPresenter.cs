@@ -2,7 +2,7 @@
 
 namespace CustomerMaintenanceMVP.Presentation.Presenter
 {
-    public interface IPresenter<T> where T : IView
+    public interface IPresenter<T> where T : ICustomerMaintenanceView
     {
         T View { get; set; }
 

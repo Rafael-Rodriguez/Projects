@@ -1,6 +1,7 @@
 ﻿namespace CustomerMaintenanceMVP.Presentation.View
 {
-    public interface IView
+    public interface ICustomerMaintenanceView
     {
+        MMABooksDataSet DSMMABooks { get; }
     }
 }

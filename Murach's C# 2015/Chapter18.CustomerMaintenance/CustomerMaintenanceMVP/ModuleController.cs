@@ -10,7 +10,7 @@ namespace CustomerMaintenanceMVP
     public class ModuleController : IModuleController
     {
         private IList<IDatabaseObjectCollection> _databaseObjectCollections;
-        private IList<IView> _views;
+        private IList<ICustomerMaintenanceView> _views;
 
         public Form Run()
         {
@@ -41,7 +41,7 @@ namespace CustomerMaintenanceMVP
 
         private void RegisterViews()
         {
-            _views = new List<IView>()
+            _views = new List<ICustomerMaintenanceView>()
             {
                 new CustomerMaintenanceView()
             };

@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\CustomerDataAccessObject.cs" />
+    <Compile Include="Database\CustomerRepository.cs" />
     <Compile Include="Database\DatabaseObjectCollection.cs" />
     <Compile Include="Database\ICustomerDataAccessObject.cs" />
+    <Compile Include="Database\ICustomerRepository.cs" />
     <Compile Include="Database\IDataAccessObject.cs" />
     <Compile Include="Database\IDatabaseObjectCollection.cs" />
     <Compile Include="IModuleController.cs" />
